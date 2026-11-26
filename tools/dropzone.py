@@ -3,21 +3,25 @@
 dropzone.py - rebuild a job's drawing pack from the Drawing Drop Zone page.
 
 Drawings never go in the git repository. People drop them once on the drop
-zone page; the page stores each file as base64 parts in its database, with an
-index written LAST and a SHA-256 of every file. A session fetches those
-documents with the ArtifactData tool and this script reassembles and verifies
-them. Ported from adco-tender- SOP-19 source B.
+zone page. Since Nov 2026 the page stores files in the artifact's asset store
+(1 GiB): each file, or each chosen page range of a big file, is one PDF asset
+under 18 MB with its own SHA-256. The job's index (db document
+jobs/<job>/files/_index) lists every file and its chunks and is written LAST.
+Older files ("legacy") were stored as base64 parts in the db and are still
+restored.
 
-Fetch first (Claude does this with the ArtifactData tool, not the shell):
-    ArtifactData action=list  url=<drop zone url>  collection=jobs/<job>/files
-                 out_dir=.tmp/dz/<job>   query.limit=1000   (page with cursor)
-  For a tranche only, fetch _index plus a query:
-    ArtifactData action=query collection=jobs/<job>/files
-                 query.where=[["file_id","in",[...ids...]]] out_dir=...
+Steps (Claude runs the fetches with its tools, not the shell):
+ 1. ArtifactData get  url=<drop zone>  collection=jobs/<job>/files  doc_id=_index
+                      out_dir=.tmp/dz/<job>
+ 2. python3 tools/dropzone.py plan --from .tmp/dz/<job> [--only PATH ...]
+      prints the asset ids to fetch (and any legacy part fetches needed)
+ 3. For each asset id:  Artifact read  url=<drop zone>  path=<asset id>
+                        out_dir=.tmp/dz/<job>/assets
+ 4. python3 tools/dropzone.py restore --from .tmp/dz/<job> --job <job> [--only PATH ...]
 
-Then:
-    python3 tools/dropzone.py list    --from .tmp/dz/<job>
-    python3 tools/dropzone.py restore --from .tmp/dz/<job> --job <job> [--only PATH ...]
+A file stored as several chunks is restored as one PDF per chunk, named
+"<name> [p7-9].pdf"; source_manifest.json maps each chunk's pages back to the
+original sheet numbers.
 
 Files land in projects/<job>/drawings/ and projects/<job>/reports/ (both
 git-ignored) plus projects/<job>/output/source_manifest.json (committed).
@@ -120,6 +124,79 @@ def reassemble(entry, docs, dest):
             "uploaded_at": entry.get("uploaded_at")}
 
 
+def chunk_name(rel, pages, single_whole):
+    if single_whole:
+        return rel
+    lab = []
+    a = b = None
+    for p in pages:
+        if a is None:
+            a = b = p
+        elif p == b + 1:
+            b = p
+        else:
+            lab.append(f"{a}" if a == b else f"{a}-{b}"); a = b = p
+    lab.append(f"{a}" if a == b else f"{a}-{b}")
+    return rel.with_name(f"{rel.stem} [p{','.join(lab)}]{rel.suffix}")
+
+
+def find_asset(src, asset_id):
+    hits = [p for p in src.rglob(f"{asset_id}*") if p.is_file() and p.suffix != ".json"]
+    return hits[0] if hits else None
+
+
+def restore_chunks(entry, src, dest):
+    fid, path = entry.get("file_id", "?"), entry.get("path", "")
+    try:
+        rel = safe_relative(path)
+    except DropzoneError as e:
+        return [{"file_id": fid, "path": path, "reason": str(e)}]
+    chunks = entry.get("chunks") or []
+    single = len(chunks) == 1 and len(chunks[0].get("pages", [])) == entry.get("pages_total")
+    rows = []
+    for c in chunks:
+        f = find_asset(src, c["asset_id"])
+        if f is None:
+            rows.append({"file_id": fid, "path": path, "asset_id": c["asset_id"],
+                         "reason": "asset not fetched (Artifact read path=<asset id>)"})
+            continue
+        raw = f.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest != c.get("sha256"):
+            rows.append({"file_id": fid, "path": path, "asset_id": c["asset_id"],
+                         "reason": "sha256_mismatch: stored chunk differs from what was dropped"})
+            continue
+        out_rel = chunk_name(rel, c["pages"], single)
+        target = dest / out_rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+        rows.append({"file_id": fid, "path": path, "local": out_rel.as_posix(),
+                     "original_pages": c["pages"], "size": len(raw), "sha256": digest,
+                     "sha256_verified": True, "uploaded_at": entry.get("uploaded_at"),
+                     "pages_total": entry.get("pages_total")})
+    return rows
+
+
+def cmd_plan(a):
+    idx, docs = read_index(pathlib.Path(a.source))
+    wanted = None if not a.only else set(a.only)
+    ids, legacy = [], []
+    for e in idx["files"]:
+        if wanted is not None and e.get("path") not in wanted:
+            continue
+        if e.get("chunks"):
+            ids += [c["asset_id"] for c in e["chunks"] if not find_asset(pathlib.Path(a.source), c["asset_id"])]
+        else:
+            missing = [pid for pid in part_ids(e) if pid not in docs]
+            if missing:
+                legacy.append((e.get("path"), e.get("file_id"), len(missing)))
+    print(f"{len(ids)} asset(s) to fetch with: Artifact read url=<drop zone> path=<id> out_dir={a.source}/assets")
+    for i in ids:
+        print("  ", i)
+    for path, fid, n in legacy:
+        print(f"legacy file {path}: {n} db part(s) missing; fetch documents {fid}_0000.. with ArtifactData")
+
+
 def restore(src, job, only=None):
     idx, docs = read_index(src)
     dest = ROOT / "projects" / job
@@ -130,13 +207,18 @@ def restore(src, job, only=None):
         if wanted is not None and e.get("path") not in wanted:
             skipped.append({"file_id": e.get("file_id"), "path": e.get("path")})
             continue
+        if e.get("chunks"):
+            for row in restore_chunks(e, src, dest):
+                (failed if "reason" in row else fetched).append(row)
+            continue
         row = reassemble(e, docs, dest)
         (failed if "reason" in row else fetched).append(row)
     if wanted is not None:
         unknown = wanted - {e.get("path") for e in idx["files"]}
         if unknown:
             raise DropzoneError("not in the index: " + ", ".join(sorted(unknown)))
-    if len(fetched) + len(failed) + len(skipped) != len(idx["files"]):
+    done_files = {r.get("file_id") for r in fetched + failed} | {r.get("file_id") for r in skipped}
+    if done_files != {e.get("file_id") for e in idx["files"]}:
         raise DropzoneError("file count does not add up; refusing to write a manifest")
     manifest = {
         "source": "drawing_drop_zone",
@@ -145,7 +227,8 @@ def restore(src, job, only=None):
         "restored_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "scope": "whole pack" if wanted is None else "tranche",
         "files_in_index": len(idx["files"]),
-        "files_restored": len(fetched),
+        "files_restored": len({r["file_id"] for r in fetched}),
+        "pdfs_written": len(fetched),
         "restored": fetched, "not_restored": failed, "not_requested": skipped,
     }
     out = dest / "output"
@@ -159,8 +242,9 @@ def cmd_list(a):
     print(f"index updated {idx.get('updated_at')}  ({len(idx['files'])} files, "
           f"{sum(f.get('size', 0) for f in idx['files'])/1e6:.1f} MB)")
     for f in sorted(idx["files"], key=lambda f: f.get("path", "")):
-        print(f"  {f.get('file_id')}  {f.get('size', 0)/1e6:7.1f} MB  {f.get('parts'):>4} parts  "
-              f"{(f.get('sha256') or '')[:10]}  {f.get('path')}")
+        how = (f"{len(f['chunks'])} chunk(s), sheets {f.get('pages_label')} of {f.get('pages_total')}"
+               if f.get("chunks") else f"{f.get('parts')} legacy parts")
+        print(f"  {f.get('file_id')}  {f.get('size', 0)/1e6:7.1f} MB  {how}  {f.get('path')}")
 
 
 def cmd_restore(a):
@@ -168,7 +252,8 @@ def cmd_restore(a):
         m = restore(pathlib.Path(a.source), a.job, a.only)
     except DropzoneError as e:
         sys.exit(f"ERROR: {e}")
-    print(f"restored {m['files_restored']} of {m['files_in_index']} file(s) into projects/{a.job}/"
+    print(f"restored {m['files_restored']} of {m['files_in_index']} file(s) "
+          f"({m['pdfs_written']} PDF(s)) into projects/{a.job}/"
           f"  [{m['scope']}]")
     for r in m["not_restored"]:
         print(f"  NOT RESTORED  {r['path']}  {r['reason']}")
@@ -185,6 +270,9 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("list"); s.add_argument("--from", dest="source", required=True)
     s.set_defaults(f=cmd_list)
+    s = sub.add_parser("plan"); s.add_argument("--from", dest="source", required=True)
+    s.add_argument("--only", nargs="+", metavar="PATH")
+    s.set_defaults(f=cmd_plan)
     s = sub.add_parser("restore"); s.add_argument("--from", dest="source", required=True)
     s.add_argument("--job", required=True)
     s.add_argument("--only", nargs="+", metavar="PATH")

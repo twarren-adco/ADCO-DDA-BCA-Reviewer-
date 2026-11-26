@@ -37,4 +37,20 @@ cmp -s projects/_selftest/drawings/A-101.pdf "$T/s.pdf" || fail "restored file d
 python3 tools/progress.py init _selftest >/dev/null || fail "progress init"
 python3 tools/progress.py status _selftest | grep -q "NEXT:" || fail "progress status"
 rm -rf projects/_selftest
+# drop zone, file-store format: two page-range chunks, restore, check names and pages
+python3 - "$T" <<'PY'
+import hashlib,json,pathlib,sys,pymupdf
+T=pathlib.Path(sys.argv[1]); src=pymupdf.open(T/"s.pdf")
+d=T/"dz2"; (d/"jobs/X/files").mkdir(parents=True); (d/"assets").mkdir()
+two=pymupdf.open(); two.insert_pdf(src); two.insert_pdf(src); raw=two.tobytes()
+one=pymupdf.open(); one.insert_pdf(src); b=one.tobytes()
+(d/"assets/a1.pdf").write_bytes(b); (d/"assets/a2.pdf").write_bytes(b)
+h=hashlib.sha256(b).hexdigest()
+idx={"format":2,"files":[{"file_id":"fz","path":"drawings/Pack.pdf","pages_total":2,"pages_label":"1-2","sha256":hashlib.sha256(raw).hexdigest(),
+ "chunks":[{"asset_id":"a1","pages":[1],"size":len(b),"sha256":h},{"asset_id":"a2","pages":[2],"size":len(b),"sha256":h}]}]}
+(d/"jobs/X/files/_index.json").write_text(json.dumps(idx))
+PY
+python3 tools/dropzone.py restore --from "$T/dz2" --job _selftest2 >/dev/null || fail "asset-format restore"
+[ -f "projects/_selftest2/drawings/Pack [p1].pdf" ] && [ -f "projects/_selftest2/drawings/Pack [p2].pdf" ] || fail "chunk names"
+rm -rf projects/_selftest2
 echo "all self-tests passed"

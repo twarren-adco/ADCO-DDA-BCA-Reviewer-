@@ -20,8 +20,11 @@ a compliance register in Excel.
    with **Add file → Create new file** and paste in the template.
 2. Open the **[Drawing Drop Zone](https://claude.ai/artifact/Eqb8s89wfE8o8u39d9MAs8)**,
    create the same job code, tick the classification check and drag in the
-   drawing PDFs (whole folders work). Switch to **Consultant reports** to add
-   BCA or access reports for comparison. No splitting is needed, and drawings
+   drawing PDFs (whole folders work). Type which sheets to keep, e.g.
+   `7-10, 12, 40-45`, or `all`. Big PDFs are split automatically. Storage is
+   1 GB shared across all jobs, so store only the sheets that need measuring
+   (the full pack can be read from SharePoint) and remove finished jobs.
+   Switch to **Consultant reports** to add BCA or access reports. Drawings
    never go into GitHub. Use vector PDFs exported from Revit/ArchiCAD, not scans.
    Dropping a revised drawing with the same name replaces the old one, and the
    next session flags its sheets for re-checking.

@@ -3,27 +3,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-/* Layout: one working column like a drawing transmittal: job, classification, drop, register of stored files. */
+/* Layout: one working column like a drawing transmittal: job, classification, choose sheets, register of stored files. */
 :root {
   --bg: #f4f6f8; --panel: #ffffff; --fg: #18222e; --muted: #5a6878; --line: #d5dce4;
-  --accent: #1d4f8c; --accent-fg: #ffffff; --hivis: #f2b705; --ok: #1f7a4a; --err: #b3261e;
+  --accent: #1d4f8c; --accent-fg: #ffffff; --hivis: #f2b705; --ok: #1f7a4a; --err: #b3261e; --warn: #8a5a00;
   --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #10161d; --panel: #18212b; --fg: #e4eaf0; --muted: #94a3b3; --line: #2c3a48;
-  --accent: #7fb0ec; --accent-fg: #0d1620; --hivis: #f2b705; --ok: #5cc68d; --err: #f08a80; color-scheme: dark } }
+  --accent: #7fb0ec; --accent-fg: #0d1620; --hivis: #f2b705; --ok: #5cc68d; --err: #f08a80; --warn: #f2c25a; color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #10161d; --panel: #18212b; --fg: #e4eaf0; --muted: #94a3b3; --line: #2c3a48;
-  --accent: #7fb0ec; --accent-fg: #0d1620; --hivis: #f2b705; --ok: #5cc68d; --err: #f08a80; color-scheme: dark }
+  --accent: #7fb0ec; --accent-fg: #0d1620; --hivis: #f2b705; --ok: #5cc68d; --err: #f08a80; --warn: #f2c25a; color-scheme: dark }
 body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
-.wrap { max-width: 920px; margin: 0 auto; padding-block: 28px 48px;
+.wrap { max-width: 940px; margin: 0 auto; padding-block: 28px 48px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   display: grid; gap: 20px; }
 header { display: grid; gap: 6px; border-bottom: 3px solid var(--hivis); padding-bottom: 14px; }
 h1 { margin: 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
 h2 { margin: 0 0 10px; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-p { margin: 0; max-width: 68ch; }
+p { margin: 0; max-width: 70ch; }
 .muted { color: var(--muted); }
 .mono { font-family: var(--font-mono); font-size: 0.86em; }
 section { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; min-width: 0; }
@@ -31,6 +31,7 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 label { font-weight: 500; }
 select, input[type=text] { font: inherit; padding: 7px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--fg); min-width: 0; }
 input[type=text] { width: 15ch; font-family: var(--font-mono); }
+input.pages { width: 100%; max-width: 22ch; }
 button { font: inherit; font-weight: 500; padding: 7px 14px; border-radius: 4px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-fg); cursor: pointer; }
 button.ghost { background: transparent; color: var(--accent); }
 button.danger { background: transparent; color: var(--err); border-color: var(--err); }
@@ -39,17 +40,19 @@ button:focus-visible, select:focus-visible, input:focus-visible, .drop:focus-vis
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
 .seg label { padding: 6px 12px; cursor: pointer; font-weight: 500; }
 .seg input { position: absolute; opacity: 0; pointer-events: none; }
-.seg input:checked + span { color: var(--accent); }
-.seg label:has(input:checked) { background: var(--bg); box-shadow: inset 0 -2px 0 var(--accent); }
+.seg label:has(input:checked) { background: var(--bg); box-shadow: inset 0 -2px 0 var(--accent); color: var(--accent); }
 .check { display: flex; gap: 10px; align-items: flex-start; }
 .check input { margin-top: 4px; width: 18px; height: 18px; flex: none; }
-.drop { border: 2px dashed var(--line); border-radius: 6px; padding: 28px 16px; text-align: center; display: grid; gap: 8px; justify-items: center; }
+.drop { border: 2px dashed var(--line); border-radius: 6px; padding: 26px 16px; text-align: center; display: grid; gap: 8px; justify-items: center; }
 .drop.over { border-color: var(--accent); background: var(--bg); }
 .drop[aria-disabled=true] { opacity: 0.5; }
 .bar { height: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
 .bar > div { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.meter { height: 6px; background: var(--bg); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+.meter > div { height: 100%; width: 0; background: var(--hivis); }
 .status { font-size: 0.92rem; }
 .status.ok { color: var(--ok); } .status.err { color: var(--err); }
+.warn { color: var(--warn); }
 .tablewrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -64,7 +67,7 @@ td.num { text-align: right; white-space: nowrap; }
 <div class="wrap">
   <header>
     <h1>Drawing Drop Zone</h1>
-    <p class="muted">Drop a drawing pack here once. Every Claude Code review session for the job restores it from here, so drawings never go into GitHub and big files don't need splitting.</p>
+    <p class="muted">Drop a drawing pack once and choose the sheets a review needs to measure. Every Claude Code session for the job restores them from here, so drawings never go into GitHub. Big PDFs are split automatically.</p>
   </header>
 
   <section aria-labelledby="h-job">
@@ -90,7 +93,7 @@ td.num { text-align: right; white-space: nowrap; }
   </section>
 
   <section aria-labelledby="h-drop">
-    <h2 id="h-drop">3 · Drop files</h2>
+    <h2 id="h-drop">3 · Choose files and sheets</h2>
     <div class="row" style="margin-bottom:12px">
       <span class="muted">Put files in</span>
       <div class="seg" role="radiogroup" aria-label="Destination folder">
@@ -100,10 +103,26 @@ td.num { text-align: right; white-space: nowrap; }
     </div>
     <div class="drop" id="drop" tabindex="0" aria-disabled="true">
       <strong>Drag PDFs or a folder here</strong>
-      <span class="muted">Vector PDFs exported from Revit or ArchiCAD give the most reliable scaling.</span>
+      <span class="muted">Only store the sheets that need measuring: GA plans, wet areas, sections, stair and ramp details. The full pack can stay on SharePoint.</span>
       <button class="ghost" id="pick" type="button">Choose files</button>
       <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden>
     </div>
+
+    <div id="staging" hidden style="margin-top:14px">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>File</th><th class="num">Size</th><th class="num">Sheets</th><th>Sheets to store</th><th class="num">Est. size</th><th></th></tr></thead>
+          <tbody id="stageRows"></tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:6px">Type page numbers and ranges, e.g. <span class="mono">3, 7-12, 40</span>, or <span class="mono">all</span>.</p>
+      <div class="row" style="margin-top:10px">
+        <button id="storeBtn" type="button">Store selected sheets</button>
+        <button class="ghost" id="cancelStage" type="button">Cancel</button>
+        <span id="stageNote" class="muted"></span>
+      </div>
+    </div>
+
     <div style="margin-top:12px; display:grid; gap:6px">
       <div class="bar" aria-hidden="true"><div id="barFill"></div></div>
       <div class="status" id="status" role="status" aria-live="polite">Choose or create a job to start.</div>
@@ -122,61 +141,112 @@ td.num { text-align: right; white-space: nowrap; }
     </div>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>Folder</th><th>File</th><th class="num">Size</th><th>Dropped</th><th>Fingerprint</th><th></th></tr></thead>
+        <thead><tr><th>Folder</th><th>File</th><th>Sheets</th><th class="num">Size</th><th>Dropped</th><th></th></tr></thead>
         <tbody id="fileRows"><tr><td colspan="6" class="empty">No job selected.</td></tr></tbody>
       </table>
     </div>
     <p class="muted" id="totals" style="margin-top:8px"></p>
   </section>
 
+  <section aria-labelledby="h-space">
+    <h2 id="h-space">Storage</h2>
+    <div id="spaceText" class="muted">Checking storage…</div>
+    <div class="meter" aria-hidden="true"><div id="spaceFill"></div></div>
+    <div class="row" style="margin-top:10px">
+      <button class="ghost" id="cleanBtn" type="button" disabled>Free space from interrupted uploads</button>
+      <span class="muted">Remove a finished job's files to make room for the next one.</span>
+    </div>
+  </section>
+
   <p class="next">Next: open a Claude Code session on the reviewer repository and say <span class="mono" id="nextCmd">"restore job &lt;code&gt; from the drop zone and run the review"</span>.</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script>
-const RAW_PART = 150000;   // bytes per part; base64 = 200,000 chars, under the 256 KiB document cap
-const POOL = 4;            // parallel part writes
+/* Storage model
+   - Files live in the artifact's asset store (1 GiB, 20 MiB per file). A PDF over the
+     per-file limit, or with only some sheets chosen, is split into page-range PDFs.
+   - jobs/<job>/files/_index (db) lists every file and its chunks: asset id, pages,
+     size, SHA-256. It is written LAST, so a session never sees half-stored files.
+   - Older entries stored as base64 parts in the db ("legacy") are still listed and removable. */
+const CHUNK_LIMIT = 18 * 1024 * 1024;   // under the 20 MiB asset cap with headroom
+const LEGACY_POOL = 4;
 const $ = (id) => document.getElementById(id);
-const state = { db: null, job: "", index: { files: [] }, busy: false };
+const state = { db: null, assets: null, job: "", index: { files: [] }, busy: false, staged: [], usage: null };
 
 const human = (n) => n >= 1e9 ? (n / 1e9).toFixed(2) + " GB" : n >= 1e6 ? (n / 1e6).toFixed(1) + " MB" : n >= 1e3 ? Math.round(n / 1e3) + " KB" : n + " B";
 const hex = (buf) => Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
 const sha256 = async (buf) => hex(await crypto.subtle.digest("SHA-256", buf));
 const fileIdFor = async (path) => "f" + (await sha256(new TextEncoder().encode(path))).slice(0, 16);
-const partId = (fid, n) => `${fid}_${String(n).padStart(4, "0")}`;
+const legacyPartId = (fid, n) => `${fid}_${String(n).padStart(4, "0")}`;
 const cleanJob = (s) => String(s || "").trim().replace(/\s+/g, "-").replace(/[^A-Za-z0-9_\-.]/g, "").replace(/^\.+/, "").slice(0, 40);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function setStatus(text, kind) { const s = $("status"); s.textContent = text; s.className = "status" + (kind ? " " + kind : ""); }
 function setBar(pct) { $("barFill").style.width = Math.max(0, Math.min(100, pct)) + "%"; }
 
-function toBase64(bytes) {
-  let out = "";
-  for (let i = 0; i < bytes.length; i += 32766) {           // multiple of 3: chunks encode standalone
-    out += btoa(String.fromCharCode.apply(null, bytes.subarray(i, i + 32766)));
-  }
-  return out;
-}
-
 async function withRetry(fn) {
   for (let attempt = 0; ; attempt++) {
     try { return await fn(); }
     catch (e) {
       const code = e && e.code;
-      if ((code === "unavailable" || code === "resource_exhausted") && attempt < 5) { await sleep(400 * 2 ** attempt + Math.random() * 300); continue; }
+      if ((code === "unavailable" || code === "resource_exhausted" || code === "store_unavailable" || code === "rate_limited") && attempt < 5) {
+        await sleep(500 * 2 ** attempt + Math.random() * 300); continue;
+      }
       throw e;
     }
   }
 }
 
 function explain(e) {
-  const code = e && e.code;
-  if (code === "quota_exceeded") return "The drop zone is full. Remove the files of a finished job, then drop again.";
-  if (code === "invalid_argument") return "You don't have permission to add files here. Ask the page owner to share it with you as a Contributor or Editor.";
-  if (code === "revoked" || code === "not_granted") return "Access to the drop zone was withdrawn. Reload the page.";
-  return (e && e.message) ? e.message : "Something went wrong. Try again.";
+  const code = e && e.code, msg = e && e.message ? e.message : "";
+  if (code === "quota_or_state" || code === "quota_exceeded") return "The drop zone is full" + (msg ? ` (${msg})` : "") + ". Remove a finished job's files, then try again.";
+  if (code === "too_large") return "One sheet is larger than 20 MB on its own, so it can't be stored. Export that sheet at a lower image resolution and try again.";
+  if (code === "not_granted" || code === "invalid_argument") return "You don't have permission to add files here. Ask the page owner to give you Editor access." + (msg ? ` (${msg})` : "");
+  if (code === "revoked") return "Access to the drop zone was withdrawn. Reload the page.";
+  return msg || "Something went wrong. Try again.";
 }
 
-function canUpload() { return !!(state.db && state.job && $("classified").checked && !state.busy); }
+/* ---------- page ranges ---------- */
+function parseRanges(text, max) {
+  const t = String(text || "").trim().toLowerCase();
+  if (!t || t === "all") return Array.from({ length: max }, (_, i) => i);
+  const out = new Set();
+  for (const part of t.split(/[,;\s]+/).filter(Boolean)) {
+    const m = part.match(/^(\d+)(?:-(\d+))?$/);
+    if (!m) throw new Error(`"${part}" isn't a page number or range`);
+    const a = +m[1], b = m[2] ? +m[2] : a;
+    if (a < 1 || b > max || a > b) throw new Error(`pages ${part} are outside 1-${max}`);
+    for (let i = a; i <= b; i++) out.add(i - 1);
+  }
+  return [...out].sort((x, y) => x - y);
+}
+function rangesLabel(idxs) {
+  const out = []; let s = null, p = null;
+  for (const i of idxs) { if (s === null) { s = p = i; } else if (i === p + 1) { p = i; } else { out.push(s === p ? `${s + 1}` : `${s + 1}-${p + 1}`); s = p = i; } }
+  if (s !== null) out.push(s === p ? `${s + 1}` : `${s + 1}-${p + 1}`);
+  return out.join(", ");
+}
+
+/* ---------- storage meter ---------- */
+async function refreshUsage() {
+  if (!state.assets) { $("spaceText").textContent = "File storage isn't available to you on this page. Ask the page owner for Editor access."; return; }
+  try {
+    const r = await state.assets.list();
+    state.usage = r.usage || null;
+    if (state.usage) {
+      const u = state.usage;
+      $("spaceText").textContent = `${human(u.bytes)} of ${human(u.maxBytes)} used · ${human(Math.max(0, u.maxBytes - u.bytes))} free`;
+      $("spaceFill").style.width = Math.min(100, u.bytes / u.maxBytes * 100) + "%";
+    }
+    state.allAssets = r.assets || [];
+    $("cleanBtn").disabled = state.busy;
+  } catch (e) { $("spaceText").textContent = "Couldn't read storage: " + explain(e); }
+}
+const freeBytes = () => state.usage ? Math.max(0, state.usage.maxBytes - state.usage.bytes) : Infinity;
+
+/* ---------- controls ---------- */
+function canUpload() { return !!(state.db && state.assets && state.job && $("classified").checked && !state.busy); }
 function paintControls() {
   const ok = canUpload();
   $("drop").setAttribute("aria-disabled", ok ? "false" : "true");
@@ -185,6 +255,9 @@ function paintControls() {
   $("clearAll").hidden = !(state.job && state.index.files.length) || state.busy;
   $("createJob").disabled = !state.db || state.busy;
   $("jobSelect").disabled = state.busy;
+  $("storeBtn").disabled = state.busy || !state.staged.length;
+  $("cancelStage").disabled = state.busy;
+  $("cleanBtn").disabled = state.busy || !state.assets;
   $("nextCmd").textContent = `"restore job ${state.job || "<code>"} from the drop zone and run the review"`;
 }
 
@@ -193,18 +266,21 @@ function paintFiles() {
   body.textContent = "";
   const files = [...state.index.files].sort((a, b) => a.path.localeCompare(b.path));
   if (!state.job) { body.innerHTML = '<tr><td colspan="6" class="empty">No job selected.</td></tr>'; $("totals").textContent = ""; return; }
-  if (!files.length) { body.innerHTML = '<tr><td colspan="6" class="empty">Nothing stored yet. Drop the drawing pack above.</td></tr>'; $("totals").textContent = ""; return; }
+  if (!files.length) { body.innerHTML = '<tr><td colspan="6" class="empty">Nothing stored yet. Drop the sheets above.</td></tr>'; $("totals").textContent = ""; return; }
+  let total = 0;
   for (const f of files) {
     const tr = document.createElement("tr");
     const [folder, ...rest] = f.path.split("/");
-    const cells = [folder === "reports" ? "Report" : "Drawing", rest.join("/"), human(f.size || 0),
-      f.uploaded_at ? new Date(f.uploaded_at).toLocaleString() : "", (f.sha256 || "").slice(0, 10)];
+    const stored = f.chunks ? f.chunks.reduce((t, c) => t + c.size, 0) : (f.size || 0);
+    total += stored;
+    const sheets = f.chunks ? (f.pages_total && f.pages_selected === f.pages_total ? `all ${f.pages_total}` : `${f.pages_label || ""} of ${f.pages_total || "?"}`) : "all (older upload)";
+    const cells = [folder === "reports" ? "Report" : "Drawing", rest.join("/"), sheets, human(stored),
+      f.uploaded_at ? new Date(f.uploaded_at).toLocaleString() : ""];
     cells.forEach((v, i) => {
       const td = document.createElement("td");
       if (i === 0) { const t = document.createElement("span"); t.className = "tag"; t.textContent = v; td.appendChild(t); }
       else td.textContent = v;
-      if (i === 2) td.className = "num";
-      if (i === 4) td.className = "mono";
+      if (i === 3) td.className = "num";
       tr.appendChild(td);
     });
     const td = document.createElement("td");
@@ -213,9 +289,7 @@ function paintFiles() {
     b.onclick = () => askConfirm(`Remove ${rest.join("/")}?`, () => removeFiles([f]));
     td.appendChild(b); tr.appendChild(td); body.appendChild(tr);
   }
-  const total = files.reduce((t, f) => t + (f.size || 0), 0);
-  const d = files.filter((f) => f.path.startsWith("drawings/")).length;
-  $("totals").textContent = `${files.length} file(s), ${human(total)} · ${d} drawing file(s), ${files.length - d} report(s)` +
+  $("totals").textContent = `${files.length} file(s), ${human(total)} stored for this job` +
     (state.index.updated_at ? ` · last change ${new Date(state.index.updated_at).toLocaleString()}` : "");
 }
 
@@ -224,6 +298,7 @@ function askConfirm(text, fn) { pendingConfirm = fn; $("confirmText").textConten
 $("confirmNo").onclick = () => { pendingConfirm = null; $("confirmBox").hidden = true; };
 $("confirmYes").onclick = () => { const fn = pendingConfirm; pendingConfirm = null; $("confirmBox").hidden = true; if (fn) fn(); };
 
+/* ---------- db: jobs and index ---------- */
 async function loadJobs(select) {
   const snap = await state.db.collection("jobs").get();
   const jobs = snap.docs.map((d) => d.id).sort();
@@ -233,28 +308,20 @@ async function loadJobs(select) {
   for (const j of jobs) { const o = document.createElement("option"); o.value = j; o.textContent = j; sel.appendChild(o); }
   if (select) sel.value = select;
 }
-
 async function loadIndex() {
   if (!state.job) { state.index = { files: [] }; paintFiles(); paintControls(); return; }
   const snap = await state.db.doc(`jobs/${state.job}/files/_index`).get();
   const data = snap.exists ? snap.data() : null;
-  state.index = data && Array.isArray(data.files) ? { files: data.files.map((f) => ({ ...f })), updated_at: data.updated_at } : { files: [] };
+  state.index = data && Array.isArray(data.files) ? { files: data.files.map((f) => JSON.parse(JSON.stringify(f))), updated_at: data.updated_at } : { files: [] };
   paintFiles(); paintControls();
 }
-
 async function writeIndex(files) {
-  const body = { files, updated_at: new Date().toISOString(), bytes_total: files.reduce((t, f) => t + (f.size || 0), 0) };
+  const body = { files, updated_at: new Date().toISOString(), format: 2 };
   await withRetry(() => state.db.doc(`jobs/${state.job}/files/_index`).set(body));
   state.index = { files, updated_at: body.updated_at };
 }
 
-async function runPool(tasks, onDone) {
-  let next = 0;
-  const worker = async () => { while (next < tasks.length) { const t = tasks[next++]; await withRetry(t); onDone(); } };
-  await Promise.all(Array.from({ length: Math.min(POOL, tasks.length) }, worker));
-}
-
-/* Collect files from a drop, walking folders, keeping relative paths. */
+/* ---------- staging: choose sheets ---------- */
 async function filesFromDrop(dt) {
   const items = [...(dt.items || [])].map((it) => it.webkitGetAsEntry && it.webkitGetAsEntry()).filter(Boolean);
   if (!items.length) return [...dt.files].map((f) => ({ file: f, rel: f.name }));
@@ -262,8 +329,7 @@ async function filesFromDrop(dt) {
   const walk = async (entry, prefix) => {
     if (entry.isFile) { const f = await new Promise((res, rej) => entry.file(res, rej)); out.push({ file: f, rel: prefix + f.name }); }
     else if (entry.isDirectory) {
-      const reader = entry.createReader();
-      let batch;
+      const reader = entry.createReader(); let batch;
       do { batch = await new Promise((res, rej) => reader.readEntries(res, rej)); for (const e of batch) await walk(e, prefix + entry.name + "/"); } while (batch.length);
     }
   };
@@ -271,80 +337,238 @@ async function filesFromDrop(dt) {
   return out;
 }
 
-async function upload(list) {
+async function stage(list) {
   if (!canUpload()) { setStatus(!$("classified").checked ? "Tick the classification check first." : "Choose a job first.", "err"); return; }
-  const dest = document.querySelector('input[name="dest"]:checked').value;
+  if (!window.PDFLib) { setStatus("The PDF tools didn't load. Check your connection and reload the page.", "err"); return; }
   const pdfs = list.filter((x) => /\.pdf$/i.test(x.file.name));
-  const skippedTypes = list.length - pdfs.length;
   if (!pdfs.length) { setStatus("Only PDF files can be stored. Export drawings to PDF first.", "err"); return; }
-
-  state.busy = true; paintControls(); paintFiles();
-  const job = state.job;
-  const known = Object.fromEntries(state.index.files.map((f) => [f.file_id, f]));
-  const totalParts = pdfs.reduce((t, x) => t + Math.max(1, Math.ceil(x.file.size / RAW_PART)), 0);
-  let partsDone = 0, stored = 0, unchanged = 0;
-  const kept = [], stale = [];
+  state.busy = true; paintControls();
+  const dest = document.querySelector('input[name="dest"]:checked').value;
   try {
     for (let i = 0; i < pdfs.length; i++) {
       const { file, rel } = pdfs[i];
-      const path = `${dest}/${rel.replace(/\\/g, "/")}`;
-      const fid = await fileIdFor(path);
-      setStatus(`Reading ${i + 1} of ${pdfs.length}: ${file.name}`);
+      setStatus(`Opening ${i + 1} of ${pdfs.length}: ${file.name} (${human(file.size)})…`);
       const buf = await file.arrayBuffer();
-      const sha = await sha256(buf);
-      const parts = Math.max(1, Math.ceil(buf.byteLength / RAW_PART));
-      const prior = known[fid];
-      if (prior && prior.sha256 === sha && prior.parts === parts) {
-        kept.push(prior); unchanged++; partsDone += parts; setBar(partsDone / totalParts * 100); continue;
-      }
-      const bytes = new Uint8Array(buf);
-      const tasks = [];
-      for (let n = 0; n < parts; n++) {
-        tasks.push(() => {
-          if (state.job !== job) throw new Error("The job changed during the upload. Drop the files again.");
-          const b64 = toBase64(bytes.subarray(n * RAW_PART, (n + 1) * RAW_PART));
-          return state.db.doc(`jobs/${job}/files/${partId(fid, n)}`).set({ file_id: fid, part: n, parts, b64 });
-        });
-      }
-      await runPool(tasks, () => { partsDone++; setBar(partsDone / totalParts * 100); setStatus(`Storing ${i + 1} of ${pdfs.length}: ${file.name} (${human(file.size)})`); });
-      if (prior && prior.parts > parts) for (let n = parts; n < prior.parts; n++) stale.push(partId(fid, n));
-      kept.push({ file_id: fid, path, size: file.size, sha256: sha, parts, uploaded_at: new Date().toISOString() });
-      stored++;
+      let pages = null, err = "";
+      try {
+        const doc = await PDFLib.PDFDocument.load(buf, { ignoreEncryption: true, updateMetadata: false });
+        pages = doc.getPageCount();
+      } catch (e) { err = "This PDF couldn't be opened (" + (e.message || e) + ")."; }
+      state.staged.push({ file, rel, dest, pages, err, sel: "all" });
     }
-    // Index last: until it is written, a session never sees half-written files.
-    const byId = Object.fromEntries(state.index.files.map((f) => [f.file_id, f]));
-    for (const f of kept) byId[f.file_id] = f;
-    await writeIndex(Object.values(byId));
-    for (const id of stale) await withRetry(() => state.db.doc(`jobs/${job}/files/${id}`).delete());
-    setBar(100);
-    setStatus(`Stored ${stored} file(s)` + (unchanged ? `, ${unchanged} unchanged` : "") +
-      (skippedTypes ? `. Skipped ${skippedTypes} file(s) that aren't PDFs.` : "."), "ok");
-  } catch (e) {
-    setStatus(explain(e) + " Files stored before the problem are kept; drop the same files again to finish.", "err");
-  } finally {
-    state.busy = false;
-    await loadIndex().catch(() => {});
+    setStatus(`Choose which sheets to store, then press Store selected sheets.`);
+  } catch (e) { setStatus(explain(e), "err"); }
+  finally { state.busy = false; paintStage(); paintControls(); }
+}
+
+function estimate(s) {
+  if (!s.pages) return 0;
+  try { return s.file.size * parseRanges(s.sel, s.pages).length / s.pages; } catch { return 0; }
+}
+function paintStage() {
+  $("staging").hidden = !state.staged.length;
+  const body = $("stageRows"); body.textContent = "";
+  let total = 0, bad = false;
+  state.staged.forEach((s, k) => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td"); td1.textContent = s.rel; tr.appendChild(td1);
+    const td2 = document.createElement("td"); td2.className = "num"; td2.textContent = human(s.file.size); tr.appendChild(td2);
+    const td3 = document.createElement("td"); td3.className = "num"; td3.textContent = s.pages ?? "–"; tr.appendChild(td3);
+    const td4 = document.createElement("td");
+    if (s.err) { td4.className = "warn"; td4.textContent = s.err; bad = true; }
+    else {
+      const inp = document.createElement("input"); inp.type = "text"; inp.className = "pages"; inp.id = "sel" + k;
+      inp.value = s.sel; inp.setAttribute("aria-label", `Sheets to store from ${s.rel}`);
+      inp.oninput = () => { s.sel = inp.value; paintEstimate(); };
+      td4.appendChild(inp);
+    }
+    tr.appendChild(td4);
+    const td5 = document.createElement("td"); td5.className = "num"; td5.id = "est" + k; tr.appendChild(td5);
+    const td6 = document.createElement("td");
+    const rm = document.createElement("button"); rm.className = "ghost"; rm.type = "button"; rm.textContent = "Skip";
+    rm.onclick = () => { state.staged.splice(k, 1); paintStage(); paintControls(); };
+    td6.appendChild(rm); tr.appendChild(td6);
+    body.appendChild(tr);
+  });
+  paintEstimate();
+}
+function paintEstimate() {
+  let total = 0, problems = [];
+  state.staged.forEach((s, k) => {
+    const cell = $("est" + k); if (!cell) return;
+    if (s.err) { cell.textContent = "–"; return; }
+    try { parseRanges(s.sel, s.pages); const e = estimate(s); total += e; cell.textContent = "≈ " + human(e); cell.className = "num"; }
+    catch (e) { cell.textContent = e.message; cell.className = "num warn"; problems.push(s.rel); }
+  });
+  const free = freeBytes();
+  let note = `About ${human(total)} to store`;
+  if (isFinite(free)) note += ` · ${human(free)} free`;
+  if (total > free) note += ". Not enough room: choose fewer sheets or remove a finished job.";
+  $("stageNote").textContent = note;
+  $("stageNote").className = total > free || problems.length ? "warn" : "muted";
+  $("storeBtn").disabled = state.busy || !state.staged.some((s) => !s.err) || problems.length > 0 || total > free;
+}
+
+/* ---------- split and upload ---------- */
+async function buildChunk(src, idxs) {
+  const d = await PDFLib.PDFDocument.create();
+  const pages = await d.copyPages(src, idxs);
+  pages.forEach((p) => d.addPage(p));
+  return d.save({ useObjectStreams: true });
+}
+// Group pages by the file's average page size, then halve any group that saves too big.
+async function* chunks(src, idxs, avgPageBytes) {
+  const per = Math.max(1, Math.floor(CHUNK_LIMIT * 0.8 / Math.max(1, avgPageBytes)));
+  const queue = [];
+  for (let i = 0; i < idxs.length; i += per) queue.push(idxs.slice(i, i + per));
+  while (queue.length) {
+    const g = queue.shift();
+    const bytes = await buildChunk(src, g);
+    if (bytes.length <= CHUNK_LIMIT) { yield { idxs: g, bytes }; continue; }
+    if (g.length === 1) { const e = new Error(`Sheet ${g[0] + 1} is ${human(bytes.length)} on its own, over the 20 MB limit.`); e.code = "too_large"; throw e; }
+    const mid = Math.ceil(g.length / 2);
+    queue.unshift(g.slice(0, mid), g.slice(mid));
   }
 }
 
+async function storeStaged() {
+  if (!canUpload()) return;
+  state.busy = true; paintControls();
+  const job = state.job;
+  const byId = Object.fromEntries(state.index.files.map((f) => [f.file_id, f]));
+  const replaced = [];
+  let done = 0, stored = 0;
+  const work = state.staged.filter((s) => !s.err);
+  const totalEst = work.reduce((t, s) => t + estimate(s), 0) || 1;
+  let sent = 0;
+  try {
+    for (const s of work) {
+      const path = `${s.dest}/${s.rel.replace(/\\/g, "/")}`;
+      const fid = await fileIdFor(path);
+      setStatus(`Preparing ${s.rel}…`);
+      const buf = await s.file.arrayBuffer();
+      const fileSha = await sha256(buf);
+      const idxs = parseRanges(s.sel, s.pages);
+      const prior = byId[fid];
+      if (prior && prior.sha256 === fileSha && prior.pages_label === rangesLabel(idxs) && prior.chunks) {
+        done++; continue;   // identical file and selection already stored
+      }
+      const chunkRows = [];
+      if (idxs.length === s.pages && buf.byteLength <= CHUNK_LIMIT) {
+        // whole file fits: store the original bytes untouched
+        const r = await withRetry(() => state.assets.upload(new Blob([buf], { type: "application/pdf" }), { type: "application/pdf" }));
+        chunkRows.push({ asset_id: r.id, pages: Array.from({ length: s.pages }, (_, i) => i + 1), size: buf.byteLength, sha256: fileSha, original: true });
+        sent += buf.byteLength; setBar(sent / totalEst * 100);
+      } else {
+        const src = await PDFLib.PDFDocument.load(buf, { ignoreEncryption: true, updateMetadata: false });
+        const avg = buf.byteLength / s.pages;
+        let n = 0;
+        for await (const c of chunks(src, idxs, avg)) {
+          n++;
+          setStatus(`Storing ${s.rel}: part ${n}, sheets ${rangesLabel(c.idxs)} (${human(c.bytes.length)})`);
+          const sha = await sha256(c.bytes);
+          const r = await withRetry(() => state.assets.upload(new Blob([c.bytes], { type: "application/pdf" }), { type: "application/pdf" }));
+          chunkRows.push({ asset_id: r.id, pages: c.idxs.map((i) => i + 1), size: c.bytes.length, sha256: sha });
+          sent += c.bytes.length; setBar(Math.min(99, sent / totalEst * 100));
+        }
+      }
+      if (prior) replaced.push(prior);
+      byId[fid] = { file_id: fid, path, size: s.file.size, sha256: fileSha, pages_total: s.pages,
+                    pages_selected: idxs.length, pages_label: rangesLabel(idxs), chunks: chunkRows,
+                    storage: "assets", uploaded_at: new Date().toISOString() };
+      stored++; done++;
+    }
+    // Index last: until it is written, a session never sees half-stored files.
+    await writeIndex(Object.values(byId));
+    for (const old of replaced) await deleteStorage(old).catch(() => {});
+    state.staged = [];
+    setBar(100);
+    setStatus(`Stored ${stored} file(s)` + (done > stored ? `, ${done - stored} unchanged` : "") + ".", "ok");
+  } catch (e) {
+    setStatus(explain(e) + " Nothing from the failed file was added to the job; use Free space if storage looks higher than it should.", "err");
+  } finally {
+    state.busy = false;
+    paintStage();
+    await loadIndex().catch(() => {});
+    await refreshUsage();
+    paintControls();
+  }
+}
+
+/* ---------- removal and cleanup ---------- */
+async function deleteStorage(f) {
+  if (f.chunks) {
+    for (const c of f.chunks) await withRetry(() => state.assets.delete(c.asset_id)).catch((e) => { if (e && e.code !== "not_found") throw e; });
+  } else {
+    const tasks = [];
+    for (let n = 0; n < (f.parts || 1); n++) tasks.push(() => state.db.doc(`jobs/${state.job}/files/${legacyPartId(f.file_id, n)}`).delete());
+    let next = 0;
+    const worker = async () => { while (next < tasks.length) { const t = tasks[next++]; await withRetry(t); } };
+    await Promise.all(Array.from({ length: Math.min(LEGACY_POOL, tasks.length) }, worker));
+  }
+}
 async function removeFiles(files) {
   state.busy = true; paintControls(); paintFiles();
   try {
     const ids = new Set(files.map((f) => f.file_id));
-    // Index first: an interruption leaves unclaimed parts, never an index pointing at missing parts.
+    // Index first: an interruption leaves unclaimed storage, never an index pointing at missing files.
     await writeIndex(state.index.files.filter((f) => !ids.has(f.file_id)));
-    const tasks = [];
-    for (const f of files) for (let n = 0; n < (f.parts || 1); n++) tasks.push(() => state.db.doc(`jobs/${state.job}/files/${partId(f.file_id, n)}`).delete());
-    let done = 0;
-    await runPool(tasks, () => { done++; setBar(done / tasks.length * 100); setStatus(`Removing… ${done} of ${tasks.length} parts`); });
+    let k = 0;
+    for (const f of files) { k++; setStatus(`Removing ${k} of ${files.length}…`); await deleteStorage(f); }
     setStatus(`Removed ${files.length} file(s).`, "ok");
   } catch (e) { setStatus(explain(e), "err"); }
-  finally { state.busy = false; await loadIndex().catch(() => {}); }
+  finally { state.busy = false; await loadIndex().catch(() => {}); await refreshUsage(); paintControls(); }
+}
+async function cleanOrphans() {
+  state.busy = true; paintControls();
+  try {
+    setStatus("Checking every job for files no job lists…");
+    const jobs = (await state.db.collection("jobs").get()).docs.map((d) => d.id);
+    const keep = new Set();
+    for (const j of jobs) {
+      const s = await state.db.doc(`jobs/${j}/files/_index`).get();
+      const files = s.exists && Array.isArray(s.data().files) ? s.data().files : [];
+      for (const f of files) for (const c of (f.chunks || [])) keep.add(c.asset_id);
+    }
+    const r = await state.assets.list();
+    const orphans = (r.assets || []).filter((a) => !keep.has(a.id));
+    let n = 0;
+    for (const a of orphans) { await withRetry(() => state.assets.delete(a.id)).catch(() => {}); n++; setBar(n / orphans.length * 100); }
+    // Old-format pieces left in the database by files that have moved to the file store.
+    let legacy = 0;
+    for (const j of jobs) {
+      const ref = state.db.doc(`jobs/${j}/files/_index`);
+      const s = await ref.get();
+      if (!s.exists) continue;
+      const data = s.data(); const files = Array.isArray(data.files) ? data.files : [];
+      const todo = files.filter((f) => f.legacy_parts && f.chunks);
+      if (!todo.length) continue;
+      for (const f of todo) {
+        const tasks = [];
+        for (let k = 0; k < f.legacy_parts; k++) tasks.push(() => state.db.doc(`jobs/${j}/files/${legacyPartId(f.file_id, k)}`).delete());
+        let next = 0, doneK = 0;
+        const worker = async () => { while (next < tasks.length) { const t = tasks[next++]; await withRetry(t); doneK++; if (doneK % 20 === 0) setStatus(`Removing old-format copies: ${doneK} of ${tasks.length}…`); } };
+        await Promise.all(Array.from({ length: Math.min(LEGACY_POOL, tasks.length) }, worker));
+        legacy += tasks.length;
+        delete f.legacy_parts;
+      }
+      await withRetry(() => ref.set({ ...data, files, updated_at: new Date().toISOString() }));
+    }
+    const msg = [];
+    if (orphans.length) msg.push(`freed ${human(orphans.reduce((t, a) => t + (a.sizeBytes || 0), 0))} from ${orphans.length} unlisted file(s)`);
+    if (legacy) msg.push(`removed ${legacy} old-format piece(s) from the database`);
+    setStatus(msg.length ? msg.join("; ").replace(/^./, (c) => c.toUpperCase()) + "." : "Nothing to clean up.", "ok");
+  } catch (e) { setStatus(explain(e), "err"); }
+  finally { state.busy = false; await refreshUsage(); paintControls(); }
 }
 
-// ---- wiring
+/* ---------- wiring ---------- */
 $("classified").onchange = paintControls;
-$("jobSelect").onchange = async (e) => { state.job = e.target.value; setStatus(state.job ? "Ready. Drop the pack." : "Choose or create a job to start."); setBar(0); await loadIndex().catch((err) => setStatus(explain(err), "err")); };
+$("jobSelect").onchange = async (e) => {
+  state.job = e.target.value; state.staged = []; paintStage();
+  setStatus(state.job ? "Ready. Drop the sheets." : "Choose or create a job to start."); setBar(0);
+  await loadIndex().catch((err) => setStatus(explain(err), "err"));
+};
 $("createJob").onclick = async () => {
   const code = cleanJob($("newJob").value);
   if (!code) { setStatus("Type a job code first, using letters, numbers, dashes or dots.", "err"); return; }
@@ -352,33 +576,35 @@ $("createJob").onclick = async () => {
     const ref = state.db.doc(`jobs/${code}`);
     const snap = await ref.get();
     if (!snap.exists) await ref.set({ created_at: new Date().toISOString() });
-    $("newJob").value = "";
-    state.job = code;
+    $("newJob").value = ""; state.job = code;
     await loadJobs(code); await loadIndex();
     setStatus(snap.exists ? `Job ${code} already existed and is now selected.` : `Created job ${code}.`, "ok");
   } catch (e) { setStatus(explain(e), "err"); }
 };
-$("copyJob").onclick = async () => {
-  try { await navigator.clipboard.writeText(state.job); setStatus(`Copied ${state.job}.`, "ok"); }
-  catch { setStatus(`Job code: ${state.job}`); }
-};
+$("copyJob").onclick = async () => { try { await navigator.clipboard.writeText(state.job); setStatus(`Copied ${state.job}.`, "ok"); } catch { setStatus(`Job code: ${state.job}`); } };
 $("clearAll").onclick = () => askConfirm(`Remove all ${state.index.files.length} file(s) from job ${state.job}? Review outputs in the repository are not affected.`, () => removeFiles([...state.index.files]));
 $("pick").onclick = () => $("fileInput").click();
-$("fileInput").onchange = (e) => { const fs = [...e.target.files].map((f) => ({ file: f, rel: f.name })); e.target.value = ""; upload(fs); };
+$("fileInput").onchange = (e) => { const fs = [...e.target.files].map((f) => ({ file: f, rel: f.name })); e.target.value = ""; stage(fs); };
+$("storeBtn").onclick = storeStaged;
+$("cancelStage").onclick = () => { state.staged = []; paintStage(); paintControls(); setStatus("Cancelled."); };
+$("cleanBtn").onclick = cleanOrphans;
 const drop = $("drop");
 drop.addEventListener("dragover", (e) => { e.preventDefault(); if (canUpload()) drop.classList.add("over"); });
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
-drop.addEventListener("drop", async (e) => { e.preventDefault(); drop.classList.remove("over"); if (!canUpload()) { upload([]); return; } upload(await filesFromDrop(e.dataTransfer)); });
+drop.addEventListener("drop", async (e) => { e.preventDefault(); drop.classList.remove("over"); if (!canUpload()) { stage([]); return; } stage(await filesFromDrop(e.dataTransfer)); });
 drop.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && canUpload()) { e.preventDefault(); $("fileInput").click(); } });
 
 paintControls();
 (async () => {
   const timer = setTimeout(() => { if (!state.db) setStatus("The drop zone can't be reached yet. Check you're signed in to claude.ai.", "err"); }, 10000);
-  const db = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  const use = window.claude && window.claude.use ? window.claude.use.bind(window.claude) : null;
+  const [db, assets] = use ? await Promise.all([use("db"), use("assets")]) : [null, null];
   clearTimeout(timer);
   if (!db) { $("jobSelect").innerHTML = '<option value="">Unavailable</option>'; setStatus("Storage isn't available in this view. Open the page signed in to claude.ai.", "err"); return; }
-  state.db = db;
-  try { await loadJobs(""); setStatus("Choose or create a job to start."); } catch (e) { setStatus(explain(e), "err"); }
+  state.db = db; state.assets = assets;
+  try { await loadJobs(""); setStatus(assets ? "Choose or create a job to start." : "You can view stored files, but adding files needs Editor access to this page.", assets ? "" : "err"); }
+  catch (e) { setStatus(explain(e), "err"); }
+  await refreshUsage();
   paintControls();
 })();
 </script>

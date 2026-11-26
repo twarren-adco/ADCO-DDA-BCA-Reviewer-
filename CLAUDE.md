@@ -78,19 +78,29 @@ Drop Zone page, under a job code:
 
 **https://claude.ai/artifact/Eqb8s89wfE8o8u39d9MAs8**
 
+Storage: the page's file store (1 GB in total, 20 MB per file). A big PDF, or
+a chosen set of sheets from one, is stored as page-range PDFs under 18 MB each.
+The job index (`jobs/<job>/files/_index` in the page database) lists each
+file, its chunks, their sheet numbers and fingerprints. The database itself
+holds only about 100 MB, so files are never stored there any more.
+
 To restore a job's files into this container:
 
-1. Fetch with the ArtifactData tool: `action: list`, `url` as above,
-   `collection: jobs/<job>/files`, `query: {limit: 1000}`,
-   `out_dir: .tmp/dz/<job>`. If the result gives a `next_cursor`, repeat with
-   `query.cursor` until there is none.
-2. `python3 tools/dropzone.py restore --from .tmp/dz/<job> --job <job>`
-   Every file is checked against the fingerprint taken when it was dropped. A
-   file listed under NOT RESTORED is missing or corrupt: tell the user, don't
-   review around it silently.
-3. For a very large pack, restore a tranche: `dropzone.py list` first, then
-   fetch `_index` plus a `query` with `where: [["file_id","in",[...]]]` (up
-   to 30 ids) and restore with `--only <paths>`.
+1. ArtifactData `get`, `url` as above, `collection: jobs/<job>/files`,
+   `doc_id: _index`, `out_dir: .tmp/dz/<job>`.
+2. `python3 tools/dropzone.py plan --from .tmp/dz/<job> [--only <path> ...]`
+   lists the asset ids to fetch.
+3. For each id, in parallel: Artifact `read`, `url` as above, `path: <id>`,
+   `out_dir: .tmp/dz/<job>/assets` (one asset per call).
+4. `python3 tools/dropzone.py restore --from .tmp/dz/<job> --job <job>`
+   Every chunk is checked against its fingerprint. A file listed under NOT
+   RESTORED is missing or corrupt: tell the user, don't review around it.
+   A file stored in chunks restores as `<name> [p7-9].pdf` etc.; page 1 of
+   that PDF is sheet 7 of the original. `source_manifest.json` holds the
+   mapping. Always cite the original sheet/page, not the chunk page.
+
+Older jobs may still hold files in the database's old base64-part format;
+`dropzone.py restore` handles those too (fetch the parts with ArtifactData).
 
 If the job doesn't exist on the page, ask the user to create it and drop the
 pack. Never ask them to commit drawings to the repository.
@@ -98,7 +108,8 @@ pack. Never ask them to commit drawings to the repository.
 Working method: list and read the pack through SharePoint first, then give the
 user a short list of the sheets that need geometry (GA plans, wet-area and
 accessible-WC details, ramp and stair sections, car park layouts) and ask them
-to drop just those, or the combined set, on the drop zone.
+to drop just those (the page asks which sheets to keep), not the whole pack.
+Remind them to remove a finished job's files to free space.
 
 ## Sessions end: save progress as you go
 
