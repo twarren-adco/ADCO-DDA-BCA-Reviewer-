@@ -34,1087 +34,1752 @@
     "drawings/Architectural Combined [p1-6].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "calibrated",
+        "5": "indexed",
+        "6": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 1: NO DIMENSIONS",
+        "2": "sheet 2: NO DIMENSIONS",
+        "3": "sheet 3: NO DIMENSIONS",
+        "4": "sheet 4: CALIBRATED",
+        "5": "sheet 5: NO SCALE STRING",
+        "6": "sheet 6: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p100-110].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 100: NO DIMENSIONS",
+        "2": "sheet 101: NO DIMENSIONS",
+        "3": "sheet 102: NO DIMENSIONS",
+        "4": "sheet 103: CALIBRATED",
+        "5": "sheet 104: CALIBRATED",
+        "6": "sheet 105: CALIBRATED",
+        "7": "sheet 106: NO DIMENSIONS",
+        "8": "sheet 107: NO DIMENSIONS",
+        "9": "sheet 108: CALIBRATED",
+        "10": "sheet 109: NO DIMENSIONS",
+        "11": "sheet 110: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p111-121].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "indexed",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 111: UNRELIABLE",
+        "2": "sheet 112: CALIBRATED BY VIEWPORT",
+        "3": "sheet 113: UNRELIABLE",
+        "4": "sheet 114: NO SCALE STRING",
+        "5": "sheet 115: CALIBRATED BY VIEWPORT",
+        "6": "sheet 116: CALIBRATED",
+        "7": "sheet 117: NO DIMENSIONS",
+        "8": "sheet 118: CALIBRATED BY VIEWPORT",
+        "9": "sheet 119: CALIBRATED",
+        "10": "sheet 120: NO DIMENSIONS",
+        "11": "sheet 121: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p12-14].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 12: SCAN/RASTER",
+        "2": "sheet 13: SCAN/RASTER",
+        "3": "sheet 14: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p122-132].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 122: NO DIMENSIONS",
+        "2": "sheet 123: NO DIMENSIONS",
+        "3": "sheet 124: CALIBRATED",
+        "4": "sheet 125: CALIBRATED",
+        "5": "sheet 126: CALIBRATED",
+        "6": "sheet 127: CALIBRATED",
+        "7": "sheet 128: CALIBRATED",
+        "8": "sheet 129: NO SCALE STRING",
+        "9": "sheet 130: CALIBRATED",
+        "10": "sheet 131: NO SCALE STRING",
+        "11": "sheet 132: NO SCALE STRING"
+      }
     },
     "drawings/Architectural Combined [p133-143].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 133: CALIBRATED",
+        "2": "sheet 134: CALIBRATED",
+        "3": "sheet 135: CALIBRATED",
+        "4": "sheet 136: CALIBRATED",
+        "5": "sheet 137: CALIBRATED",
+        "6": "sheet 138: CALIBRATED BY VIEWPORT",
+        "7": "sheet 139: CALIBRATED",
+        "8": "sheet 140: CALIBRATED",
+        "9": "sheet 141: CALIBRATED",
+        "10": "sheet 142: CALIBRATED BY VIEWPORT",
+        "11": "sheet 143: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p144-154].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 144: CALIBRATED",
+        "2": "sheet 145: CALIBRATED",
+        "3": "sheet 146: CALIBRATED",
+        "4": "sheet 147: CALIBRATED",
+        "5": "sheet 148: CALIBRATED",
+        "6": "sheet 149: CALIBRATED",
+        "7": "sheet 150: CALIBRATED",
+        "8": "sheet 151: CALIBRATED",
+        "9": "sheet 152: CALIBRATED",
+        "10": "sheet 153: CALIBRATED",
+        "11": "sheet 154: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p155-157].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 155: CALIBRATED",
+        "2": "sheet 156: SCAN/RASTER",
+        "3": "sheet 157: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p158-160].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 158: SCAN/RASTER",
+        "2": "sheet 159: SCAN/RASTER",
+        "3": "sheet 160: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p15].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 15: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p161-165].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 161: CALIBRATED",
+        "2": "sheet 162: CALIBRATED",
+        "3": "sheet 163: CALIBRATED",
+        "4": "sheet 164: CALIBRATED BY VIEWPORT",
+        "5": "sheet 165: CALIBRATED BY VIEWPORT"
+      }
     },
     "drawings/Architectural Combined [p166-176].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 166: CALIBRATED BY VIEWPORT",
+        "2": "sheet 167: CALIBRATED BY VIEWPORT",
+        "3": "sheet 168: CALIBRATED BY VIEWPORT",
+        "4": "sheet 169: CALIBRATED",
+        "5": "sheet 170: CALIBRATED BY VIEWPORT",
+        "6": "sheet 171: CALIBRATED BY VIEWPORT",
+        "7": "sheet 172: NO DIMENSIONS",
+        "8": "sheet 173: UNRELIABLE",
+        "9": "sheet 174: NO DIMENSIONS",
+        "10": "sheet 175: NO DIMENSIONS",
+        "11": "sheet 176: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p16].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 16: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p177-187].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 177: NO DIMENSIONS",
+        "2": "sheet 178: NO DIMENSIONS",
+        "3": "sheet 179: UNRELIABLE",
+        "4": "sheet 180: CALIBRATED",
+        "5": "sheet 181: CALIBRATED",
+        "6": "sheet 182: CALIBRATED",
+        "7": "sheet 183: CALIBRATED",
+        "8": "sheet 184: CALIBRATED",
+        "9": "sheet 185: CALIBRATED",
+        "10": "sheet 186: CALIBRATED",
+        "11": "sheet 187: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p17].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 17: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p18-20].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 18: CALIBRATED",
+        "2": "sheet 19: CALIBRATED",
+        "3": "sheet 20: NO SCALE STRING"
+      }
     },
     "drawings/Architectural Combined [p188-190].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 188: SCAN/RASTER",
+        "2": "sheet 189: SCAN/RASTER",
+        "3": "sheet 190: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p191].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 191: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p192].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 192: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p193].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 193: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p194-198].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 194: UNRELIABLE",
+        "2": "sheet 195: CALIBRATED BY VIEWPORT",
+        "3": "sheet 196: UNRELIABLE",
+        "4": "sheet 197: UNRELIABLE",
+        "5": "sheet 198: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p199-209].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "calibrated",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "indexed",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 199: NO SCALE STRING",
+        "2": "sheet 200: CALIBRATED BY VIEWPORT",
+        "3": "sheet 201: CALIBRATED",
+        "4": "sheet 202: NO DIMENSIONS",
+        "5": "sheet 203: SCAN/RASTER",
+        "6": "sheet 204: CALIBRATED",
+        "7": "sheet 205: NO DIMENSIONS",
+        "8": "sheet 206: NO DIMENSIONS",
+        "9": "sheet 207: NO DIMENSIONS",
+        "10": "sheet 208: CALIBRATED BY VIEWPORT",
+        "11": "sheet 209: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p21-22].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo"
+        "1": "calibrated",
+        "2": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 21: CALIBRATED",
+        "2": "sheet 22: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p210-220].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 210: CALIBRATED",
+        "2": "sheet 211: CALIBRATED",
+        "3": "sheet 212: CALIBRATED",
+        "4": "sheet 213: UNRELIABLE",
+        "5": "sheet 214: UNRELIABLE",
+        "6": "sheet 215: UNRELIABLE",
+        "7": "sheet 216: UNRELIABLE",
+        "8": "sheet 217: CALIBRATED",
+        "9": "sheet 218: CALIBRATED",
+        "10": "sheet 219: CALIBRATED",
+        "11": "sheet 220: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p221-231].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "indexed",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "indexed",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 221: CALIBRATED",
+        "2": "sheet 222: CALIBRATED",
+        "3": "sheet 223: CALIBRATED BY VIEWPORT",
+        "4": "sheet 224: CALIBRATED BY VIEWPORT",
+        "5": "sheet 225: MULTIPLE SCALES",
+        "6": "sheet 226: CALIBRATED",
+        "7": "sheet 227: CALIBRATED",
+        "8": "sheet 228: CALIBRATED",
+        "9": "sheet 229: CALIBRATED",
+        "10": "sheet 230: NO SCALE STRING",
+        "11": "sheet 231: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p23-28].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 23: CALIBRATED",
+        "2": "sheet 24: CALIBRATED",
+        "3": "sheet 25: CALIBRATED",
+        "4": "sheet 26: CALIBRATED",
+        "5": "sheet 27: CALIBRATED",
+        "6": "sheet 28: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p232-234].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 232: CALIBRATED",
+        "2": "sheet 233: CALIBRATED",
+        "3": "sheet 234: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p235-237].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 235: CALIBRATED",
+        "2": "sheet 236: CALIBRATED",
+        "3": "sheet 237: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p238-239].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo"
+        "1": "calibrated",
+        "2": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 238: CALIBRATED",
+        "2": "sheet 239: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p240].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 240: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p241-242].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo"
+        "1": "calibrated",
+        "2": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 241: CALIBRATED",
+        "2": "sheet 242: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p243-253].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 243: NO DIMENSIONS",
+        "2": "sheet 244: CALIBRATED",
+        "3": "sheet 245: CALIBRATED",
+        "4": "sheet 246: NO DIMENSIONS",
+        "5": "sheet 247: CALIBRATED",
+        "6": "sheet 248: CALIBRATED",
+        "7": "sheet 249: CALIBRATED BY VIEWPORT",
+        "8": "sheet 250: CALIBRATED BY VIEWPORT",
+        "9": "sheet 251: CALIBRATED",
+        "10": "sheet 252: CALIBRATED BY VIEWPORT",
+        "11": "sheet 253: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p254-264].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 254: CALIBRATED BY VIEWPORT",
+        "2": "sheet 255: CALIBRATED",
+        "3": "sheet 256: CALIBRATED BY VIEWPORT",
+        "4": "sheet 257: CALIBRATED BY VIEWPORT",
+        "5": "sheet 258: CALIBRATED BY VIEWPORT",
+        "6": "sheet 259: CALIBRATED BY VIEWPORT",
+        "7": "sheet 260: CALIBRATED BY VIEWPORT",
+        "8": "sheet 261: CALIBRATED",
+        "9": "sheet 262: CALIBRATED",
+        "10": "sheet 263: CALIBRATED BY VIEWPORT",
+        "11": "sheet 264: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p265-275].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 265: CALIBRATED",
+        "2": "sheet 266: CALIBRATED BY VIEWPORT",
+        "3": "sheet 267: CALIBRATED BY VIEWPORT",
+        "4": "sheet 268: NO DIMENSIONS",
+        "5": "sheet 269: NO DIMENSIONS",
+        "6": "sheet 270: NO DIMENSIONS",
+        "7": "sheet 271: NO DIMENSIONS",
+        "8": "sheet 272: UNRELIABLE",
+        "9": "sheet 273: CALIBRATED",
+        "10": "sheet 274: CALIBRATED",
+        "11": "sheet 275: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p276-286].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 276: CALIBRATED",
+        "2": "sheet 277: CALIBRATED",
+        "3": "sheet 278: CALIBRATED",
+        "4": "sheet 279: CALIBRATED",
+        "5": "sheet 280: CALIBRATED",
+        "6": "sheet 281: CALIBRATED",
+        "7": "sheet 282: CALIBRATED",
+        "8": "sheet 283: CALIBRATED",
+        "9": "sheet 284: NO DIMENSIONS",
+        "10": "sheet 285: NO DIMENSIONS",
+        "11": "sheet 286: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p287-297].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 287: NO SCALE STRING",
+        "2": "sheet 288: UNRELIABLE",
+        "3": "sheet 289: UNRELIABLE",
+        "4": "sheet 290: UNRELIABLE",
+        "5": "sheet 291: NO SCALE STRING",
+        "6": "sheet 292: NO SCALE STRING",
+        "7": "sheet 293: CALIBRATED",
+        "8": "sheet 294: CALIBRATED",
+        "9": "sheet 295: CALIBRATED",
+        "10": "sheet 296: CALIBRATED",
+        "11": "sheet 297: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p29-33].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 29: CALIBRATED",
+        "2": "sheet 30: CALIBRATED",
+        "3": "sheet 31: NO DIMENSIONS",
+        "4": "sheet 32: NO DIMENSIONS",
+        "5": "sheet 33: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p298-308].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 298: UNRELIABLE",
+        "2": "sheet 299: UNRELIABLE",
+        "3": "sheet 300: CALIBRATED",
+        "4": "sheet 301: NO DIMENSIONS",
+        "5": "sheet 302: NO DIMENSIONS",
+        "6": "sheet 303: NO DIMENSIONS",
+        "7": "sheet 304: CALIBRATED",
+        "8": "sheet 305: CALIBRATED",
+        "9": "sheet 306: CALIBRATED",
+        "10": "sheet 307: CALIBRATED",
+        "11": "sheet 308: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p309-314].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 309: CALIBRATED",
+        "2": "sheet 310: NO DIMENSIONS",
+        "3": "sheet 311: NO DIMENSIONS",
+        "4": "sheet 312: NO DIMENSIONS",
+        "5": "sheet 313: NO DIMENSIONS",
+        "6": "sheet 314: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p315-319].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 315: NO DIMENSIONS",
+        "2": "sheet 316: NO DIMENSIONS",
+        "3": "sheet 317: NO DIMENSIONS",
+        "4": "sheet 318: NO DIMENSIONS",
+        "5": "sheet 319: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p320-325].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 320: NO DIMENSIONS",
+        "2": "sheet 321: UNRELIABLE",
+        "3": "sheet 322: UNRELIABLE",
+        "4": "sheet 323: UNRELIABLE",
+        "5": "sheet 324: NO SCALE STRING",
+        "6": "sheet 325: NO SCALE STRING"
+      }
     },
     "drawings/Architectural Combined [p326-330].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 326: UNRELIABLE",
+        "2": "sheet 327: NO DIMENSIONS",
+        "3": "sheet 328: NO DIMENSIONS",
+        "4": "sheet 329: UNRELIABLE",
+        "5": "sheet 330: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p331-336].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 331: UNRELIABLE",
+        "2": "sheet 332: UNRELIABLE",
+        "3": "sheet 333: UNRELIABLE",
+        "4": "sheet 334: UNRELIABLE",
+        "5": "sheet 335: UNRELIABLE",
+        "6": "sheet 336: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p337-341].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 337: NO DIMENSIONS",
+        "2": "sheet 338: NO DIMENSIONS",
+        "3": "sheet 339: NO DIMENSIONS",
+        "4": "sheet 340: NO DIMENSIONS",
+        "5": "sheet 341: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p34-44].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 34: CALIBRATED",
+        "2": "sheet 35: CALIBRATED BY VIEWPORT",
+        "3": "sheet 36: MULTIPLE SCALES",
+        "4": "sheet 37: NO DIMENSIONS",
+        "5": "sheet 38: NO DIMENSIONS",
+        "6": "sheet 39: NO DIMENSIONS",
+        "7": "sheet 40: NO DIMENSIONS",
+        "8": "sheet 41: CALIBRATED BY VIEWPORT",
+        "9": "sheet 42: CALIBRATED",
+        "10": "sheet 43: CALIBRATED",
+        "11": "sheet 44: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p342-347].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 342: NO DIMENSIONS",
+        "2": "sheet 343: NO DIMENSIONS",
+        "3": "sheet 344: NO DIMENSIONS",
+        "4": "sheet 345: NO DIMENSIONS",
+        "5": "sheet 346: NO DIMENSIONS",
+        "6": "sheet 347: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p348-352].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 348: NO DIMENSIONS",
+        "2": "sheet 349: NO DIMENSIONS",
+        "3": "sheet 350: NO DIMENSIONS",
+        "4": "sheet 351: NO DIMENSIONS",
+        "5": "sheet 352: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p353-363].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 353: NO DIMENSIONS",
+        "2": "sheet 354: CALIBRATED BY VIEWPORT",
+        "3": "sheet 355: CALIBRATED BY VIEWPORT",
+        "4": "sheet 356: UNRELIABLE",
+        "5": "sheet 357: CALIBRATED BY VIEWPORT",
+        "6": "sheet 358: CALIBRATED BY VIEWPORT",
+        "7": "sheet 359: CALIBRATED BY VIEWPORT",
+        "8": "sheet 360: CALIBRATED",
+        "9": "sheet 361: CALIBRATED",
+        "10": "sheet 362: CALIBRATED",
+        "11": "sheet 363: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p364-374].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 364: MULTIPLE SCALES",
+        "2": "sheet 365: CALIBRATED BY VIEWPORT",
+        "3": "sheet 366: CALIBRATED BY VIEWPORT",
+        "4": "sheet 367: CALIBRATED BY VIEWPORT",
+        "5": "sheet 368: CALIBRATED BY VIEWPORT",
+        "6": "sheet 369: CALIBRATED BY VIEWPORT",
+        "7": "sheet 370: CALIBRATED BY VIEWPORT",
+        "8": "sheet 371: CALIBRATED BY VIEWPORT",
+        "9": "sheet 372: CALIBRATED",
+        "10": "sheet 373: CALIBRATED",
+        "11": "sheet 374: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p375-385].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 375: CALIBRATED",
+        "2": "sheet 376: CALIBRATED",
+        "3": "sheet 377: CALIBRATED",
+        "4": "sheet 378: CALIBRATED",
+        "5": "sheet 379: CALIBRATED",
+        "6": "sheet 380: NO DIMENSIONS",
+        "7": "sheet 381: NO DIMENSIONS",
+        "8": "sheet 382: CALIBRATED",
+        "9": "sheet 383: CALIBRATED",
+        "10": "sheet 384: CALIBRATED",
+        "11": "sheet 385: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p386-396].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 386: CALIBRATED",
+        "2": "sheet 387: CALIBRATED",
+        "3": "sheet 388: CALIBRATED",
+        "4": "sheet 389: CALIBRATED",
+        "5": "sheet 390: CALIBRATED",
+        "6": "sheet 391: CALIBRATED",
+        "7": "sheet 392: CALIBRATED",
+        "8": "sheet 393: CALIBRATED",
+        "9": "sheet 394: CALIBRATED",
+        "10": "sheet 395: CALIBRATED",
+        "11": "sheet 396: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p397-407].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "calibrated",
+        "5": "indexed",
+        "6": "calibrated",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 397: NO DIMENSIONS",
+        "2": "sheet 398: NO DIMENSIONS",
+        "3": "sheet 399: NO DIMENSIONS",
+        "4": "sheet 400: CALIBRATED",
+        "5": "sheet 401: NO DIMENSIONS",
+        "6": "sheet 402: CALIBRATED",
+        "7": "sheet 403: NO DIMENSIONS",
+        "8": "sheet 404: NO DIMENSIONS",
+        "9": "sheet 405: NO DIMENSIONS",
+        "10": "sheet 406: NO DIMENSIONS",
+        "11": "sheet 407: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p408-410].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 408: CALIBRATED",
+        "2": "sheet 409: CALIBRATED",
+        "3": "sheet 410: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p411-413].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 411: SCAN/RASTER",
+        "2": "sheet 412: SCAN/RASTER",
+        "3": "sheet 413: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p414-416].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 414: SCAN/RASTER",
+        "2": "sheet 415: CALIBRATED",
+        "3": "sheet 416: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p417-418].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo"
+        "1": "indexed",
+        "2": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 417: SCAN/RASTER",
+        "2": "sheet 418: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p419-421].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 419: SCAN/RASTER",
+        "2": "sheet 420: SCAN/RASTER",
+        "3": "sheet 421: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p422-424].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 422: SCAN/RASTER",
+        "2": "sheet 423: NO DIMENSIONS",
+        "3": "sheet 424: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p425-429].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 425: SCAN/RASTER",
+        "2": "sheet 426: CALIBRATED",
+        "3": "sheet 427: CALIBRATED",
+        "4": "sheet 428: CALIBRATED",
+        "5": "sheet 429: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p430-440].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 430: CALIBRATED",
+        "2": "sheet 431: NO DIMENSIONS",
+        "3": "sheet 432: CALIBRATED",
+        "4": "sheet 433: CALIBRATED",
+        "5": "sheet 434: CALIBRATED",
+        "6": "sheet 435: CALIBRATED",
+        "7": "sheet 436: CALIBRATED",
+        "8": "sheet 437: CALIBRATED",
+        "9": "sheet 438: CALIBRATED",
+        "10": "sheet 439: CALIBRATED",
+        "11": "sheet 440: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p441-451].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "calibrated",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 441: NO DIMENSIONS",
+        "2": "sheet 442: CALIBRATED",
+        "3": "sheet 443: CALIBRATED",
+        "4": "sheet 444: UNRELIABLE",
+        "5": "sheet 445: UNRELIABLE",
+        "6": "sheet 446: NO DIMENSIONS",
+        "7": "sheet 447: NO DIMENSIONS",
+        "8": "sheet 448: CALIBRATED",
+        "9": "sheet 449: NO DIMENSIONS",
+        "10": "sheet 450: UNRELIABLE",
+        "11": "sheet 451: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p45-55].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 45: CALIBRATED BY VIEWPORT",
+        "2": "sheet 46: NO DIMENSIONS",
+        "3": "sheet 47: NO DIMENSIONS",
+        "4": "sheet 48: NO DIMENSIONS",
+        "5": "sheet 49: NO DIMENSIONS",
+        "6": "sheet 50: NO DIMENSIONS",
+        "7": "sheet 51: NO DIMENSIONS",
+        "8": "sheet 52: NO DIMENSIONS",
+        "9": "sheet 53: CALIBRATED BY VIEWPORT",
+        "10": "sheet 54: CALIBRATED",
+        "11": "sheet 55: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p452-462].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "calibrated",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 452: UNRELIABLE",
+        "2": "sheet 453: NO DIMENSIONS",
+        "3": "sheet 454: NO DIMENSIONS",
+        "4": "sheet 455: UNRELIABLE",
+        "5": "sheet 456: CALIBRATED BY VIEWPORT",
+        "6": "sheet 457: UNRELIABLE",
+        "7": "sheet 458: NO DIMENSIONS",
+        "8": "sheet 459: UNRELIABLE",
+        "9": "sheet 460: NO DIMENSIONS",
+        "10": "sheet 461: UNRELIABLE",
+        "11": "sheet 462: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p463-473].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 463: UNRELIABLE",
+        "2": "sheet 464: UNRELIABLE",
+        "3": "sheet 465: UNRELIABLE",
+        "4": "sheet 466: NO DIMENSIONS",
+        "5": "sheet 467: UNRELIABLE",
+        "6": "sheet 468: UNRELIABLE",
+        "7": "sheet 469: NO DIMENSIONS",
+        "8": "sheet 470: NO DIMENSIONS",
+        "9": "sheet 471: UNRELIABLE",
+        "10": "sheet 472: NO DIMENSIONS",
+        "11": "sheet 473: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p474-484].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 474: UNRELIABLE",
+        "2": "sheet 475: UNRELIABLE",
+        "3": "sheet 476: UNRELIABLE",
+        "4": "sheet 477: NO DIMENSIONS",
+        "5": "sheet 478: UNRELIABLE",
+        "6": "sheet 479: NO DIMENSIONS",
+        "7": "sheet 480: CALIBRATED",
+        "8": "sheet 481: CALIBRATED",
+        "9": "sheet 482: UNRELIABLE",
+        "10": "sheet 483: UNRELIABLE",
+        "11": "sheet 484: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p485-495].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "calibrated",
+        "7": "indexed",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 485: CALIBRATED",
+        "2": "sheet 486: UNRELIABLE",
+        "3": "sheet 487: NO DIMENSIONS",
+        "4": "sheet 488: NO DIMENSIONS",
+        "5": "sheet 489: NO DIMENSIONS",
+        "6": "sheet 490: CALIBRATED",
+        "7": "sheet 491: UNRELIABLE",
+        "8": "sheet 492: CALIBRATED",
+        "9": "sheet 493: CALIBRATED",
+        "10": "sheet 494: CALIBRATED",
+        "11": "sheet 495: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p496-506].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 496: UNRELIABLE",
+        "2": "sheet 497: CALIBRATED",
+        "3": "sheet 498: CALIBRATED",
+        "4": "sheet 499: CALIBRATED",
+        "5": "sheet 500: CALIBRATED",
+        "6": "sheet 501: CALIBRATED",
+        "7": "sheet 502: CALIBRATED",
+        "8": "sheet 503: UNRELIABLE",
+        "9": "sheet 504: CALIBRATED",
+        "10": "sheet 505: CALIBRATED",
+        "11": "sheet 506: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p507-517].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 507: CALIBRATED",
+        "2": "sheet 508: CALIBRATED",
+        "3": "sheet 509: CALIBRATED",
+        "4": "sheet 510: CALIBRATED",
+        "5": "sheet 511: CALIBRATED",
+        "6": "sheet 512: NO DIMENSIONS",
+        "7": "sheet 513: NO DIMENSIONS",
+        "8": "sheet 514: MULTIPLE SCALES",
+        "9": "sheet 515: CALIBRATED BY VIEWPORT",
+        "10": "sheet 516: CALIBRATED",
+        "11": "sheet 517: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p518-520].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 518: CALIBRATED",
+        "2": "sheet 519: CALIBRATED BY VIEWPORT",
+        "3": "sheet 520: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p521-522].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo"
+        "1": "indexed",
+        "2": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 521: SCAN/RASTER",
+        "2": "sheet 522: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p523].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo"
+        "1": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 523: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p524-528].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "calibrated",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 524: SCAN/RASTER",
+        "2": "sheet 525: SCAN/RASTER",
+        "3": "sheet 526: NO DIMENSIONS",
+        "4": "sheet 527: CALIBRATED",
+        "5": "sheet 528: UNRELIABLE"
+      }
     },
     "drawings/Architectural Combined [p529-539].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "indexed",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "indexed",
+        "8": "indexed",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 529: CALIBRATED",
+        "2": "sheet 530: UNRELIABLE",
+        "3": "sheet 531: NO SCALE STRING",
+        "4": "sheet 532: NO SCALE STRING",
+        "5": "sheet 533: UNRELIABLE",
+        "6": "sheet 534: UNRELIABLE",
+        "7": "sheet 535: UNRELIABLE",
+        "8": "sheet 536: UNRELIABLE",
+        "9": "sheet 537: CALIBRATED BY VIEWPORT",
+        "10": "sheet 538: CALIBRATED BY VIEWPORT",
+        "11": "sheet 539: NO SCALE STRING"
+      }
     },
     "drawings/Architectural Combined [p540-550].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 540: UNRELIABLE",
+        "2": "sheet 541: NO SCALE STRING",
+        "3": "sheet 542: CALIBRATED",
+        "4": "sheet 543: CALIBRATED BY VIEWPORT",
+        "5": "sheet 544: CALIBRATED",
+        "6": "sheet 545: CALIBRATED",
+        "7": "sheet 546: CALIBRATED",
+        "8": "sheet 547: CALIBRATED",
+        "9": "sheet 548: CALIBRATED BY VIEWPORT",
+        "10": "sheet 549: CALIBRATED",
+        "11": "sheet 550: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p551-561].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 551: CALIBRATED BY VIEWPORT",
+        "2": "sheet 552: CALIBRATED",
+        "3": "sheet 553: CALIBRATED",
+        "4": "sheet 554: CALIBRATED",
+        "5": "sheet 555: CALIBRATED",
+        "6": "sheet 556: CALIBRATED",
+        "7": "sheet 557: CALIBRATED",
+        "8": "sheet 558: CALIBRATED",
+        "9": "sheet 559: CALIBRATED",
+        "10": "sheet 560: CALIBRATED",
+        "11": "sheet 561: NO DIMENSIONS"
+      }
     },
     "drawings/Architectural Combined [p56-66].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 56: NO DIMENSIONS",
+        "2": "sheet 57: NO DIMENSIONS",
+        "3": "sheet 58: CALIBRATED BY VIEWPORT",
+        "4": "sheet 59: CALIBRATED BY VIEWPORT",
+        "5": "sheet 60: UNRELIABLE",
+        "6": "sheet 61: UNRELIABLE",
+        "7": "sheet 62: CALIBRATED BY VIEWPORT",
+        "8": "sheet 63: CALIBRATED BY VIEWPORT",
+        "9": "sheet 64: NO DIMENSIONS",
+        "10": "sheet 65: NO SCALE STRING",
+        "11": "sheet 66: NO SCALE STRING"
+      }
     },
     "drawings/Architectural Combined [p562-572].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 562: CALIBRATED",
+        "2": "sheet 563: CALIBRATED",
+        "3": "sheet 564: CALIBRATED",
+        "4": "sheet 565: CALIBRATED",
+        "5": "sheet 566: CALIBRATED",
+        "6": "sheet 567: CALIBRATED",
+        "7": "sheet 568: CALIBRATED",
+        "8": "sheet 569: CALIBRATED",
+        "9": "sheet 570: CALIBRATED",
+        "10": "sheet 571: CALIBRATED",
+        "11": "sheet 572: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p573-581].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 573: CALIBRATED",
+        "2": "sheet 574: CALIBRATED",
+        "3": "sheet 575: CALIBRATED",
+        "4": "sheet 576: CALIBRATED",
+        "5": "sheet 577: UNRELIABLE",
+        "6": "sheet 578: UNRELIABLE",
+        "7": "sheet 579: CALIBRATED",
+        "8": "sheet 580: CALIBRATED",
+        "9": "sheet 581: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p67-77].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "indexed",
+        "5": "indexed",
+        "6": "indexed",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "indexed",
+        "10": "indexed",
+        "11": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 67: NO SCALE STRING",
+        "2": "sheet 68: CALIBRATED BY VIEWPORT",
+        "3": "sheet 69: CALIBRATED BY VIEWPORT",
+        "4": "sheet 70: NO DIMENSIONS",
+        "5": "sheet 71: NO DIMENSIONS",
+        "6": "sheet 72: NO DIMENSIONS",
+        "7": "sheet 73: CALIBRATED",
+        "8": "sheet 74: CALIBRATED",
+        "9": "sheet 75: NO SCALE STRING",
+        "10": "sheet 76: NO SCALE STRING",
+        "11": "sheet 77: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p7-11].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 7: CALIBRATED",
+        "2": "sheet 8: CALIBRATED",
+        "3": "sheet 9: CALIBRATED",
+        "4": "sheet 10: CALIBRATED",
+        "5": "sheet 11: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p78-88].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo",
-        "6": "todo",
-        "7": "todo",
-        "8": "todo",
-        "9": "todo",
-        "10": "todo",
-        "11": "todo"
+        "1": "calibrated",
+        "2": "indexed",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "calibrated",
+        "6": "calibrated",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 78: CALIBRATED",
+        "2": "sheet 79: NO DIMENSIONS",
+        "3": "sheet 80: CALIBRATED BY VIEWPORT",
+        "4": "sheet 81: CALIBRATED BY VIEWPORT",
+        "5": "sheet 82: CALIBRATED",
+        "6": "sheet 83: CALIBRATED",
+        "7": "sheet 84: CALIBRATED",
+        "8": "sheet 85: CALIBRATED",
+        "9": "sheet 86: CALIBRATED",
+        "10": "sheet 87: CALIBRATED",
+        "11": "sheet 88: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p89-91].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "indexed",
+        "3": "calibrated"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 89: SCAN/RASTER",
+        "2": "sheet 90: SCAN/RASTER",
+        "3": "sheet 91: CALIBRATED"
+      }
     },
     "drawings/Architectural Combined [p92-94].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo"
+        "1": "indexed",
+        "2": "calibrated",
+        "3": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 92: SCAN/RASTER",
+        "2": "sheet 93: CALIBRATED",
+        "3": "sheet 94: SCAN/RASTER"
+      }
     },
     "drawings/Architectural Combined [p95-99].pdf": {
       "sha256": null,
       "pages": {
-        "1": "todo",
-        "2": "todo",
-        "3": "todo",
-        "4": "todo",
-        "5": "todo"
+        "1": "calibrated",
+        "2": "calibrated",
+        "3": "calibrated",
+        "4": "calibrated",
+        "5": "indexed"
       },
-      "notes": {}
+      "notes": {
+        "1": "sheet 95: CALIBRATED BY VIEWPORT",
+        "2": "sheet 96: CALIBRATED BY VIEWPORT",
+        "3": "sheet 97: CALIBRATED BY VIEWPORT",
+        "4": "sheet 98: CALIBRATED BY VIEWPORT",
+        "5": "sheet 99: NO DIMENSIONS"
+      }
     },
     "drawings/Bathroom.pdf": {
       "sha256": null,
@@ -1166,7 +1831,7 @@
       "note": ""
     }
   },
-  "handover": "Calibration test done. Next: project.md (class, NCC edition), standards library, then review GA-level items (car parking, paths of travel, egress) on calibrated sheets; request 1:50/1:20 sheets for sanitary/doors.",
+  "handover": "Full set (581 sheets) indexed and scale-checked: 315 measurable (250 whole sheet, 65 by viewport). Next: project.md (classes, NCC edition), standards library, then checklist review starting with egress/GA (1xxx), wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx, text).",
   "log": [
     {
       "at": "2026-11-26T03:08:27Z",
@@ -1192,7 +1857,12 @@
       "at": "2026-11-26T03:08:28Z",
       "event": "handover",
       "note": "Calibration test done. Next: project.md (class, NCC edition), standards library, then review GA-level items (car parking, paths of travel, egress) on calibrated sheets; request 1:50/1:20 sheets for sanitary/doors."
+    },
+    {
+      "at": "2026-11-26T22:44:17Z",
+      "event": "handover",
+      "note": "Full set (581 sheets) indexed and scale-checked: 315 measurable (250 whole sheet, 65 by viewport). Next: project.md (classes, NCC edition), standards library, then checklist review starting with egress/GA (1xxx), wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx, text)."
     }
   ],
-  "updated_at": "2026-11-26T22:35:12Z"
+  "updated_at": "2026-11-26T22:44:17Z"
 }
