@@ -1,0 +1,6 @@
+standards/.cache/
+projects/*/output/renders/
+__pycache__/
+*.pyc
+.DS_Store
+~$*
