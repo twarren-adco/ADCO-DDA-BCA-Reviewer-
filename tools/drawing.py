@@ -363,7 +363,8 @@ def _mupdf_geometry(pdf_path, page_no, region, min_len):
                     continue
                 dx, dy = ln["dir"]
                 ws.append({"text": t, "cx": cx, "cy": cy, "size": sp["size"],
-                           "upright": abs(dx) >= abs(dy)})
+                           "upright": abs(dx) >= abs(dy),
+                           "angle": math.degrees(math.atan2(dy, dx)) % 180})
     return scales, segs, ws
 
 
@@ -385,16 +386,38 @@ def _index_segments(segs):
     coordinate, so each dimension string only tests nearby lines."""
     import bisect
     hor, ver = [], []
+    CELL = 40.0
+    grid = {}
     for s in segs:
         a = s["angle"]
         if min(a, 180 - a) <= 3:
             hor.append(((s["y0"] + s["y1"]) / 2, s))
         elif abs(a - 90) <= 3:
             ver.append(((s["x0"] + s["x1"]) / 2, s))
+        elif s["len_pt"] >= 8.0:
+            # angled segment (skewed buildings): register it in every grid cell it crosses
+            n = max(1, int(s["len_pt"] / (CELL / 2)))
+            seen = set()
+            for i in range(n + 1):
+                x = s["x0"] + (s["x1"] - s["x0"]) * i / n
+                y = s["y0"] + (s["y1"] - s["y0"]) * i / n
+                key = (int(x // CELL), int(y // CELL))
+                if key not in seen:
+                    seen.add(key); grid.setdefault(key, []).append(s)
     hor.sort(key=lambda t: t[0]); ver.sort(key=lambda t: t[0])
     hk = [t[0] for t in hor]; vk = [t[0] for t in ver]
 
-    def near(upright, cx, cy, tol):
+    def near(upright, cx, cy, tol, angle=None):
+        if angle is not None and min(angle, 180 - angle) > 3 and abs(angle - 90) > 3:
+            out, seen = [], set()
+            r = int(tol // CELL) + 1
+            gx, gy = int(cx // CELL), int(cy // CELL)
+            for ix in range(gx - r, gx + r + 1):
+                for iy in range(gy - r, gy + r + 1):
+                    for s2 in grid.get((ix, iy), ()):
+                        if id(s2) not in seen:
+                            seen.add(id(s2)); out.append(s2)
+            return out
         keys, items, c = (hk, hor, cy) if upright else (vk, ver, cx)
         lo, hi = bisect.bisect_left(keys, c - tol), bisect.bisect_right(keys, c + tol)
         return [items[i][1] for i in range(lo, hi)]
@@ -404,13 +427,17 @@ def _index_segments(segs):
         and which pass through `at` (the dimension line's own coordinate)."""
         keys, items = (vk, ver) if horizontal_line else (hk, hor)
         i0, i1 = bisect.bisect_left(keys, lo_key), bisect.bisect_right(keys, hi_key)
-        out = []
+        spans = {}
         for i in range(i0, i1):
             k, s2 = items[i]
             a0, a1 = ((s2["y0"], s2["y1"]) if horizontal_line else (s2["x0"], s2["x1"]))
-            if min(a0, a1) - tol <= at <= max(a0, a1) + tol:
-                out.append(k)
-        return out
+            lo_, hi_ = min(a0, a1), max(a0, a1)
+            if lo_ - tol <= at <= hi_ + tol:
+                kk = round(k * 2) / 2          # merge collinear pieces of one witness line
+                cur = spans.get(kk)
+                spans[kk] = (min(lo_, cur[0]), max(hi_, cur[1])) if cur else (lo_, hi_)
+        # a witness line crosses the dimension line: it extends past it on both sides
+        return [k for k, (lo_, hi_) in spans.items() if lo_ < at - 0.7 and hi_ > at + 0.7]
     near.crossers = crossers
     return near
 
@@ -421,6 +448,8 @@ def witness_length(near, s):
     witness lines, so the drawn segment overstates the dimension. Falls back to
     the segment length when no witness line is found near both ends."""
     horizontal = min(s["angle"], 180 - s["angle"]) <= 3
+    if not horizontal and abs(s["angle"] - 90) > 3:
+        return s["len_pt"], False      # angled: no witness search, overshoot < 2% at plan scales
     if horizontal:
         a, b, at = sorted((s["x0"], s["x1"])) + [(s["y0"] + s["y1"]) / 2]
     else:
@@ -439,6 +468,26 @@ def witness_length(near, s):
     return L, False
 
 
+def find_viewports(matches, tol, min_agree):
+    """Sheets often carry several viewports at different scales (plan 1:50,
+    elevations 1:20, a key plan 1:500). Group the matched dimensions by the
+    standard scale they agree with; a group is accepted as a viewport when it has
+    at least `min_agree` members and they make up >= 65% of all matched
+    dimensions inside the group's own bounding box (so two scales sharing one
+    area are refused)."""
+    found = []
+    for sc in STANDARD_SCALES:
+        grp = [m for m in matches if abs(m["implied_scale"] / sc - 1) <= tol]
+        if len(grp) < max(3, min_agree):
+            continue
+        xs = [m["text_xy"][0] for m in grp]; ys = [m["text_xy"][1] for m in grp]
+        box = (min(xs) - 30, min(ys) - 30, max(xs) + 30, max(ys) + 30)
+        inside = [m for m in matches if box[0] <= m["text_xy"][0] <= box[2] and box[1] <= m["text_xy"][1] <= box[3]]
+        if len(grp) >= 0.65 * len(inside):
+            found.append({"scale": sc, "region": [round(v) for v in box], "agree": len(grp), "of": len(inside)})
+    return found
+
+
 def cmd_calibrate(a):
     region = parse_region(a.region)
     # short lines are kept so witness lines (often ~2 mm) can be found;
@@ -447,15 +496,19 @@ def cmd_calibrate(a):
     scales = [a.scale] if a.scale else page_scales
     ws = [w for w in all_words if DIM_RE.match(w["text"])]
     ws = [w for w in ws if int(w["text"]) >= a.min_value]
+    if not a.region and segs:
+        # ignore the title block strip along the bottom of the sheet (project numbers, dates)
+        page_h = max(max(sg["y0"], sg["y1"]) for sg in segs)
+        ws = [w for w in ws if w["cy"] < page_h * 0.93]
     near = _index_segments(segs)
 
     matches = []
     for w in ws:
         printed = int(w["text"])
-        want_angle = 0.0 if w["upright"] else 90.0
+        want_angle = w.get("angle", 0.0 if w["upright"] else 90.0)
         th = max(w["size"], 1.0)
         best = None
-        for s in near(w["upright"], w["cx"], w["cy"], th * 2.0):
+        for s in near(w["upright"], w["cx"], w["cy"], th * 2.0, want_angle):
             if s["len_pt"] < 8.0:
                 continue
             da = abs(s["angle"] - want_angle)
@@ -480,6 +533,9 @@ def cmd_calibrate(a):
         if best:
             _, s, perp, t = best
             wl, used_witness = witness_length(near, s)
+            axis = min(s["angle"], 180 - s["angle"]) <= 3 or abs(s["angle"] - 90) <= 3
+            if axis and not used_witness:
+                continue    # a box edge or tick mark next to a number, not a dimension line
             paper_mm = wl * PT_TO_MM
             matches.append({"printed": printed, "text_xy": (round(w["cx"], 1), round(w["cy"], 1)),
                             "seg": (round(s["x0"], 1), round(s["y0"], 1),
@@ -500,7 +556,13 @@ def cmd_calibrate(a):
         report["median_implied_scale"] = statistics.median(implied)
 
     best = max(verdicts, key=lambda v: v["agree"]) if verdicts else None
-    if len(scales) > 1:
+    viewports = find_viewports(matches, a.tol, a.min_agree) if not a.region else []
+    report["viewports"] = viewports
+    if len(matches) < a.min_agree:
+        report["verdict"] = "NO DIMENSIONS - too few printed dimensions to check the scale"
+    elif len(scales) > 1 and viewports:
+        report["verdict"] = "CALIBRATED BY VIEWPORT - measure only inside the listed regions"
+    elif len(scales) > 1:
         report["verdict"] = ("MULTIPLE SCALES - not calibrated; re-run per viewport "
                              "with --region and --scale")
     elif best and best["agree"] >= a.min_agree and best["agree"] >= 0.5 * len(matches):
@@ -520,8 +582,12 @@ def cmd_calibrate(a):
             report["by_scale"] = [{"scale": sc, "agree": ok, "of": len(matches), "inferred": True}]
         else:
             report["verdict"] = "NO SCALE STRING - scale inferred only, NOT verified"
+    elif viewports:
+        report["verdict"] = "CALIBRATED BY VIEWPORT - measure only inside the listed regions"
     else:
         report["verdict"] = "UNRELIABLE - do not measure from geometry on this sheet/region"
+    if report["verdict"].startswith("NO SCALE STRING") and viewports:
+        report["verdict"] = "CALIBRATED BY VIEWPORT - measure only inside the listed regions"
     if len(scales) > 1:
         report["warning"] = ("Multiple scales on sheet: calibrate each viewport separately "
                              "using --region and --scale.")
@@ -552,6 +618,8 @@ def cmd_calibrate(a):
         print(f"NOTE: {len(report['mismatches'])} dimension(s) disagree with the drawn geometry "
               "(overridden dimension text, NTS element, or another viewport). Trust the "
               "printed figure, but record the discrepancy.")
+    for v in report.get("viewports") or []:
+        print(f"viewport 1:{v['scale']}  region {','.join(map(str, v['region']))}  {v['agree']}/{v['of']} agree")
     print("VERDICT:", report["verdict"],
           f"(1:{report['calibrated_scale']})" if "calibrated_scale" in report else "")
 

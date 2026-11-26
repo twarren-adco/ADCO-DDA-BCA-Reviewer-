@@ -10,8 +10,9 @@ python3 tests/make_sample.py "$T/s.pdf" >/dev/null
 
 fail() { echo "FAIL: $1"; exit 1; }
 
-python3 tools/drawing.py calibrate "$T/s.pdf" -p 1 | grep -q "MULTIPLE SCALES" \
-  || fail "whole sheet should refuse to calibrate"
+whole=$(python3 tools/drawing.py calibrate "$T/s.pdf" -p 1)
+echo "$whole" | grep -q "CALIBRATED BY VIEWPORT" || fail "two-scale sheet should calibrate per viewport"
+echo "$whole" | grep -q "viewport 1:100" && echo "$whole" | grep -q "viewport 1:20" || fail "both viewports should be found"
 out=$(python3 tools/drawing.py calibrate "$T/s.pdf" -p 1 --region 0,0,800,600 --scale 100)
 echo "$out" | grep -q "VERDICT: CALIBRATED" || fail "plan 1:100 should calibrate"
 echo "$out" | grep -q "1800 mm.*MISMATCH" || fail "wrong dimension not flagged"
