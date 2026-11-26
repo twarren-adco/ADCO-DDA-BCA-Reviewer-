@@ -68,4 +68,15 @@ PY
 python3 tools/dropzone.py restore --from "$T/dz3" --job _selftest3 >/dev/null || fail "text-part restore"
 cmp -s projects/_selftest3/drawings/Big.pdf "$T/big.bin" || fail "text-part bytes differ"
 rm -rf projects/_selftest3
+# grid carry-over maths: parallel lines 8000 mm apart at 1:100 -> 80 mm on paper
+python3 - <<'PY' || fail "grid spacing"
+import sys; sys.path.insert(0, "tools")
+from grids import spacings, PT_TO_MM
+pt = 80 / PT_TO_MM
+lines = [{"label": "1", "angle": 90.0, "p": (100, 50)}, {"label": "2", "angle": 90.0, "p": (100 + pt, 400)},
+         {"label": "RA", "angle": 160.0, "p": (300, 300)}]
+sp = spacings(lines)
+assert set(sp) == {"1|2"}, sp
+assert abs(sp["1|2"] * PT_TO_MM * 100 - 8000) < 1, sp
+PY
 echo "all self-tests passed"

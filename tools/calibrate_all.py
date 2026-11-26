@@ -26,7 +26,7 @@ def run_one(args):
                            capture_output=True, text=True, timeout=600)
         r = json.loads(p.stdout)
         keep = {k: r.get(k) for k in ("verdict", "calibrated_scale", "scales_on_sheet", "dimension_texts",
-                                         "matched", "by_scale", "median_implied_scale")}
+                                         "matched", "by_scale", "median_implied_scale", "viewports")}
         keep["mismatches"] = len(r.get("mismatches") or [])
         keep["sheet"] = row["sheet"]
         return keep
@@ -52,24 +52,47 @@ def summarise(job):
         r = json.loads(line); res[r["sheet"]] = r
     def short(v):
         v = v or ""
-        if v.startswith("CALIBRATED"): return "CALIBRATED"
-        return v.split(" - ")[0]
-    counts = {}
-    for r in res.values():
-        counts[short(r["verdict"])] = counts.get(short(r["verdict"]), 0) + 1
+        if v.startswith("CALIBRATED FROM GRIDS"): return "From grids"
+        if v.startswith("CALIBRATED BY VIEWPORT"): return "By viewport"
+        if v.startswith("CALIBRATED"): return "Calibrated"
+        return {"NO DIMENSIONS": "No dimensions", "NO SCALE STRING": "No scale printed", "UNRELIABLE": "Unreliable",
+                "MULTIPLE SCALES": "Mixed scales", "SCAN/RASTER": "Image"}.get(v.split(" - ")[0], v.split(" - ")[0])
+    cols = ["Calibrated", "By viewport", "From grids", "No dimensions", "No scale printed", "Unreliable", "Mixed scales", "Image"]
+    names = {"0": "General / site", "1": "GA plans, RCPs, wall types", "2": "Elevations", "3": "Sections",
+             "4": "Unit & common-area fitouts, wet areas", "5": "Details", "6": "Schedules", "7": "Joinery / details", "8": "FF&E schedules"}
+    tab, tot = {}, {}
+    for s, r in res.items():
+        d = idx.get(s, {}).get("drawing", ""); n = d.split("-")[-1] if d else ""
+        k = n[:1] if n[:1].isdigit() else "?"
+        tab.setdefault(k, {}); c = short(r["verdict"])
+        tab[k][c] = tab[k].get(c, 0) + 1; tot[c] = tot.get(c, 0) + 1
+    measurable = sum(tot.get(c, 0) for c in ("Calibrated", "By viewport", "From grids"))
     md = [f"# Calibration log – {job}", "",
-          "Whole-sheet scale check (`tools/calibrate_all.py`). A sheet passes when at least 3 and at least half of its matched "
-          "printed dimensions agree with one scale within ±2%, measured witness line to witness line. "
-          "*MULTIPLE SCALES* sheets (several viewports) need a per-viewport check before measuring.", "",
-          "Summary: " + ", ".join(f"{v} {k}" for k, v in sorted(counts.items(), key=lambda t: -t[1])), "",
-          "| Sheet | Drawing | Title | Scale (printed) | Result | Agree |", "|---|---|---|---|---|---|"]
+          f"**{measurable} of {len(res)} sheets can be measured from geometry.**", "",
+          "Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines "
+          "(any angle) and measured witness line to witness line; horizontal/vertical dimension lines need witness lines "
+          "crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%. "
+          "*By viewport*: each consistent viewport (>=3 dimensions, >=65% agreement inside its area) is calibrated "
+          "separately and measuring is valid only inside its listed region (`calibration.jsonl`). "
+          "*From grids*: the sheet has no usable dimensions, but >=3 grid spacings (from `grid-table.json`, built from "
+          "calibrated plans) agree with one scale within +-1% and with the printed scale.", "",
+          "| Series | " + " | ".join(cols) + " |", "|---|" + "---|" * len(cols)]
+    for k in sorted(tab):
+        md.append(f"| {k}xxx {names.get(k, 'Other')} | " + " | ".join(str(tab[k].get(c, 0)) for c in cols) + " |")
+    md.append("| **Total** | " + " | ".join(f"**{tot.get(c, 0)}**" for c in cols) + " |")
+    md += ["", "*No dimensions*: fewer than 3 printed dimensions and no shared grid (e.g. details, joinery). "
+           "*Unreliable*: dimensions disagree (mostly reflected ceiling plans and sparsely dimensioned fitouts). "
+           "*Image*: mostly raster. Schedules are read as text, not measured.", "", "## Per sheet", "",
+           "| Sheet | Drawing | Title | Scale (printed) | Result | Agree |", "|---|---|---|---|---|---|"]
     for s in sorted(res):
         r, x = res[s], idx.get(s, {})
-        agree = " / ".join(f"1:{int(b['scale'])} {b['agree']}/{b['of']}" for b in (r.get("by_scale") or []))
+        agree = r.get("grid_agree") or " / ".join(f"1:{int(b['scale'])} {b['agree']}/{b['of']}" for b in (r.get("by_scale") or []))
         result = short(r["verdict"]) + (f" 1:{int(r['calibrated_scale'])}" if r.get("calibrated_scale") else "")
+        if r.get("viewports") and short(r["verdict"]) == "By viewport":
+            result += " (" + ", ".join(f"1:{v['scale']}" for v in r["viewports"]) + ")"
         md.append(f"| {s} | {x.get('drawing','')} | {x.get('title','')[:70]} | {x.get('scale','')} | {result} | {agree} |")
     (base / "calibration-log.md").write_text("\n".join(md) + "\n")
-    return counts
+    return tot
 
 
 def main():

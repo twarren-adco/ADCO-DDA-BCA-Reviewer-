@@ -1831,7 +1831,7 @@
       "note": ""
     }
   },
-  "handover": "Full set (581 sheets) indexed and scale-checked: 315 measurable (250 whole sheet, 65 by viewport). Next: project.md (classes, NCC edition), standards library, then checklist review starting with egress/GA (1xxx), wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx, text).",
+  "handover": "383 of 581 sheets measurable (250 own dims, 65 by viewport, 68 from shared grids). Next: project.md facts + standards library, then checklist review: egress/paths on GA plans, wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx text).",
   "log": [
     {
       "at": "2026-11-26T03:08:27Z",
@@ -1862,7 +1862,12 @@
       "at": "2026-11-26T22:44:17Z",
       "event": "handover",
       "note": "Full set (581 sheets) indexed and scale-checked: 315 measurable (250 whole sheet, 65 by viewport). Next: project.md (classes, NCC edition), standards library, then checklist review starting with egress/GA (1xxx), wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx, text)."
+    },
+    {
+      "at": "2026-11-26T23:50:45Z",
+      "event": "handover",
+      "note": "383 of 581 sheets measurable (250 own dims, 65 by viewport, 68 from shared grids). Next: project.md facts + standards library, then checklist review: egress/paths on GA plans, wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx text)."
     }
   ],
-  "updated_at": "2026-11-26T22:44:17Z"
+  "updated_at": "2026-11-26T23:50:45Z"
 }

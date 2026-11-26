@@ -20,14 +20,21 @@ assessment, access audit or certification. Never describe it as one.
    different edition, stop and tell the user before reviewing.
 3. **The measurement hierarchy, in order:**
    1. a dimension printed on the drawing;
-   2. a measurement from vector geometry, **only** on a sheet or viewport that
-      has passed `tools/drawing.py calibrate` at the scale used;
-   3. a visual estimate, which can never support `Compliant`. Record it as
+   2. a measurement from vector geometry on a sheet or viewport whose scale is
+      **confirmed**: by its own printed dimensions (`CALIBRATED`, or
+      `CALIBRATED BY VIEWPORT` inside the listed region only), or by grid
+      spacings carried from calibrated plans (`CALIBRATED FROM GRIDS`);
+   3. a measurement at the **printed scale only** (vector sheet, but nothing to
+      confirm it against). Record it as indicative: it can't support
+      `Compliant` on its own; use `Unable to verify` and give the value;
+   4. a visual estimate, which can never support `Compliant`. Record it as
       `Unable to verify` with the estimate in "Drawing shows".
-   Record the basis used in the "Measurement basis" column for every
-   dimensional finding.
+   No scale bar is needed for any of these: the printed ratio ("1 : 100 @ A1")
+   and the PDF's own geometry are used. Record the basis used in the
+   "Measurement basis" column for every dimensional finding.
 4. **Calibrate before measuring.** Each sheet/viewport gets calibrated before any
-   geometry measurement. If calibration is `UNRELIABLE`, has multiple scales and
+   geometry measurement. For a whole job: `sheetindex.py`, `calibrate_all.py`,
+   then `grids.py learn` and `grids.py check` for sheets with no dimensions. If calibration is `UNRELIABLE`, has multiple scales and
    no region, or the sheet is a scan, do not measure geometry on it. Log every
    calibration result in `output/calibration-log.md`.
 5. **Clear dimensions, not nominal ones.** Door widths, circulation spaces and
@@ -175,7 +182,18 @@ python3 tools/standards.py index | list | search "phrase" [--doc 1428] | page <d
 python3 tools/register.py output/findings.json output/<job>-compliance-register.xlsx
 python3 tools/dropzone.py list|restore --from .tmp/dz/<job> [--job <job>] [--only PATH ...]
 python3 tools/progress.py init|status|mark|section|handover <job> ...
+python3 tools/sheetindex.py <job>                         # one row per sheet: drawing no., title, rev, scale, vector/image
+python3 tools/calibrate_all.py <job> [--workers 4]        # scale check on every sheet (resumable), writes calibration-log.md
+python3 tools/grids.py learn <job>                        # grid spacings from calibrated plans -> grid-table.json
+python3 tools/grids.py check <job>                        # calibrate dimension-less sheets from the shared grid
 ```
+
+Grid carry-over: the structural grid is the same on every plan, so a grid
+spacing measured on a calibrated sheet is a known real distance. A sheet with
+no dimensions is accepted (`CALIBRATED FROM GRIDS`) only when at least 3 grid
+pairs agree with one scale within 1% **and** that scale matches the printed
+one; a disagreement with the printed scale is reported as a query, never
+silently used.
 
 Rendering tips: render the whole sheet at low dpi (50 to 75) with `--grid 100` to
 get your bearings, then zoom with `--region` at 150 to 200 dpi and a finer grid.
