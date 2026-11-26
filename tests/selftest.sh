@@ -22,4 +22,19 @@ python3 tools/drawing.py calibrate "$T/s.pdf" -p 1 --region 800,150,1250,600 --s
   | grep -q "UNRELIABLE" || fail "wrong scale should be rejected"
 python3 tools/drawing.py render "$T/s.pdf" -p 1 -o "$T/r.png" --dpi 40 --grid 100 >/dev/null \
   || fail "render"
+# drop zone round trip (offline): split into parts as the page does, restore, compare
+python3 - "$T" <<'PY'
+import base64,hashlib,json,pathlib,sys
+T=pathlib.Path(sys.argv[1]); raw=(T/"s.pdf").read_bytes(); d=T/"dz"/"jobs"/"_st"/"files"; d.mkdir(parents=True)
+path="drawings/A-101.pdf"; fid="f"+hashlib.sha256(path.encode()).hexdigest()[:16]; R=1000
+parts=[raw[i:i+R] for i in range(0,len(raw),R)]
+for n,p in enumerate(parts):
+    (d/f"{fid}_{n:04d}.json").write_text(json.dumps({"file_id":fid,"part":n,"parts":len(parts),"b64":base64.b64encode(p).decode()}))
+(d/"_index.json").write_text(json.dumps({"files":[{"file_id":fid,"path":path,"size":len(raw),"sha256":hashlib.sha256(raw).hexdigest(),"parts":len(parts)}]}))
+PY
+python3 tools/dropzone.py restore --from "$T/dz" --job _selftest >/dev/null || fail "dropzone restore"
+cmp -s projects/_selftest/drawings/A-101.pdf "$T/s.pdf" || fail "restored file differs"
+python3 tools/progress.py init _selftest >/dev/null || fail "progress init"
+python3 tools/progress.py status _selftest | grep -q "NEXT:" || fail "progress status"
+rm -rf projects/_selftest
 echo "all self-tests passed"

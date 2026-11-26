@@ -18,13 +18,17 @@ a compliance register in Excel.
 1. On GitHub, copy `projects/_template` to `projects/<job-code>/` and fill in
    `project.md`. The easiest way is to create `projects/<job-code>/project.md`
    with **Add file → Create new file** and paste in the template.
-2. Upload the drawing PDFs to `projects/<job-code>/drawings/` with
-   **Add file → Upload files**. Use vector PDFs exported from Revit/ArchiCAD,
-   not scans. GitHub's web upload takes files up to 25 MB each, so split big
-   sets by discipline. Consultant reports for comparison go in
-   `projects/<job-code>/reports/`.
+2. Open the **[Drawing Drop Zone](https://claude.ai/artifact/Eqb8s89wfE8o8u39d9MAs8)**,
+   create the same job code, tick the classification check and drag in the
+   drawing PDFs (whole folders work). Switch to **Consultant reports** to add
+   BCA or access reports for comparison. No splitting is needed, and drawings
+   never go into GitHub. Use vector PDFs exported from Revit/ArchiCAD, not scans.
+   Dropping a revised drawing with the same name replaces the old one, and the
+   next session flags its sheets for re-checking.
 3. Start a session at claude.ai/code on this repository and say, for example:
-   *"Run the review on projects/<job-code>, architectural GAs and wet areas first."*
+   *"Restore job <job-code> from the drop zone and run the review, architectural GAs and wet areas first."*
+   If a session ends part-way through, start a new one and say *"carry on with <job-code>"*:
+   progress, a handover note and the cumulative findings are committed as it goes.
 4. Claude commits the results to its working branch under
    `projects/<job-code>/output/`:
    - `<job>-compliance-register.xlsx`: the register (Cover, Summary, Register)

@@ -4,3 +4,9 @@ __pycache__/
 *.pyc
 .DS_Store
 ~$*
+# Drawings and consultant reports come from the drop zone, never git
+projects/*/drawings/*
+projects/*/reports/*
+!projects/*/drawings/.gitkeep
+!projects/*/reports/.gitkeep
+.tmp/

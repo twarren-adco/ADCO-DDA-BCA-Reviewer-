@@ -45,6 +45,52 @@ assessment, access audit or certification. Never describe it as one.
    values, personal staff data, credentials, unreleased financials), flag it
    once to the user and suggest redaction before continuing.
 
+## Where drawings come from: the Drawing Drop Zone
+
+Drawings and consultant reports **never go into git** (`projects/*/drawings/` and
+`projects/*/reports/` are git-ignored). People drop them once on the Drawing
+Drop Zone page, under a job code:
+
+**https://claude.ai/artifact/Eqb8s89wfE8o8u39d9MAs8**
+
+To restore a job's files into this container:
+
+1. Fetch with the ArtifactData tool: `action: list`, `url` as above,
+   `collection: jobs/<job>/files`, `query: {limit: 1000}`,
+   `out_dir: .tmp/dz/<job>`. If the result gives a `next_cursor`, repeat with
+   `query.cursor` until there is none.
+2. `python3 tools/dropzone.py restore --from .tmp/dz/<job> --job <job>`
+   Every file is checked against the fingerprint taken when it was dropped. A
+   file listed under NOT RESTORED is missing or corrupt: tell the user, don't
+   review around it silently.
+3. For a very large pack, restore a tranche: `dropzone.py list` first, then
+   fetch `_index` plus a `query` with `where: [["file_id","in",[...]]]` (up
+   to 30 ids) and restore with `--only <paths>`.
+
+If the job doesn't exist on the page, ask the user to create it and drop the
+pack. Never ask them to commit drawings to the repository.
+
+## Sessions end: save progress as you go
+
+The container is wiped after inactivity. Anything not pushed is lost.
+
+**At session start**, for the job in question:
+1. Restore drawings from the drop zone (above). Run `standards.py index`.
+2. `python3 tools/progress.py init <job>`, then `progress.py status <job>`.
+   Resume from the handover note and the NEXT line without asking the user to
+   re-explain. If init reports REVISED files, the earlier findings for those
+   sheets must be re-checked against the new revision. Tell the user.
+
+**While working**, record each step as it finishes:
+`progress.py mark <job> --file <pdf> --pages <n-m> --stage indexed|calibrated|reviewed|skipped`
+and `progress.py section <job> "<checklist section>" done|partial --note "..."`.
+Keep `findings.json` cumulative.
+
+**Checkpoint** (commit and push to the working branch) after each batch of
+sheets or each checklist section, and at least every 30 minutes of work.
+Before stopping, write `progress.py handover <job> "<what to do next>"` and
+push. A checkpoint commits `output/` only (never drawings, reports or renders).
+
 ## Status categories (use exactly these)
 
 | Status | Use when |
@@ -60,9 +106,10 @@ assessment, access audit or certification. Never describe it as one.
 ```
 standards/                 source documents (NCC, Premises Standards, AS 1428.x, EFSG ...)
 projects/<job>/project.md  project facts: class, NCC edition, EFSG yes/no, scope
-projects/<job>/drawings/   the drawing pack (vector PDFs preferred)
-projects/<job>/reports/    consultant reports, if any (BCA, access, fire)
-projects/<job>/output/     everything you produce
+projects/<job>/drawings/   the drawing pack, restored from the drop zone (git-ignored)
+projects/<job>/reports/    consultant reports, restored from the drop zone (git-ignored)
+projects/<job>/output/     everything you produce, incl. progress.json and source_manifest.json
+web/dropzone.html          source of the Drawing Drop Zone page
 docs/checklist.md          the review checklist
 tools/                     scripts (see below)
 ```
@@ -82,6 +129,8 @@ python3 tools/drawing.py segments <pdf> -p N --near x,y --scale 50
 python3 tools/drawing.py measure x1,y1 x2,y2 --scale 50
 python3 tools/standards.py index | list | search "phrase" [--doc 1428] | page <doc> <n>
 python3 tools/register.py output/findings.json output/<job>-compliance-register.xlsx
+python3 tools/dropzone.py list|restore --from .tmp/dz/<job> [--job <job>] [--only PATH ...]
+python3 tools/progress.py init|status|mark|section|handover <job> ...
 ```
 
 Rendering tips: render the whole sheet at low dpi (50 to 75) with `--grid 100` to
@@ -93,7 +142,7 @@ Read the grid labels to get coordinates for `segments`, `calibrate --region` or
 
 When the user says something like "run the review on <job>" or "sheets X to Y":
 
-1. **Intake.** Read `projects/<job>/project.md`. If building class, NCC edition,
+1. **Intake.** Do the session-start steps above. Read `projects/<job>/project.md`. If building class, NCC edition,
    or EFSG applicability is missing, ask before going further. Run
    `standards.py list` and confirm the library covers what's needed. Index it if
    it hasn't been indexed.
@@ -123,8 +172,8 @@ When the user says something like "run the review on <job>" or "sheets X to Y":
 7. **Compare (pilot jobs).** If `reports/` contains consultant reports, write
    `output/comparison.md`: items both found, items only the consultant found
    (my misses), and items only I found. Be candid about misses.
-8. **Commit** the outputs (not renders) to the working branch and tell the user
-   where the register is.
+8. **Commit and push** the outputs (not drawings, reports or renders) to the
+   working branch and tell the user where the register is.
 
 For large packs, work in batches by discipline or sheet range, and keep
 `findings.json` cumulative so the register can be rebuilt at any point.
