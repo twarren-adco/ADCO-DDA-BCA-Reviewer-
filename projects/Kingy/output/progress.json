@@ -1,0 +1,106 @@
+{
+  "job": "Kingy",
+  "files": {
+    "drawings/Architectural Docs Reduced.pdf": {
+      "sha256": "901dbb2e0501877b68c6e2d9bc4e5224ccc40a6f2a4ec1acb544ce59ffd98038",
+      "pages": {
+        "1": "indexed",
+        "2": "indexed",
+        "3": "skipped",
+        "4": "skipped",
+        "5": "skipped",
+        "6": "skipped",
+        "7": "calibrated",
+        "8": "calibrated",
+        "9": "calibrated",
+        "10": "calibrated",
+        "11": "skipped",
+        "12": "calibrated",
+        "13": "calibrated",
+        "14": "calibrated",
+        "15": "calibrated",
+        "16": "calibrated",
+        "17": "calibrated",
+        "18": "calibrated"
+      },
+      "notes": {
+        "11": "hidden 75% duplicate plan in embedded form; geometry refused",
+        "3": "mostly raster",
+        "4": "mostly raster",
+        "5": "mostly raster",
+        "6": "mostly raster"
+      }
+    }
+  },
+  "sections": {
+    "1. Egress (NCC Section D, provision for escape)": {
+      "state": "todo",
+      "note": ""
+    },
+    "2. Doors (egress and access)": {
+      "state": "todo",
+      "note": ""
+    },
+    "3. Access for people with a disability (NCC Section D access provisions and the Premises Standards / Access Code)": {
+      "state": "todo",
+      "note": ""
+    },
+    "4. Sanitary facilities (NCC Section F and access provisions)": {
+      "state": "todo",
+      "note": ""
+    },
+    "5. Ramps, walkways, stairs and balustrades": {
+      "state": "todo",
+      "note": ""
+    },
+    "6. Car parking and site": {
+      "state": "todo",
+      "note": ""
+    },
+    "7. Hearing augmentation and communication": {
+      "state": "todo",
+      "note": ""
+    },
+    "8. Signage": {
+      "state": "todo",
+      "note": ""
+    },
+    "9. Fire safety items visible on architectural drawings": {
+      "state": "todo",
+      "note": ""
+    },
+    "10. EFSG (SINSW projects only)": {
+      "state": "todo",
+      "note": ""
+    }
+  },
+  "handover": "Calibration test done. Next: project.md (class, NCC edition), standards library, then review GA-level items (car parking, paths of travel, egress) on calibrated sheets; request 1:50/1:20 sheets for sanitary/doors.",
+  "log": [
+    {
+      "at": "2026-11-26T03:08:27Z",
+      "event": "drawings/Architectural Docs Reduced.pdf p1-18 -> indexed",
+      "note": ""
+    },
+    {
+      "at": "2026-11-26T03:08:27Z",
+      "event": "drawings/Architectural Docs Reduced.pdf p7-10,12-18 -> calibrated",
+      "note": ""
+    },
+    {
+      "at": "2026-11-26T03:08:27Z",
+      "event": "drawings/Architectural Docs Reduced.pdf p11 -> skipped",
+      "note": "hidden 75% duplicate plan in embedded form; geometry refused"
+    },
+    {
+      "at": "2026-11-26T03:08:28Z",
+      "event": "drawings/Architectural Docs Reduced.pdf p3-6 -> skipped",
+      "note": "mostly raster"
+    },
+    {
+      "at": "2026-11-26T03:08:28Z",
+      "event": "handover",
+      "note": "Calibration test done. Next: project.md (class, NCC edition), standards library, then review GA-level items (car parking, paths of travel, egress) on calibrated sheets; request 1:50/1:20 sheets for sanitary/doors."
+    }
+  ],
+  "updated_at": "2026-11-26T03:08:28Z"
+}

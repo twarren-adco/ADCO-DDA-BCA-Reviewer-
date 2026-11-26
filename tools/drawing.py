@@ -36,6 +36,10 @@ ISO_SIZES = {  # mm, portrait
 }
 
 SCALE_RE = re.compile(r"(?<![\d.])1\s*:\s*(\d{1,4})(?![\d.])")
+# Drawing scales architects actually use. Anything else matching "1:n" is
+# usually a ramp or fall gradient (1:4, 1:8, 1:14, 1:20 is ambiguous but kept).
+STANDARD_SCALES = [1, 2, 5, 10, 20, 25, 50, 75, 100, 125, 150, 200, 250, 300,
+                   400, 500, 750, 1000, 1250, 1500, 2000, 2500, 5000]
 
 
 # ----------------------------------------------------------------- helpers
@@ -142,7 +146,7 @@ def detect_scales(page):
     seen = []
     for f in found:
         n = int(f)
-        if n not in seen and n >= 1:
+        if n not in seen and n in STANDARD_SCALES:
             seen.append(n)
     return seen
 
@@ -286,13 +290,139 @@ def cmd_measure(a):
 DIM_RE = re.compile(r"^\d{2,6}$")
 
 
+def _mupdf_geometry(pdf_path, page_no, region, min_len):
+    """Fast path for heavy sheets (hundreds of thousands of paths)."""
+    import pymupdf
+    doc = pymupdf.open(pdf_path)
+    p = doc[page_no - 1]
+    txt = p.get_text()
+    scales = []
+    for f in SCALE_RE.findall(txt):
+        if int(f) not in scales and int(f) in STANDARD_SCALES:
+            scales.append(int(f))
+    segs = []
+    for d in p.get_drawings():
+        for it in d["items"]:
+            kind = it[0]
+            if kind == "l":
+                pts = [it[1], it[2]]
+            elif kind == "re":
+                r = it[1]
+                pts = [r.tl, r.tr, r.br, r.bl, r.tl]
+            elif kind == "qu":
+                q = it[1]
+                pts = [q.ul, q.ur, q.lr, q.ll, q.ul]
+            else:
+                continue
+            for A, B in zip(pts, pts[1:]):
+                L = math.hypot(B.x - A.x, B.y - A.y)
+                if L < min_len:
+                    continue
+                mx, my = (A.x + B.x) / 2, (A.y + B.y) / 2
+                if region and not any(in_region(px, py, region)
+                                      for px, py in ((A.x, A.y), (B.x, B.y), (mx, my))):
+                    continue
+                segs.append({"x0": A.x, "y0": A.y, "x1": B.x, "y1": B.y, "len_pt": L,
+                             "angle": math.degrees(math.atan2(B.y - A.y, B.x - A.x)) % 180,
+                             "src": kind})
+    ws = []
+    for b in p.get_text("dict")["blocks"]:
+        if b.get("type") != 0:
+            continue
+        for ln in b["lines"]:
+            for sp in ln["spans"]:
+                t = sp["text"].strip()
+                if not t:
+                    continue
+                x0, y0, x1, y1 = sp["bbox"]
+                cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+                if not in_region(cx, cy, region):
+                    continue
+                dx, dy = ln["dir"]
+                ws.append({"text": t, "cx": cx, "cy": cy, "size": sp["size"],
+                           "upright": abs(dx) >= abs(dy)})
+    return scales, segs, ws
+
+
+def _plumber_geometry(pdf_path, page_no, region, min_len):
+    pdf, p = open_page(pdf_path, page_no)
+    return detect_scales(p), get_segments(p, region, min_len=min_len), words(p, region)
+
+
+def page_geometry(pdf_path, page_no, region, min_len=8.0):
+    try:
+        import pymupdf  # noqa: F401
+        return _mupdf_geometry(pdf_path, page_no, region, min_len)
+    except ImportError:
+        return _plumber_geometry(pdf_path, page_no, region, min_len)
+
+
+def _index_segments(segs):
+    """Split into near-horizontal / near-vertical lists sorted by their constant
+    coordinate, so each dimension string only tests nearby lines."""
+    import bisect
+    hor, ver = [], []
+    for s in segs:
+        a = s["angle"]
+        if min(a, 180 - a) <= 3:
+            hor.append(((s["y0"] + s["y1"]) / 2, s))
+        elif abs(a - 90) <= 3:
+            ver.append(((s["x0"] + s["x1"]) / 2, s))
+    hor.sort(key=lambda t: t[0]); ver.sort(key=lambda t: t[0])
+    hk = [t[0] for t in hor]; vk = [t[0] for t in ver]
+
+    def near(upright, cx, cy, tol):
+        keys, items, c = (hk, hor, cy) if upright else (vk, ver, cx)
+        lo, hi = bisect.bisect_left(keys, c - tol), bisect.bisect_right(keys, c + tol)
+        return [items[i][1] for i in range(lo, hi)]
+
+    def crossers(horizontal_line, lo_key, hi_key, at, tol=1.0):
+        """Perpendicular segments whose constant coordinate lies in [lo, hi]
+        and which pass through `at` (the dimension line's own coordinate)."""
+        keys, items = (vk, ver) if horizontal_line else (hk, hor)
+        i0, i1 = bisect.bisect_left(keys, lo_key), bisect.bisect_right(keys, hi_key)
+        out = []
+        for i in range(i0, i1):
+            k, s2 = items[i]
+            a0, a1 = ((s2["y0"], s2["y1"]) if horizontal_line else (s2["x0"], s2["x1"]))
+            if min(a0, a1) - tol <= at <= max(a0, a1) + tol:
+                out.append(k)
+        return out
+    near.crossers = crossers
+    return near
+
+
+def witness_length(near, s):
+    """Distance between the witness (extension) lines at each end of a matched
+    dimension line. Revit and ArchiCAD draw the dimension line a little past its
+    witness lines, so the drawn segment overstates the dimension. Falls back to
+    the segment length when no witness line is found near both ends."""
+    horizontal = min(s["angle"], 180 - s["angle"]) <= 3
+    if horizontal:
+        a, b, at = sorted((s["x0"], s["x1"])) + [(s["y0"] + s["y1"]) / 2]
+    else:
+        a, b, at = sorted((s["y0"], s["y1"])) + [(s["x0"] + s["x1"]) / 2]
+    L = b - a
+    slack = max(0.06 * L, 2.0)
+    ks = near.crossers(horizontal, a - 0.5, b + 0.5, at)
+    left = [k for k in ks if a - 0.5 <= k <= a + slack]
+    right = [k for k in ks if b - slack <= k <= b + 0.5]
+    if left and right:
+        w = max(right) - min(left)
+        # outermost witness pair inside the line ends
+        w = min(right, key=lambda k: abs(k - b)) - min(left, key=lambda k: abs(k - a))
+        if w > 0.5 * L:
+            return w, True
+    return L, False
+
+
 def cmd_calibrate(a):
-    pdf, p = open_page(a.pdf, a.page)
     region = parse_region(a.region)
-    scales = [a.scale] if a.scale else detect_scales(p)
-    segs = get_segments(p, region, min_len=8.0)
-    ws = [w for w in words(p, region) if DIM_RE.match(w["text"])]
+    page_scales, segs, all_words = page_geometry(a.pdf, a.page, region)
+    scales = [a.scale] if a.scale else page_scales
+    ws = [w for w in all_words if DIM_RE.match(w["text"])]
     ws = [w for w in ws if int(w["text"]) >= a.min_value]
+    near = _index_segments(segs)
 
     matches = []
     for w in ws:
@@ -300,7 +430,7 @@ def cmd_calibrate(a):
         want_angle = 0.0 if w["upright"] else 90.0
         th = max(w["size"], 1.0)
         best = None
-        for s in segs:
+        for s in near(w["upright"], w["cx"], w["cy"], th * 2.0):
             da = abs(s["angle"] - want_angle)
             da = min(da, 180 - da)
             if da > 3:
@@ -322,11 +452,13 @@ def cmd_calibrate(a):
                 best = (score, s, perp, t)
         if best:
             _, s, perp, t = best
-            paper_mm = s["len_pt"] * PT_TO_MM
+            wl, used_witness = witness_length(near, s)
+            paper_mm = wl * PT_TO_MM
             matches.append({"printed": printed, "text_xy": (round(w["cx"], 1), round(w["cy"], 1)),
                             "seg": (round(s["x0"], 1), round(s["y0"], 1),
                                     round(s["x1"], 1), round(s["y1"], 1)),
-                            "paper_mm": paper_mm, "implied_scale": printed / paper_mm})
+                            "paper_mm": paper_mm, "implied_scale": printed / paper_mm,
+                            "witness": used_witness})
 
     report = {"page": a.page, "region": region, "scales_on_sheet": scales,
               "dimension_texts": len(ws), "matched": len(matches)}
@@ -348,7 +480,19 @@ def cmd_calibrate(a):
         report["verdict"] = "CALIBRATED"
         report["calibrated_scale"] = best["scale"]
     elif not scales and implied:
-        report["verdict"] = "NO SCALE STRING - scale inferred only, NOT verified"
+        # "As indicated" sheets print no scale. Test every standard scale against
+        # the printed dimensions; accept one only on the same agreement rule.
+        trial = []
+        for sc in STANDARD_SCALES:
+            ok = sum(1 for m in matches if abs(m["implied_scale"] / sc - 1) <= a.tol)
+            trial.append((ok, sc))
+        ok, sc = max(trial)
+        if ok >= max(a.min_agree, 5) and ok >= 0.5 * len(matches):
+            report["verdict"] = "CALIBRATED - scale inferred from printed dimensions (none printed)"
+            report["calibrated_scale"] = sc
+            report["by_scale"] = [{"scale": sc, "agree": ok, "of": len(matches), "inferred": True}]
+        else:
+            report["verdict"] = "NO SCALE STRING - scale inferred only, NOT verified"
     else:
         report["verdict"] = "UNRELIABLE - do not measure from geometry on this sheet/region"
     if len(scales) > 1:

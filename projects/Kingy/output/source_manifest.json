@@ -1,0 +1,22 @@
+{
+  "source": "drawing_drop_zone",
+  "job": "Kingy",
+  "index_updated_at": "2026-11-26T02:44:31.278Z",
+  "restored_at": "2026-11-26T02:52:23Z",
+  "scope": "whole pack",
+  "files_in_index": 1,
+  "files_restored": 1,
+  "restored": [
+    {
+      "file_id": "fa80ca0fb84f514e4",
+      "path": "drawings/Architectural Docs Reduced.pdf",
+      "size": 70533522,
+      "sha256": "901dbb2e0501877b68c6e2d9bc4e5224ccc40a6f2a4ec1acb544ce59ffd98038",
+      "sha256_verified": true,
+      "parts": 471,
+      "uploaded_at": "2026-11-26T02:44:31.278Z"
+    }
+  ],
+  "not_restored": [],
+  "not_requested": []
+}
