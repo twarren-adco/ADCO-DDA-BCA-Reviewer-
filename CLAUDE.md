@@ -45,7 +45,32 @@ assessment, access audit or certification. Never describe it as one.
    values, personal staff data, credentials, unreleased financials), flag it
    once to the user and suggest redaction before continuing.
 
-## Where drawings come from: the Drawing Drop Zone
+## Where documents come from
+
+### 1. SharePoint / OneDrive (Microsoft 365 connector): find and read
+
+Tested 2026-11-26: Microsoft issues the connector a token (Files.Read.All,
+Sites.Read.All). Use it first whenever the user names a project, folder or file.
+
+- `sharepoint_folder_search` / `sharepoint_search` to find the pack, then
+  `read_resource` on the folder URI to list every sheet with its size. Use
+  this to build the sheet list and spot revisions (file names, dates).
+- `read_resource` on a file (with `startPage`/`endPage`) returns the PDF's
+  **text only**: dimension strings, tags, schedules, notes, title block, scale.
+  That is enough for door and window schedules, general notes, area
+  schedules, and for **consultant reports and standards held on SharePoint**
+  (quote them verbatim with file name and page).
+- It does **not** return the PDF file, the linework or an image. So it can't
+  be used for `calibrate`, `measure`, `segments` or `render`, and text pulled
+  out of a sheet has lost its position. Never infer what a dimension measures
+  from connector text alone. A finding based only on connector text is
+  `Unable to verify` unless the printed text is itself unambiguous (e.g. a
+  schedule row "D12 clear opening 920").
+- Before reading, check the folder is the right job and revision. The
+  connector reaches everything the user can see, including commercial
+  folders: open only the drawings, reports and standards the review needs.
+
+### 2. The Drawing Drop Zone: sheets that need scaling or looking at
 
 Drawings and consultant reports **never go into git** (`projects/*/drawings/` and
 `projects/*/reports/` are git-ignored). People drop them once on the Drawing
@@ -69,6 +94,11 @@ To restore a job's files into this container:
 
 If the job doesn't exist on the page, ask the user to create it and drop the
 pack. Never ask them to commit drawings to the repository.
+
+Working method: list and read the pack through SharePoint first, then give the
+user a short list of the sheets that need geometry (GA plans, wet-area and
+accessible-WC details, ramp and stair sections, car park layouts) and ask them
+to drop just those, or the combined set, on the drop zone.
 
 ## Sessions end: save progress as you go
 
