@@ -53,4 +53,18 @@ PY
 python3 tools/dropzone.py restore --from "$T/dz2" --job _selftest2 >/dev/null || fail "asset-format restore"
 [ -f "projects/_selftest2/drawings/Pack [p1].pdf" ] && [ -f "projects/_selftest2/drawings/Pack [p2].pdf" ] || fail "chunk names"
 rm -rf projects/_selftest2
+# over-size sheet stored as base64 text parts: restore must rebuild identical bytes
+python3 - "$T" <<'PY'
+import base64,hashlib,json,os,pathlib,sys
+T=pathlib.Path(sys.argv[1]); d=T/"dz3"; (d/"jobs/X/files").mkdir(parents=True); (d/"assets").mkdir()
+raw=(T/"s.pdf").read_bytes()+os.urandom(5000); half=len(raw)//2
+(d/"assets/p1.txt").write_text(base64.b64encode(raw[:half]).decode()); (d/"assets/p2.txt").write_text(base64.b64encode(raw[half:]).decode())
+(T/"big.bin").write_bytes(raw)
+idx={"format":2,"files":[{"file_id":"fb","path":"drawings/Big.pdf","pages_total":None,"pages_label":"whole file","sha256":hashlib.sha256(raw).hexdigest(),
+ "chunks":[{"parts":["p1","p2"],"encoding":"base64","pages":None,"size":len(raw),"sha256":hashlib.sha256(raw).hexdigest()}]}]}
+(d/"jobs/X/files/_index.json").write_text(json.dumps(idx))
+PY
+python3 tools/dropzone.py restore --from "$T/dz3" --job _selftest3 >/dev/null || fail "text-part restore"
+cmp -s projects/_selftest3/drawings/Big.pdf "$T/big.bin" || fail "text-part bytes differ"
+rm -rf projects/_selftest3
 echo "all self-tests passed"

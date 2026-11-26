@@ -80,6 +80,9 @@ Drop Zone page, under a job code:
 
 Storage: the page's file store (1 GB in total, 20 MB per file). A big PDF, or
 a chosen set of sheets from one, is stored as page-range PDFs under 18 MB each.
+A single sheet over 18 MB (heavy images), or a PDF the page can't open, is
+stored as base64 text parts and rebuilt byte-exact on restore. Such sheets are
+usually raster-heavy: expect the scale check to refuse them.
 The job index (`jobs/<job>/files/_index` in the page database) lists each
 file, its chunks, their sheet numbers and fingerprints. The database itself
 holds only about 100 MB, so files are never stored there any more.

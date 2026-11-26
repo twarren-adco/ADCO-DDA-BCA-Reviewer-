@@ -170,6 +170,7 @@ td.num { text-align: right; white-space: nowrap; }
      size, SHA-256. It is written LAST, so a session never sees half-stored files.
    - Older entries stored as base64 parts in the db ("legacy") are still listed and removable. */
 const CHUNK_LIMIT = 18 * 1024 * 1024;   // under the 20 MiB asset cap with headroom
+const RAW_PART = 14 * 1024 * 1024;      // an over-size sheet is stored as base64 text parts: 14 MB -> ~18.7 MB of text
 const LEGACY_POOL = 4;
 const $ = (id) => document.getElementById(id);
 const state = { db: null, assets: null, job: "", index: { files: [] }, busy: false, staged: [], usage: null };
@@ -181,6 +182,30 @@ const fileIdFor = async (path) => "f" + (await sha256(new TextEncoder().encode(p
 const legacyPartId = (fid, n) => `${fid}_${String(n).padStart(4, "0")}`;
 const cleanJob = (s) => String(s || "").trim().replace(/\s+/g, "-").replace(/[^A-Za-z0-9_\-.]/g, "").replace(/^\.+/, "").slice(0, 40);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+function toBase64(bytes) {
+  let out = "";
+  for (let i = 0; i < bytes.length; i += 32766) out += btoa(String.fromCharCode.apply(null, bytes.subarray(i, i + 32766)));
+  return out;
+}
+/* Store bytes in the asset store. Up to CHUNK_LIMIT: one PDF asset. Bigger (a single
+   sheet with heavy images, or a PDF the page can't open): several text/plain assets
+   holding base64 of consecutive byte ranges. The text types are stored byte-for-byte
+   and never inspected, so the session can rebuild the exact file and check its hash. */
+async function storeBytes(bytes, label) {
+  if (bytes.length <= CHUNK_LIMIT) {
+    const r = await withRetry(() => state.assets.upload(new Blob([bytes], { type: "application/pdf" }), { type: "application/pdf" }));
+    return { asset_id: r.id };
+  }
+  const parts = [];
+  const n = Math.ceil(bytes.length / RAW_PART);
+  for (let i = 0; i < n; i++) {
+    setStatus(`${label}: large sheet, part ${i + 1} of ${n}`);
+    const text = toBase64(bytes.subarray(i * RAW_PART, (i + 1) * RAW_PART));
+    const r = await withRetry(() => state.assets.upload(new Blob([text], { type: "text/plain" }), { type: "text/plain" }));
+    parts.push(r.id);
+  }
+  return { parts, encoding: "base64" };
+}
 
 function setStatus(text, kind) { const s = $("status"); s.textContent = text; s.className = "status" + (kind ? " " + kind : ""); }
 function setBar(pct) { $("barFill").style.width = Math.max(0, Math.min(100, pct)) + "%"; }
@@ -201,7 +226,7 @@ async function withRetry(fn) {
 function explain(e) {
   const code = e && e.code, msg = e && e.message ? e.message : "";
   if (code === "quota_or_state" || code === "quota_exceeded") return "The drop zone is full" + (msg ? ` (${msg})` : "") + ". Remove a finished job's files, then try again.";
-  if (code === "too_large") return "One sheet is larger than 20 MB on its own, so it can't be stored. Export that sheet at a lower image resolution and try again.";
+  if (code === "too_large") return "A part was over the 20 MB per-file limit. Please tell the reviewer team; this shouldn't happen.";
   if (code === "not_granted" || code === "invalid_argument") return "You don't have permission to add files here. Ask the page owner to give you Editor access." + (msg ? ` (${msg})` : "");
   if (code === "revoked") return "Access to the drop zone was withdrawn. Reload the page.";
   return msg || "Something went wrong. Try again.";
@@ -273,7 +298,8 @@ function paintFiles() {
     const [folder, ...rest] = f.path.split("/");
     const stored = f.chunks ? f.chunks.reduce((t, c) => t + c.size, 0) : (f.size || 0);
     total += stored;
-    const sheets = f.chunks ? (f.pages_total && f.pages_selected === f.pages_total ? `all ${f.pages_total}` : `${f.pages_label || ""} of ${f.pages_total || "?"}`) : "all (older upload)";
+    const sheets = !f.chunks ? "all (older upload)" : f.pages_label === "whole file" ? "whole file" :
+      (f.pages_total && f.pages_selected === f.pages_total ? `all ${f.pages_total}` : `${f.pages_label || ""} of ${f.pages_total || "?"}`);
     const cells = [folder === "reports" ? "Report" : "Drawing", rest.join("/"), sheets, human(stored),
       f.uploaded_at ? new Date(f.uploaded_at).toLocaleString() : ""];
     cells.forEach((v, i) => {
@@ -353,8 +379,9 @@ async function stage(list) {
       try {
         const doc = await PDFLib.PDFDocument.load(buf, { ignoreEncryption: true, updateMetadata: false });
         pages = doc.getPageCount();
-      } catch (e) { err = "This PDF couldn't be opened (" + (e.message || e) + ")."; }
-      state.staged.push({ file, rel, dest, pages, err, sel: "all" });
+      } catch (e) { err = ""; }
+      // A PDF the page can't open (damaged, unusual encryption) is still stored, whole.
+      state.staged.push({ file, rel, dest, pages, err, whole: pages === null, sel: "all" });
     }
     setStatus(`Choose which sheets to store, then press Store selected sheets.`);
   } catch (e) { setStatus(explain(e), "err"); }
@@ -362,6 +389,7 @@ async function stage(list) {
 }
 
 function estimate(s) {
+  if (s.whole) return s.file.size > CHUNK_LIMIT ? s.file.size * 4 / 3 : s.file.size;
   if (!s.pages) return 0;
   try { return s.file.size * parseRanges(s.sel, s.pages).length / s.pages; } catch { return 0; }
 }
@@ -375,7 +403,7 @@ function paintStage() {
     const td2 = document.createElement("td"); td2.className = "num"; td2.textContent = human(s.file.size); tr.appendChild(td2);
     const td3 = document.createElement("td"); td3.className = "num"; td3.textContent = s.pages ?? "–"; tr.appendChild(td3);
     const td4 = document.createElement("td");
-    if (s.err) { td4.className = "warn"; td4.textContent = s.err; bad = true; }
+    if (s.whole) { td4.className = "warn"; td4.textContent = "Sheets can't be read here, so the whole file will be stored."; }
     else {
       const inp = document.createElement("input"); inp.type = "text"; inp.className = "pages"; inp.id = "sel" + k;
       inp.value = s.sel; inp.setAttribute("aria-label", `Sheets to store from ${s.rel}`);
@@ -396,7 +424,7 @@ function paintEstimate() {
   let total = 0, problems = [];
   state.staged.forEach((s, k) => {
     const cell = $("est" + k); if (!cell) return;
-    if (s.err) { cell.textContent = "–"; return; }
+    if (s.whole) { const e = estimate(s); total += e; cell.textContent = "≈ " + human(e); return; }
     try { parseRanges(s.sel, s.pages); const e = estimate(s); total += e; cell.textContent = "≈ " + human(e); cell.className = "num"; }
     catch (e) { cell.textContent = e.message; cell.className = "num warn"; problems.push(s.rel); }
   });
@@ -406,7 +434,7 @@ function paintEstimate() {
   if (total > free) note += ". Not enough room: choose fewer sheets or remove a finished job.";
   $("stageNote").textContent = note;
   $("stageNote").className = total > free || problems.length ? "warn" : "muted";
-  $("storeBtn").disabled = state.busy || !state.staged.some((s) => !s.err) || problems.length > 0 || total > free;
+  $("storeBtn").disabled = state.busy || !state.staged.length || problems.length > 0 || total > free;
 }
 
 /* ---------- split and upload ---------- */
@@ -425,7 +453,7 @@ async function* chunks(src, idxs, avgPageBytes) {
     const g = queue.shift();
     const bytes = await buildChunk(src, g);
     if (bytes.length <= CHUNK_LIMIT) { yield { idxs: g, bytes }; continue; }
-    if (g.length === 1) { const e = new Error(`Sheet ${g[0] + 1} is ${human(bytes.length)} on its own, over the 20 MB limit.`); e.code = "too_large"; throw e; }
+    if (g.length === 1) { yield { idxs: g, bytes, oversize: true }; continue; }
     const mid = Math.ceil(g.length / 2);
     queue.unshift(g.slice(0, mid), g.slice(mid));
   }
@@ -438,7 +466,7 @@ async function storeStaged() {
   const byId = Object.fromEntries(state.index.files.map((f) => [f.file_id, f]));
   const replaced = [];
   let done = 0, stored = 0;
-  const work = state.staged.filter((s) => !s.err);
+  const work = state.staged.slice();
   const totalEst = work.reduce((t, s) => t + estimate(s), 0) || 1;
   let sent = 0;
   try {
@@ -448,13 +476,17 @@ async function storeStaged() {
       setStatus(`Preparing ${s.rel}…`);
       const buf = await s.file.arrayBuffer();
       const fileSha = await sha256(buf);
-      const idxs = parseRanges(s.sel, s.pages);
+      const idxs = s.whole ? [] : parseRanges(s.sel, s.pages);
       const prior = byId[fid];
       if (prior && prior.sha256 === fileSha && prior.pages_label === rangesLabel(idxs) && prior.chunks) {
         done++; continue;   // identical file and selection already stored
       }
       const chunkRows = [];
-      if (idxs.length === s.pages && buf.byteLength <= CHUNK_LIMIT) {
+      if (s.whole) {
+        const r = await storeBytes(new Uint8Array(buf), s.rel);
+        chunkRows.push({ ...r, pages: null, size: buf.byteLength, sha256: fileSha, original: true });
+        sent += buf.byteLength; setBar(Math.min(99, sent / totalEst * 100));
+      } else if (idxs.length === s.pages && buf.byteLength <= CHUNK_LIMIT) {
         // whole file fits: store the original bytes untouched
         const r = await withRetry(() => state.assets.upload(new Blob([buf], { type: "application/pdf" }), { type: "application/pdf" }));
         chunkRows.push({ asset_id: r.id, pages: Array.from({ length: s.pages }, (_, i) => i + 1), size: buf.byteLength, sha256: fileSha, original: true });
@@ -467,14 +499,14 @@ async function storeStaged() {
           n++;
           setStatus(`Storing ${s.rel}: part ${n}, sheets ${rangesLabel(c.idxs)} (${human(c.bytes.length)})`);
           const sha = await sha256(c.bytes);
-          const r = await withRetry(() => state.assets.upload(new Blob([c.bytes], { type: "application/pdf" }), { type: "application/pdf" }));
-          chunkRows.push({ asset_id: r.id, pages: c.idxs.map((i) => i + 1), size: c.bytes.length, sha256: sha });
+          const r = await storeBytes(c.bytes, `Storing ${s.rel}, sheet ${c.idxs[0] + 1}`);
+          chunkRows.push({ ...r, pages: c.idxs.map((i) => i + 1), size: c.bytes.length, sha256: sha });
           sent += c.bytes.length; setBar(Math.min(99, sent / totalEst * 100));
         }
       }
       if (prior) replaced.push(prior);
       byId[fid] = { file_id: fid, path, size: s.file.size, sha256: fileSha, pages_total: s.pages,
-                    pages_selected: idxs.length, pages_label: rangesLabel(idxs), chunks: chunkRows,
+                    pages_selected: s.whole ? null : idxs.length, pages_label: s.whole ? "whole file" : rangesLabel(idxs), chunks: chunkRows,
                     storage: "assets", uploaded_at: new Date().toISOString() };
       stored++; done++;
     }
@@ -498,7 +530,7 @@ async function storeStaged() {
 /* ---------- removal and cleanup ---------- */
 async function deleteStorage(f) {
   if (f.chunks) {
-    for (const c of f.chunks) await withRetry(() => state.assets.delete(c.asset_id)).catch((e) => { if (e && e.code !== "not_found") throw e; });
+    for (const c of f.chunks) for (const id of (c.parts || [c.asset_id])) await withRetry(() => state.assets.delete(id)).catch((e) => { if (e && e.code !== "not_found") throw e; });
   } else {
     const tasks = [];
     for (let n = 0; n < (f.parts || 1); n++) tasks.push(() => state.db.doc(`jobs/${state.job}/files/${legacyPartId(f.file_id, n)}`).delete());
@@ -528,7 +560,7 @@ async function cleanOrphans() {
     for (const j of jobs) {
       const s = await state.db.doc(`jobs/${j}/files/_index`).get();
       const files = s.exists && Array.isArray(s.data().files) ? s.data().files : [];
-      for (const f of files) for (const c of (f.chunks || [])) keep.add(c.asset_id);
+      for (const f of files) for (const c of (f.chunks || [])) for (const id of (c.parts || [c.asset_id])) keep.add(id);
     }
     const r = await state.assets.list();
     const orphans = (r.assets || []).filter((a) => !keep.has(a.id));

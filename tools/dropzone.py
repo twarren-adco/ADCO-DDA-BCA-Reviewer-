@@ -152,26 +152,36 @@ def restore_chunks(entry, src, dest):
     except DropzoneError as e:
         return [{"file_id": fid, "path": path, "reason": str(e)}]
     chunks = entry.get("chunks") or []
-    single = len(chunks) == 1 and len(chunks[0].get("pages", [])) == entry.get("pages_total")
+    single = len(chunks) == 1 and (chunks[0].get("pages") is None
+                                   or len(chunks[0].get("pages") or []) == entry.get("pages_total"))
     rows = []
     for c in chunks:
-        f = find_asset(src, c["asset_id"])
-        if f is None:
-            rows.append({"file_id": fid, "path": path, "asset_id": c["asset_id"],
+        ids = c.get("parts") or [c["asset_id"]]
+        files = [find_asset(src, i) for i in ids]
+        if any(f is None for f in files):
+            rows.append({"file_id": fid, "path": path, "asset_id": ids,
                          "reason": "asset not fetched (Artifact read path=<asset id>)"})
             continue
-        raw = f.read_bytes()
+        if c.get("parts"):
+            try:
+                raw = b"".join(base64.b64decode(f.read_bytes().strip(), validate=True) for f in files)
+            except (binascii.Error, ValueError):
+                rows.append({"file_id": fid, "path": path, "asset_id": ids,
+                             "reason": "undecodable: text parts are not valid base64"})
+                continue
+        else:
+            raw = files[0].read_bytes()
         digest = hashlib.sha256(raw).hexdigest()
         if digest != c.get("sha256"):
             rows.append({"file_id": fid, "path": path, "asset_id": c["asset_id"],
                          "reason": "sha256_mismatch: stored chunk differs from what was dropped"})
             continue
-        out_rel = chunk_name(rel, c["pages"], single)
+        out_rel = chunk_name(rel, c.get("pages") or [], single)
         target = dest / out_rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(raw)
         rows.append({"file_id": fid, "path": path, "local": out_rel.as_posix(),
-                     "original_pages": c["pages"], "size": len(raw), "sha256": digest,
+                     "original_pages": c.get("pages"), "stored_as": "base64 text parts" if c.get("parts") else "pdf", "size": len(raw), "sha256": digest,
                      "sha256_verified": True, "uploaded_at": entry.get("uploaded_at"),
                      "pages_total": entry.get("pages_total")})
     return rows
@@ -185,7 +195,8 @@ def cmd_plan(a):
         if wanted is not None and e.get("path") not in wanted:
             continue
         if e.get("chunks"):
-            ids += [c["asset_id"] for c in e["chunks"] if not find_asset(pathlib.Path(a.source), c["asset_id"])]
+            for c in e["chunks"]:
+                ids += [i for i in (c.get("parts") or [c["asset_id"]]) if not find_asset(pathlib.Path(a.source), i)]
         else:
             missing = [pid for pid in part_ids(e) if pid not in docs]
             if missing:
