@@ -212,6 +212,23 @@ def cmd_info(a):
 
 
 def cmd_text(a):
+    try:
+        import pymupdf  # same top-left page coordinates as render/calibrate
+        doc = pymupdf.open(a.pdf)
+        pg = doc[a.page - 1]
+        clip = pymupdf.Rect(*parse_region(a.region)) if a.region else None
+        if a.plain:
+            print(pg.get_text("text", clip=clip, sort=True))
+            return
+        out = [{"text": w[4], "x0": w[0], "top": w[1], "x1": w[2], "bottom": w[3]}
+               for w in pg.get_text("words", clip=clip, sort=True)]
+        if emit(out, a.json):
+            return
+        for w in out:
+            print(f"({w['x0']:7.1f},{w['top']:7.1f})-({w['x1']:7.1f},{w['bottom']:7.1f}) {w['text']}")
+        return
+    except ImportError:
+        pass
     pdf, p = open_page(a.pdf, a.page)
     ws = words(p, parse_region(a.region))
     if emit([{k: w[k] for k in ("text", "x0", "top", "x1", "bottom", "upright", "size")}
@@ -228,12 +245,19 @@ def cmd_text(a):
 
 
 def cmd_find(a):
-    pdf = pdfplumber.open(a.pdf)
     rx = re.compile(a.pattern, re.I)
-    pages = range(1, len(pdf.pages) + 1) if a.page is None else [a.page]
+    try:
+        import pymupdf
+        n_pages = len(pymupdf.open(a.pdf))
+        get_words = lambda n: page_geometry(a.pdf, n, None, min_len=1e9)[2]
+    except ImportError:
+        pdf = pdfplumber.open(a.pdf)
+        n_pages = len(pdf.pages)
+        get_words = lambda n: words(pdf.pages[n - 1])
+    pages = range(1, n_pages + 1) if a.page is None else [a.page]
     hits = []
     for n in pages:
-        for w in words(pdf.pages[n - 1]):
+        for w in get_words(n):
             if rx.search(w["text"]):
                 hits.append({"page": n, "text": w["text"], "cx": round(w["cx"], 1),
                              "cy": round(w["cy"], 1), "upright": w["upright"]})
@@ -245,13 +269,12 @@ def cmd_find(a):
 
 
 def cmd_segments(a):
-    pdf, p = open_page(a.pdf, a.page)
     region = parse_region(a.region)
     if a.near:
         x, y = parse_point(a.near)
         r = a.radius
         region = (x - r, y - r, x + r, y + r)
-    segs = get_segments(p, region, a.min_len)
+    _, segs, _ = page_geometry(a.pdf, a.page, region, min_len=a.min_len)
     if a.near:
         x, y = parse_point(a.near)
         for s in segs:
@@ -418,7 +441,9 @@ def witness_length(near, s):
 
 def cmd_calibrate(a):
     region = parse_region(a.region)
-    page_scales, segs, all_words = page_geometry(a.pdf, a.page, region)
+    # short lines are kept so witness lines (often ~2 mm) can be found;
+    # the dimension line itself must still be >= 8 pt
+    page_scales, segs, all_words = page_geometry(a.pdf, a.page, region, min_len=1.5)
     scales = [a.scale] if a.scale else page_scales
     ws = [w for w in all_words if DIM_RE.match(w["text"])]
     ws = [w for w in ws if int(w["text"]) >= a.min_value]
@@ -431,6 +456,8 @@ def cmd_calibrate(a):
         th = max(w["size"], 1.0)
         best = None
         for s in near(w["upright"], w["cx"], w["cy"], th * 2.0):
+            if s["len_pt"] < 8.0:
+                continue
             da = abs(s["angle"] - want_angle)
             da = min(da, 180 - da)
             if da > 3:

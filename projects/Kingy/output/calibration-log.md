@@ -26,3 +26,13 @@ Method: `tools/drawing.py calibrate` (whole sheet). Each printed dimension is pa
 Notes:
 - Roughly 10–20% of dimensions on passing sheets were paired with the wrong line (e.g. a grid line or tick); these are matching noise, not drawing errors, and do not affect the verdict.
 - At 1:300–1:400 the sheets are suitable for overall layout, travel distances, car park and path-of-travel checks, not for door clear widths, circulation spaces or sanitary layouts (need 1:50 / 1:20).
+
+## Bathroom.pdf – PLA-AR-A-4801 C6, Wet Area Fitouts B01 (dropped 26/11/26)
+
+| Viewport | Printed scale | Dims matched | Agree | Result |
+|---|---|---|---|---|
+| Whole sheet (plan, RCP, 4 elevations, 3D) | 1:20 | 53 | 39/53 | CALIBRATED 1:20 |
+| Plan only (region 40,180,560,800) | 1:20 | 23 | 21/23 | CALIBRATED 1:20 – measurement resolution ≈ ±6 mm (0.3 mm on paper) |
+
+Plan discrepancies: the two "150" dimensions (vanity to right wall, top right) measure ≈170 mm on the drawing. Printed figure governs; worth a query.
+Remaining whole-sheet disagreements are on the elevations, where several numbers (900, 1200, 1920, 2100) are level/height callouts paired with short tick marks, not dimensions.
