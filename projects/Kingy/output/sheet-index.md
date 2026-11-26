@@ -1,28 +1,587 @@
-# Sheet index – Kingy (Uniting Kingscliff, Plus Architecture 20704)
+# Sheet index – Kingy
 
-Source: `drawings/Architectural Docs Reduced.pdf` (70.5 MB, 18 pages, SHA-256 901dbb2e…, restored from the drop zone and verified). All sheets A1 (841 × 594 mm), issued FOR TENDER 24/07/26.
+581 sheets from the drop zone (see source_manifest.json).
 
-| Page | Drawing | Title | Rev | Scale (title block) | Content |
-|---|---|---|---|---|---|
-| 1 | PLA-AR-OA-0002 | Site Plan | C5 | As indicated | vector |
-| 2 | PLA-AR-OA-0005 | Site Plan – Easements | C5 | As indicated | vector |
-| 3 | PLA-AR-OA-0010 | Demolition Plan | C2 | 1:500 | mostly raster (≈53% image) – not measurable |
-| 4 | PLA-AR-OA-0010 | Demolition Plan (duplicate of p3) | C2 | 1:500 | mostly raster (≈53% image) – not measurable |
-| 5 | PLA-AR-OA-0011 | Temporary Works Plan | C4 | As indicated | mostly raster (≈53% image) – not measurable |
-| 6 | PLA-AR-OA-0012 | Separable Portions | C2 | As indicated | mostly raster (≈53% image) – not measurable |
-| 7 | PLA-AR-OA-1000 | GA Plan – Ground Floor | C8 | As indicated | vector |
-| 8 | PLA-AR-OA-1003 | GA Plan – Level 03 | C6 | 1:400 | vector |
-| 9 | PLA-AR-OA-1004 | GA Plan – Roof | C5 | 1:400 | vector |
-| 10 | PLA-AR-OA-1050 | GA – Ground – Stage 1 | C6 | 1:300 | vector |
-| 11 | PLA-AR-OA-1050B | GA – Basement – Stage 1 | C6 | As indicated | vector |
-| 12 | PLA-AR-OA-1051 | GA – Level 01 – Stage 1 | C6 | 1:300 | vector |
-| 13 | PLA-AR-OA-1052 | GA – Level 02 – Stage 1 | C6 | 1:300 | vector |
-| 14 | PLA-AR-OA-1053 | GA – Level 03 – Stage 1 | C6 | 1:300 | vector |
-| 15 | PLA-AR-OA-1054 | GA – Roof – Stage 1 | C5 | 1:300 | vector |
-| 16 | PLA-AR-OA-1201 | Basement Fire Resistance Plan | C4 | As indicated | vector |
-| 17 | PLA-AR-OA-1300 | Concrete Profile – Ground Floor | C5 | 1:400 | vector |
-| 18 | PLA-AR-OA-1300B | Concrete Profile – Basement | C5 | 1:400 | vector |
-
-Notes:
-- Page 4 repeats page 3 (same drawing, revision and content).
-- Not in this pack: overall GA Levels 01–02 (OA-1001/1002), enlarged plans, wet-area/accessible WC layouts, sections, details, door and window schedules.
+| Sheet | Drawing | Title | Rev | Scale | Paper | Content |
+|---|---|---|---|---|---|---|
+| 1 | PLA-AR-OA-0000 | COVER SHEET | C7 |  |  | mixed |
+| 2 | PLA-AR-OA-0001 | DRAWING REGISTER | C6 |  |  | vector |
+| 3 | PLA-AR-OA-0002 | SITE PLAN | C5 | As indicated | A1 | vector |
+| 4 | PLA-AR-OA-0004 | SITE SETOUT PLAN | C3 | 1 : 400 | A1 | vector |
+| 5 | PLA-AR-OA-0005 | SITE PLAN EASEMENTS | C5 | As indicated | A1 | vector |
+| 6 | PLA-AR-OA-0006 | SUBSTATION PLANS | C4 | 1 : 100 | A1 | vector |
+| 7 | PLA-AR-OA-0007 | SUBSTATION ELEVATION | C4 | 1 : 100 | A1 | mixed |
+| 8 | PLA-AR-OA-0007 | SUBSTATION ELEVATION | C4 | 1 : 100 | A1 | mixed |
+| 9 | PLA-AR-OA-0008 | PRECAST EDGE EXTRUSION SCHEDULE - SHEET 01 | C3 | 1 : 5 | A1 | vector |
+| 10 | PLA-AR-OA-0009 | PRECAST EDGE EXTRUSION SCHEDULE - SHEET 02 | C3 | 1 : 5 | A1 | vector |
+| 11 | PLA-AR-OA-0009 | PRECAST EDGE EXTRUSION SCHEDULE - SHEET 02 | C3 | 1 : 5 | A1 | vector |
+| 12 | PLA-AR-OA-0010 | DEMOLITION PLAN | C2 | 1 : 500 | A1 | raster |
+| 13 | PLA-AR-OA-0010 | DEMOLITION PLAN | C2 | 1 : 500 | A1 | raster |
+| 14 | PLA-AR-OA-0011 | TEMPORARY WORKS PLAN | C4 | As indicated | A1 | raster |
+| 15 | PLA-AR-OA-0012 | SEPARABLE PORTIONS | C2 | As indicated | A1 | raster |
+| 16 | PLA-AR-OA-1000 | GENERAL ARRANGEMENT PLAN - GROUND FLOOR | C8 | As indicated | A1 | vector |
+| 17 | PLA-AR-OA-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | C6 | 1 : 400 | A1 | vector |
+| 18 | PLA-AR-OA-1004 | GENERAL ARRANGEMENT PLAN - ROOF | C5 | 1 : 400 | A1 | vector |
+| 19 | PLA-AR-OA-1050 | GENERAL ARRANGEMENT PLAN - GROUND - STAGE 1 | C6 | 1 : 300 | A1 | vector |
+| 20 | PLA-AR-OA-1050B | GENERAL ARRANGEMENT PLAN - BASEMENT - STAGE 1 | C6 | As indicated | A1 | vector |
+| 21 | PLA-AR-OA-1051 | GENERAL ARRANGEMENT PLAN - LEVEL 01 - STAGE 1 | C6 | 1 : 300 | A1 | vector |
+| 22 | PLA-AR-OA-1052 | GENERAL ARRANGEMENT PLAN - LEVEL 02 - STAGE 1 | C6 | 1 : 300 | A1 | vector |
+| 23 | PLA-AR-OA-1053 | GENERAL ARRANGEMENT PLAN - LEVEL 03 - STAGE 1 | C6 | 1 : 300 | A1 | vector |
+| 24 | PLA-AR-OA-1054 | GENERAL ARRANGEMENT PLAN - ROOF - STAGE 1 | C5 | 1 : 300 | A1 | vector |
+| 25 | PLA-AR-OA-1201 | OVERALL BASEMENT FIRE RESISTANCE PLAN - BASEMENT | C4 | As indicated | A1 | vector |
+| 26 | PLA-AR-OA-1300 | CONCRETE PROFILE - GROUND FLOOR | C5 | 1 : 400 | A1 | vector |
+| 27 | PLA-AR-OA-1300B | CONCRETE PROFILE PLAN - BASEMENT | C5 | 1 : 400 | A1 | vector |
+| 28 | PLA-AR-OA-1400 | WALL TYPE SCHEDULE SHEET 01 |  | 1:10 | A1 | vector |
+| 29 | PLA-AR-OA-1402 | WALL TYPE SCHEDULE SHEET 03 |  | 1:10 | A1 | vector |
+| 30 | PLA-AR-OA-1403 | WALL TYPE SCHEDULE SHEET 04 |  | 1:10 | A1 | vector |
+| 31 | PLA-AR-OA-1404 | WALL TYPE SCHEDULE SHEET 05 |  | 1:10 | A1 | vector |
+| 32 | PLA-AR-OA-1405 | WALL TYPE SCHEDULE SHEET 06 |  | 1:10 | A1 | vector |
+| 33 | PLA-AR-OA-2000 | ELEVATIONS | C3 | As indicated | A1 | mixed |
+| 34 | PLA-AR-OA-2100 | SECTIONS | C2 | As indicated | A1 | mixed |
+| 35 | PLA-AR-OA-5000 | FACADE SECTION TYPICAL DETAILS - SHEET 01 | C2 | 1 : 5 | A1 | vector |
+| 36 | PLA-AR-OA-5001 | FACADE SECTION TYPICAL DETAILS - SHEET 02 | C3 | As indicated | A1 | vector |
+| 37 | PLA-AR-OA-5002 | FACADE SECTION TYPICAL DETAILS - SHEET 03 | C2 | 1 : 2 | A1 | vector |
+| 38 | PLA-AR-OA-5050 | FACADE PLAN TYPICAL DETAILS - SHEET 01 | C2 | 1 : 2 | A1 | vector |
+| 39 | PLA-AR-OA-5100 | EXTERNAL DETAILS - SHEET 01 | C2 | 1 : 10 | A1 | vector |
+| 40 | PLA-AR-OA-5101 | EXTERNAL DETAILS - SHEET 02 | C2 | 1 : 10 | A1 | vector |
+| 41 | PLA-AR-OA-5102 | EXTERNAL DETAILS - SHEET 03 | C2 | 1 : 10 | A1 | vector |
+| 42 | PLA-AR-OA-5103 | EXTERNAL DETAILS - SHEET 04 | C2 | 1 : 10 | A1 | vector |
+| 43 | PLA-AR-OA-5104 | EXTERNAL DETAILS - SHEET 05 | C2 | 1 : 10 | A1 | vector |
+| 44 | PLA-AR-OA-5200 | WATERPROOFING DETAILS - SHEET 01 | C2 | 1 : 20 | A1 | vector |
+| 45 | PLA-AR-OA-5201 | WATERPROOFING DETAILS - SHEET 02 | C2 | 1 : 5 | A1 | mixed |
+| 46 | PLA-AR-OA-5300 | INTERNAL WALL DETAILS - SHEET 01 | C2 | 1 : 5 | A1 | vector |
+| 47 | PLA-AR-OA-5400 | FLOOR THRESHOLD DETAILS - SHEET 01 | C2 | 1 : 5 | A1 | vector |
+| 48 | PLA-AR-OA-5401 | FLOOR THRESHOLD DETAILS - SHEET 02 | C4 | 1 : 5 | A1 | vector |
+| 49 | PLA-AR-OA-5402 | FLOOR THRESHOLD DETAILS - SHEET 03 | C2 | 1 : 5 | A1 | vector |
+| 50 | PLA-AR-OA-5500 | DOOR DETAILS - SHEET 01 | C2 | 1 : 2 | A1 | vector |
+| 51 | PLA-AR-OA-5501 | DOOR DETAILS - SHEET 02 | C2 | 1 : 2 | A1 | vector |
+| 52 | PLA-AR-OA-5502 | DOOR DETAILS - SHEET 03 | C2 | 1 : 2 | A1 | vector |
+| 53 | PLA-AR-OA-5503 | DOOR DETAILS - SHEET 04 | C2 | As indicated | A1 | vector |
+| 54 | PLA-AR-OA-5600 | JOINERY DETAILS - SHEET 01 | C2 | 1 : 5 | A1 | vector |
+| 55 | PLA-AR-OA-5601 | JOINERY DETAILS - SHEET 02 | C2 | 1 : 2 | A1 | vector |
+| 56 | PLA-AR-OA-5602 | JOINERY DETAILS - SHEET 03 | C2 | As indicated | A1 | vector |
+| 57 | PLA-AR-OA-5700 | CEILING DETAILS - SHEET 01 | C2 | 1 : 5 | A1 | vector |
+| 58 | PLA-AR-OA-6001 | DOOR SCHEDULE - STAGE 1 |  |  |  | vector |
+| 59 | PLA-AR-OA-6002 | DOOR TYPE DETAILS | C3 | As indicated | A1 | vector |
+| 60 | PLA-AR-OA-6003 | OVERALL DOOR TYPE SCHEDULE | C3 | 1 : 100 | A1 | vector |
+| 61 | PLA-AR-OA-6004 | OVERALL DOOR TYPE SCHEDULE | C3 | 1 : 100 | A1 | vector |
+| 62 | PLA-AR-OA-6005 | OVERALL DOOR TYPE SCHEDULE | C3 | 1 : 100 | A1 | vector |
+| 63 | PLA-AR-OA-8000 | STORAGE SCHEDULE - SHEET 01 | C5 | 1 : 100 | A1 | vector |
+| 64 | PLA-AR-OA-8001 | STORAGE SCHEDULE - SHEET 02 | C3 |  |  | vector |
+| 65 | PLA-AR-OA-8100 | JOINERY SCHEDULE - SHEET 1 | C2 |  |  | vector |
+| 66 | PLA-AR-OA-8101 | JOINERY SCHEDULE - SHEET 2 | C2 |  |  | vector |
+| 67 | PLA-AR-OA-8102 | JOINERY SCHEDULE - SHEET 3 | C2 |  |  | vector |
+| 68 | PLA-AR-OA-8103 | JOINERY SCHEDULE - SHEET 4 | C2 |  |  | vector |
+| 69 | PLA-AR-OA-8103 | JOINERY SCHEDULE - SHEET 4 | C2 |  |  | vector |
+| 70 | PLA-AR-A-0000 | COVER SHEET | C6 |  |  | mixed |
+| 71 | PLA-AR-A-0001 | LEGEND SHEET | C3 | As indicated | A1 | mixed |
+| 72 | PLA-AR-A-0003 | DRAWING REGISTER | C6 |  |  | vector |
+| 73 | PLA-AR-A-1001 | GENERAL ARRANGEMENT PLAN - LEVEL 01 | C6 | 1 : 100 | A1 | vector |
+| 74 | PLA-AR-A-1002 | GENERAL ARRANGEMENT PLAN - ROOF | C5 | 1 : 100 | A1 | vector |
+| 75 | PLA-AR-A-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | C4 | As indicated | A1 | vector |
+| 76 | PLA-AR-A-1101 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 | C4 | As indicated | A1 | vector |
+| 77 | PLA-AR-A-1200 | FIRE RESISTANCE LEVEL PLANS - GROUND | C3 | 1 : 100 | A1 | vector |
+| 78 | PLA-AR-A-1201 | FIRE RESISTANCE LEVEL PLANS - LEVEL 01 | C3 | 1 : 100 | A1 | vector |
+| 79 | PLA-AR-A-1202X | FIRE RESISTANCE LEVEL PLANS - ROOF | C2 | 1 : 100 | A1 | vector |
+| 80 | PLA-AR-A-1300 | CONCRETE PROFILE PLANS - GROUND | C4 | 1 : 100 | A1 | vector |
+| 81 | PLA-AR-A-1301 | CONCRETE PROFILE PLANS - LEVEL 01 | C3 | 1 : 100 | A1 | vector |
+| 82 | PLA-AR-A-1400 | WALL SETOUT PLANS - GROUND | C3 | 1 : 100 | A1 | vector |
+| 83 | PLA-AR-A-1401 | WALL SETOUT PLANS - LEVEL 01 | C3 | 1 : 100 | A1 | vector |
+| 84 | PLA-AR-A-1402 | WALL SETOUT PLANS - ROOF | C3 | 1 : 100 | A1 | vector |
+| 85 | PLA-AR-A-1500 | WATERPROOFING PLANS - GROUND | C3 | 1 : 100 | A1 | mixed |
+| 86 | PLA-AR-A-1501 | WATERPROOFING PLANS - LEVEL 01 | C3 | 1 : 100 | A1 | mixed |
+| 87 | PLA-AR-A-1502 | WATERPROOFING PLANS - ROOF | C3 | 1 : 100 | A1 | mixed |
+| 88 | PLA-AR-A-2000 | ELEVATION - NORTH & SOUTH | C3 | 1 : 100 | A1 | raster |
+| 89 | PLA-AR-A-2001 | ELEVATION - EAST & WEST | C5 | 1 : 100 | A1 | raster |
+| 90 | PLA-AR-A-2100 | SECTION 01-02 | C3 | 1 : 100 | A1 | raster |
+| 91 | PLA-AR-A-2200 | DETAIL FACADE SECTIONS - SHEET 01 | C3 | 1 : 20 | A1 | mixed |
+| 92 | PLA-AR-A-2201 | DETAIL FACADE SECTIONS - SHEET 02 | C3 | 1 : 20 | A1 | raster |
+| 93 | PLA-AR-A-2202 | DETAIL FACADE SECTIONS - SHEET 03 | C3 | 1 : 20 | A1 | mixed |
+| 94 | PLA-AR-A-2203 | DETAIL FACADE SECTIONS - SHEET 04 | C3 | 1 : 20 | A1 | raster |
+| 95 | PLA-AR-A-3000 | CORES, STAIRS & RAMPS - SHEET 01 | C4 | As indicated | A1 | vector |
+| 96 | PLA-AR-A-4000 | APARTMENT TYPE - T01_PLAN & RCP | C5 | As indicated | A1 | vector |
+| 97 | PLA-AR-A-4001 | APARTMENT TYPE - T02_PLAN & RCP | C5 | As indicated | A1 | vector |
+| 98 | PLA-AR-A-4002 | APARTMENT TYPE - T03_PLAN & RCP | C5 | As indicated | A1 | vector |
+| 99 | PLA-AR-A-4101 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | C4 | 1 : 50 | A1 | vector |
+| 100 | PLA-AR-A-4102 | COMMON AREA FITOUTS - L1 CORRIDOR_PLAN & RCP | C4 | 1 : 50 | A1 | vector |
+| 101 | PLA-AR-A-4103 | COMMON AREA FITOUTS - L1 CORRIDOR_ELEVATIONS | C4 | 1 : 50 | A1 | vector |
+| 102 | PLA-AR-A-4105 | COMMON AREA FITOUTS - BIN ROOM_PLAN, RCP & ELEVATION | C3 | 1 : 50 | A1 | vector |
+| 103 | PLA-AR-A-4801 | WET AREA FITOUTS B01 | C6 | As indicated | A1 | vector |
+| 104 | PLA-AR-A-4802 | WET AREA FITOUTS L01 | C3 | As indicated | A1 | vector |
+| 105 | PLA-AR-A-4901 | KITCHEN FITOUTS - K01 | C5 | As indicated | A1 | mixed |
+| 106 | PLA-AR-A-5000 | FACADE SECTION DETAILS - SHEET 01 | C3 | As indicated | A1 | mixed |
+| 107 | PLA-AR-A-5001 | FACADE SECTION DETAILS - SHEET 02 | C3 | As indicated | A1 | vector |
+| 108 | PLA-AR-A-5004 | FACADE SECTION DETAILS - SHEET 05 | C3 | As indicated | A1 | vector |
+| 109 | PLA-AR-A-5005 | FACADE SECTION DETAILS - SHEET 06 | C3 | As indicated | A1 | vector |
+| 110 | PLA-AR-A-5100 | PLAN DETAILS - SHEET 01 | C4 | 1 : 5 | A1 | vector |
+| 111 | PLA-AR-A-6000 | WINDOW MASTER SCHEDULE - SHEET 01 | C4 | 1 : 100 | A1 | vector |
+| 112 | PLA-AR-A-6001 | WINDOW TYPE SCHEDULE - SHEET 02 | C4 | As indicated | A1 | vector |
+| 113 | PLA-AR-A-6100 | DOOR MASTER SCHEDULE | C4 | 1 : 100 | A1 | vector |
+| 114 | PLA-AR-A-6101 | DOOR TYPE SCHEDULE | C4 | As indicated | A1 | vector |
+| 115 | PLA-AR-A-6102 | DOOR TYPE SCHEDULE | C4 | As indicated | A1 | vector |
+| 116 | PLA-AR-A-6200 | BALUSTRADE SCHEDULE | C4 | As indicated | A1 | vector |
+| 117 | PLA-AR-A-6201 | LOUVRE SCREEN | C3 | As indicated | A1 | vector |
+| 118 | PLA-AR-A-7001 | JOINERY DETAILS- JR01 - JC01 | C3 | As indicated | A1 | vector |
+| 119 | PLA-AR-A-7002 | JOINERY DETAILS - JC02-JC03 | C2 | 1 : 20 | A1 | vector |
+| 120 | PLA-AR-B-0000 | COVER SHEET | D3 |  |  | mixed |
+| 121 | PLA-AR-B-0001 | LEGEND SHEET | D1 | As indicated | A1 | mixed |
+| 122 | PLA-AR-B-0002 | DRAWING REGISTER | D4 |  |  | vector |
+| 123 | PLA-AR-B-1000 | GENERAL ARRANGEMENT PLAN - GROUND | D7 | 1 : 100 | A1 | vector |
+| 124 | PLA-AR-B-1000B | GENERAL ARRANGEMENT PLAN - BASEMENT | D4 | 1 : 100 | A1 | vector |
+| 125 | PLA-AR-B-1001 | GENERAL ARRANGEMENT PLAN - LEVEL 01 | D7 | 1 : 100 | A1 | vector |
+| 126 | PLA-AR-B-1002 | GENERAL ARRANGEMENT PLAN - LEVEL 02 | D7 | 1 : 100 | A1 | vector |
+| 127 | PLA-AR-B-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | D7 | 1 : 100 | A1 | vector |
+| 128 | PLA-AR-B-1004 | GENERAL ARRANGEMENT PLAN - ROOF | D3 | 1 : 100 | A1 | vector |
+| 129 | PLA-AR-B-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | D5 | As indicated | A1 | vector |
+| 130 | PLA-AR-B-1100B | GENERAL REFLECTED CEILING PLANS - BASEMENT | D3 | As indicated | A1 | vector |
+| 131 | PLA-AR-B-1102 | GENERAL REFLECTED CEILING PLANS - LEVEL 02 | D5 | As indicated | A1 | vector |
+| 132 | PLA-AR-B-1103 | GENERAL REFLECTED CEILING PLANS - LEVEL 03 | D4 | As indicated | A1 | vector |
+| 133 | PLA-AR-B-1200 | FIRE RESISTANCE LEVEL PLANS - GROUND | D4 | 1 : 100 | A1 | vector |
+| 134 | PLA-AR-B-1200B | FIRE RESISTANCE LEVEL PLANS - BASEMENT | D3 | 1 : 100 | A1 | vector |
+| 135 | PLA-AR-B-1201 | FIRE RESISTANCE LEVEL PLANS - LEVEL 01 | D4 | 1 : 100 | A1 | vector |
+| 136 | PLA-AR-B-1202 | FIRE RESISTANCE LEVEL PLANS - LEVEL 02 | D4 | 1 : 100 | A1 | vector |
+| 137 | PLA-AR-B-1203 | FIRE RESISTANCE LEVEL PLANS - LEVEL 03 | D4 | 1 : 100 | A1 | vector |
+| 138 | PLA-AR-B-1300 | CONCRETE PROFILE PLANS - GROUND | D6 | 1 : 100 | A1 | vector |
+| 139 | PLA-AR-B-1300B | CONCRETE PROFILE PLANS - BASEMENT | D4 | 1 : 100 | A1 | vector |
+| 140 | PLA-AR-B-1301 | CONCRETE PROFILE PLANS - LEVEL 01 | D6 | 1 : 100 | A1 | vector |
+| 141 | PLA-AR-B-1302 | CONCRETE PROFILE PLANS - LEVEL 02 | D6 | 1 : 100 | A1 | vector |
+| 142 | PLA-AR-B-1303 | CONCRETE PROFILE PLANS - LEVEL 03 | D6 | 1 : 100 | A1 | vector |
+| 143 | PLA-AR-B-1400 | WALL SETOUT PLANS - GROUND | D5 | 1 : 100 | A1 | vector |
+| 144 | PLA-AR-B-1400B | WALL SETOUT PLANS - BASEMENT | D3 | 1 : 100 | A1 | vector |
+| 145 | PLA-AR-B-1401 | WALL SETOUT PLANS - LEVEL 01 | D5 | 1 : 100 | A1 | vector |
+| 146 | PLA-AR-B-1402 | WALL SETOUT PLANS - LEVEL 02 | D5 | 1 : 100 | A1 | vector |
+| 147 | PLA-AR-B-1403 | WALL SETOUT PLANS - LEVEL 03 | D5 | 1 : 100 | A1 | vector |
+| 148 | PLA-AR-B-1404 | WALL SETOUT PLANS - ROOF | D2 | 1 : 100 | A1 | vector |
+| 149 | PLA-AR-B-1500 | WATERPROOFING PLANS - GROUND | D4 | 1 : 100 | A1 | mixed |
+| 150 | PLA-AR-B-1500B | WATERPROOFING PLANS - BASEMENT | D3 | 1 : 100 | A1 | mixed |
+| 151 | PLA-AR-B-1502 | WATERPROOFING PLANS - LEVEL 02 | D4 | 1 : 100 | A1 | mixed |
+| 152 | PLA-AR-B-1503 | WATERPROOFING PLANS - LEVEL 03 | D4 | 1 : 100 | A1 | mixed |
+| 153 | PLA-AR-B-1504 | WATERPROOFING PLANS - ROOF | D2 | 1 : 100 | A1 | mixed |
+| 154 | PLA-AR-B-2001 | ELEVATION - NORTH & SOUTH | D2 | 1 : 100 | A1 | mixed |
+| 155 | PLA-AR-B-2100 | SECTION 01 | D1 | 1 : 100 | A1 | mixed |
+| 156 | PLA-AR-B-2200 | DETAIL FACADE SECTIONS - SHEET 01 | D1 | 1 : 20 | A1 | raster |
+| 157 | PLA-AR-B-2201 | DETAIL FACADE SECTIONS - SHEET 02 | D1 | 1 : 20 | A1 | raster |
+| 158 | PLA-AR-B-2202 | DETAIL FACADE SECTIONS - SHEET 03 | D1 | 1 : 20 | A1 | raster |
+| 159 | PLA-AR-B-2203 | DETAIL FACADE SECTIONS - SHEET 04 | D1 | 1 : 20 | A1 | raster |
+| 160 | PLA-AR-B-2204X | DETAIL FACADE SECTIONS - SHEET 05 | D1 | 1 : 20 | A1 | mixed |
+| 161 | PLA-AR-B-3000 | CORES, STAIRS & RAMPS - SHEET 01 | D2 | As indicated | A1 | vector |
+| 162 | PLA-AR-B-3001 | CORES, STAIRS & RAMPS - SHEET 02 | D2 | As indicated | A1 | vector |
+| 163 | PLA-AR-B-3002 | CORES, STAIRS & RAMPS - SHEET 03 | D2 | As indicated | A1 | vector |
+| 164 | PLA-AR-B-4001 | APARTMENT TYPE - T02_PLAN & RCP | D3 | As indicated | A1 | vector |
+| 165 | PLA-AR-B-4002 | APARTMENT TYPE - T03_PLAN & RCP | D3 | As indicated | A1 | vector |
+| 166 | PLA-AR-B-4003 | APARTMENT TYPE - T04_PLAN & RCP | D3 | As indicated | A1 | vector |
+| 167 | PLA-AR-B-4004 | APARTMENT TYPE - T05.S_PLAN & RCP | D3 | As indicated | A1 | vector |
+| 168 | PLA-AR-B-4005 | APARTMENT TYPE - T06_PLAN & RCP | D4 | As indicated | A1 | vector |
+| 169 | PLA-AR-B-4008 | APARTMENT TYPE - T09_PLAN & RCP | D4 | As indicated | A1 | vector |
+| 170 | PLA-AR-B-4009 | APARTMENT TYPE - T10_PLAN & RCP | D4 | As indicated | A1 | vector |
+| 171 | PLA-AR-B-4010 | APARTMENT TYPE - T11_PLAN & RCP | D4 | As indicated | A1 | vector |
+| 172 | PLA-AR-B-4100 | COMMON AREA FITOUTS - GF CORRIDOR_PLAN | D1 | 1 : 50 | A1 | vector |
+| 173 | PLA-AR-B-4101 | COMMON AREA FITOUTS - GF CORRIDOR_RCP | D1 | As indicated | A1 | vector |
+| 174 | PLA-AR-B-4102 | COMMON AREA FITOUTS - L01-02 CORRIDOR_PLAN | D1 | 1 : 50 | A1 | vector |
+| 175 | PLA-AR-B-4103 | COMMON AREA FITOUTS - L01-02 CORRIDOR_RCP | D1 | As indicated | A1 | vector |
+| 176 | PLA-AR-B-4106 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | D1 | 1 : 50 | A1 | vector |
+| 177 | PLA-AR-B-4107 | COMMON AREA FITOUTS - L01-02 CORRIDOR_ELEVATIONS | D1 | 1 : 50 | A1 | vector |
+| 178 | PLA-AR-B-4108 | COMMON AREA FITOUTS - L03 CORRIDOR_ELEVATIONS | D1 | 1 : 50 | A1 | vector |
+| 179 | PLA-AR-B-4110 | COMMON AREA FITOUTS - MSB _ PLAN, RCP & ELEVATIONS | D1 | 1 : 50 | A1 | vector |
+| 180 | PLA-AR-B-4801 | WET AREA FITOUTS - B21.B | D2 | As indicated | A1 | vector |
+| 181 | PLA-AR-B-4801 | WET AREA FITOUTS - B21.B | D2 | As indicated | A1 | vector |
+| 182 | PLA-AR-B-4802 | WET AREA FITOUS - B41.A | D2 | As indicated | A1 | vector |
+| 183 | PLA-AR-B-4803 | WET AREA FITOUS - B41.B | D2 | As indicated | A1 | vector |
+| 184 | PLA-AR-B-4803 | WET AREA FITOUS - B41.B | D2 | As indicated | A1 | vector |
+| 185 | PLA-AR-B-4804 | WET AREA FITOUS - B41.C | D2 | As indicated | A1 | vector |
+| 186 | PLA-AR-B-4902 | KITCHEN FITOUTS - K22 | D2 | As indicated | A1 | vector |
+| 187 | PLA-AR-B-5000 | FACADE SECTION DETAILS - SHEET 01 | D1 | As indicated | A1 | raster |
+| 188 | PLA-AR-B-5001 | FACADE SECTION DETAILS - SHEET 02 | D1 | As indicated | A1 | raster |
+| 189 | PLA-AR-B-5002 | FACADE SECTION DETAILS - SHEET 03 | D1 | As indicated | A1 | raster |
+| 190 | PLA-AR-B-5003 | FACADE SECTION DETAILS - SHEET 04 | D1 | As indicated | A1 | raster |
+| 191 | PLA-AR-B-5004 | FACADE SECTION DETAILS - SHEET 05 | D1 | As indicated | A1 | raster |
+| 192 | PLA-AR-B-5100 | PLAN DETAILS - SHEET 01 | D1 | 1 : 5 | A1 | mixed |
+| 193 | PLA-AR-B-5101 | PLAN DETAILS - SHEET 02 | D1 | 1 : 5 | A1 | vector |
+| 194 | PLA-AR-B-6000 | WINDOW MASTER SCHEDULE - SHEET 01 | D2 | 1 : 100 | A1 | vector |
+| 195 | PLA-AR-B-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | D2 | As indicated | A1 | vector |
+| 196 | PLA-AR-B-6100 | DOOR MASTER SCHEDULE - SHEET 01 | D1 | 1 : 100 | A1 | vector |
+| 197 | PLA-AR-B-6101 | DOOR MASTER SCHEDULE - SHEET 02 | D1 | 1 : 100 | A1 | vector |
+| 198 | PLA-AR-B-6101 | DOOR MASTER SCHEDULE - SHEET 02 | D1 | 1 : 100 | A1 | vector |
+| 199 | PLA-AR-B-6102 | DOOR ELEVATION SCHEDULE - SHEET 01 | D1 | As indicated | A1 | vector |
+| 200 | PLA-AR-B-6103 | DOOR ELEVATION SCHEDULE - SHEET 02 | D1 | As indicated | A1 | vector |
+| 201 | PLA-AR-B-6200 | BALUSTRADE SCHEDULE | D2 | As indicated | A1 | mixed |
+| 202 | PLA-AR-B-6201 | LOUVRE SCREEN | D1 | As indicated | A1 | vector |
+| 203 | PLA-AR-B-7001 | JOINERY DETAILS JR25 | D1 | As indicated | A1 | raster |
+| 204 | PLA-AR-B-7002 | JOINERY DETAILS - JM21 | D2 | As indicated | A1 | vector |
+| 205 | PLA-AR-C-0000 | COVER SHEET | C6 |  |  | vector |
+| 206 | PLA-AR-C-0001 | LEGEND SHEET | C3 | As indicated | A1 | mixed |
+| 207 | PLA-AR-C-0002 | DRAWING REGISTER | C8 |  |  | vector |
+| 208 | PLA-AR-C-1000 | GENERAL ARRANGEMENT PLAN - GROUND | C10 | 1 : 100 | A1 | vector |
+| 209 | PLA-AR-C-1001 | GENERAL ARRANGEMENT PLAN - LEVEL 01 | C10 | 1 : 100 | A1 | vector |
+| 210 | PLA-AR-C-1002 | GENERAL ARRANGEMENT PLAN - LEVEL 02 | C11 | 1 : 100 | A1 | vector |
+| 211 | PLA-AR-C-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | C10 | 1 : 100 | A1 | vector |
+| 212 | PLA-AR-C-1004 | GENERAL ARRANGEMENT PLAN - ROOF | C5 | 1 : 100 | A1 | vector |
+| 213 | PLA-AR-C-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | C8 | 1 : 100 | A1 | vector |
+| 214 | PLA-AR-C-1101 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 | C8 | 1 : 100 | A1 | vector |
+| 215 | PLA-AR-C-1102 | GENERAL REFLECTED CEILING PLANS - LEVEL 02 | C8 | 1 : 100 | A1 | vector |
+| 216 | PLA-AR-C-1103 | GENERAL REFLECTED CEILING PLANS - LEVEL 03 | C7 | 1 : 100 | A1 | vector |
+| 217 | PLA-AR-C-1200 | FIRE RESISTANCE LEVEL PLANS - GROUND | C6 | 1 : 100 | A1 | vector |
+| 218 | PLA-AR-C-1201 | FIRE RESISTANCE LEVEL PLANS - LEVEL 01 | C6 | 1 : 100 | A1 | vector |
+| 219 | PLA-AR-C-1202 | FIRE RESISTANCE LEVEL PLANS - LEVEL 02 | C6 | 1 : 100 | A1 | vector |
+| 220 | PLA-AR-C-1203 | FIRE RESISTANCE LEVEL PLANS - LEVEL 03 | C4 | 1 : 100 | A1 | vector |
+| 221 | PLA-AR-C-1204X | FIRE RESISTANCE LEVEL PLANS - ROOF | C2 | 1 : 100 | A1 | vector |
+| 222 | PLA-AR-C-1300B | CONCRETE PROFILE PLANS - BASEMENT | C7 | 1 : 100 | A1 | vector |
+| 223 | PLA-AR-C-1301 | CONCRETE PROFILE PLANS - LEVEL 01 | C8 | 1 : 100 | A1 | vector |
+| 224 | PLA-AR-C-1303 | CONCRETE PROFILE PLANS - LEVEL 03 | C8 | 1 : 100 | A1 | vector |
+| 225 | PLA-AR-C-1304 | CONCRETE PROFILE PLANS - ROOF | C4 | 1 : 100 | A1 | vector |
+| 226 | PLA-AR-C-1400 | WALL SETOUT PLANS - GROUND | C8 | 1 : 100 | A1 | vector |
+| 227 | PLA-AR-C-1401 | WALL SETOUT PLANS - LEVEL 01 | C8 | 1 : 100 | A1 | vector |
+| 228 | PLA-AR-C-1402 | WALL SETOUT PLANS - LEVEL 02 | C8 | 1 : 100 | A1 | vector |
+| 229 | PLA-AR-C-1404 | WALL SETOUT PLANS - ROOF | C4 | 1 : 100 | A1 | vector |
+| 230 |  | WALL SCHEDULE | C2 |  |  | vector |
+| 231 | PLA-AR-C-1500 | WATERPROOFING PLANS - GROUND | C5 | 1 : 100 | A1 | mixed |
+| 232 | PLA-AR-C-1500B | WATERPROOFING PLANS -BASEMENT | C6 | 1 : 100 | A1 | mixed |
+| 233 | PLA-AR-C-1501 | WATERPROOFING PLANS - LEVEL 01 | C5 | 1 : 100 | A1 | mixed |
+| 234 | PLA-AR-C-1502 | WATERPROOFING PLANS - LEVEL 02 | C5 | 1 : 100 | A1 | mixed |
+| 235 | PLA-AR-C-1504 | WATERPROOFING PLANS - ROOF | C3 | 1 : 100 | A1 | mixed |
+| 236 | PLA-AR-C-2000 | ELEVATION - NORTH & SOUTH | C3 | 1 : 100 | A1 | mixed |
+| 237 | PLA-AR-C-2001 | ELEVATION - EAST | C5 | 1 : 100 | A1 | mixed |
+| 238 | PLA-AR-C-2002 | ELEVATION - WEST | C5 | 1 : 100 | A1 | mixed |
+| 239 | PLA-AR-C-2100 | SECTIONS 1 & 2 | C3 | 1 : 100 | A1 | mixed |
+| 240 | PLA-AR-C-2200 | DETAIL FACADE SECTIONS - SHEET 01 | C2 | 1 : 20 | A1 | mixed |
+| 241 | PLA-AR-C-2201 | DETAIL FACADE SECTIONS - SHEET 02 | C2 | 1 : 20 | A1 | mixed |
+| 242 | PLA-AR-C-2202 | DETAIL FACADE SECTIONS - SHEET 03 | C2 | 1 : 20 | A1 | mixed |
+| 243 | PLA-AR-C-2203 | DETAIL FACADE SECTIONS - SHEET 04 | C2 | 1 : 20 | A1 | mixed |
+| 244 | PLA-AR-C-2205 | DETAIL FACADE SECTIONS - SHEET 06 | C2 | 1 : 20 | A1 | mixed |
+| 245 | PLA-AR-C-2206 | DETAIL FACADE SECTIONS - SHEET 07 | C2 | 1 : 20 | A1 | mixed |
+| 246 | PLA-AR-C-2207 | DETAIL FACADE SECTIONS - SHEET 08 | C2 | 1 : 20 | A1 | mixed |
+| 247 | PLA-AR-C-3000 | CORES, STAIRS & RAMPS - SHEET 01 / FS C1 | C5 | As indicated | A1 | vector |
+| 248 | PLA-AR-C-3001 | CORES, STAIRS & RAMPS - SHEET 02 / FS C2 | C5 | As indicated | A1 | vector |
+| 249 | PLA-AR-C-3002 | CORES, STAIRS & RAMPS - SHEET 03 - LIFT C1& C2 | C3 | As indicated | A1 | vector |
+| 250 | PLA-AR-C-4003 | APARTMENT TYPE - T04.P_PLAN & RCP | C9 | As indicated | A1 | vector |
+| 251 | PLA-AR-C-4004 | APARTMENT TYPE - T05_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 252 | PLA-AR-C-4005 | APARTMENT TYPE - T06_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 253 | PLA-AR-C-4006 | APARTMENT TYPE - T07_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 254 | PLA-AR-C-4007 | APARTMENT TYPE - T08_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 255 | PLA-AR-C-4008 | APARTMENT TYPE - T09.P_PLAN & RCP | C9 | As indicated | A1 | vector |
+| 256 | PLA-AR-C-4009 | APARTMENT TYPE - T10_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 257 | PLA-AR-C-4010 | APARTMENT TYPE - T11_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 258 | PLA-AR-C-4011 | APARTMENT TYPE - T12_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 259 | PLA-AR-C-4012 | APARTMENT TYPE - T13_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 260 | PLA-AR-C-4013 | APARTMENT TYPE - T14_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 261 | PLA-AR-C-4014 | APARTMENT TYPE - T15_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 262 | PLA-AR-C-4015 | APARTMENT TYPE - T16_PLAN & RCP | C8 | As indicated | A1 | vector |
+| 263 | PLA-AR-C-4016 | APARTMENT TYPE - T17_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 264 | PLA-AR-C-4017 | APARTMENT TYPE - T18_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 265 | PLA-AR-C-4018 | APARTMENT TYPE - T19_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 266 | PLA-AR-C-4028 | APARTMENT TYPE - T02.S_PLAN & RCP | C6 | As indicated | A1 | vector |
+| 267 | PLA-AR-C-4029 | APARTMENT TYPE - T04.S_PLAN & RCP | C6 | As indicated | A1 | vector |
+| 268 | PLA-AR-C-4101 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | C3 | 1 : 50 | A1 | vector |
+| 269 | PLA-AR-C-4102 | COMMON AREA FITOUTS - L1-2 CORRIDOR_PLAN & RCP | C4 | As indicated | A1 | vector |
+| 270 | PLA-AR-C-4103 | COMMON AREA FITOUTS - L1-2 CORRIDOR_ELEVATIONS | C3 | 1 : 50 | A1 | vector |
+| 271 | PLA-AR-C-4104 | COMMON AREA FITOUTS - L3 CORRIDOR_PLAN & RCP | C4 | As indicated | A1 | vector |
+| 272 | PLA-AR-C-4107 | COMMON AREA FITOUTS - COMMS_PLAN, RCP& ELEVATIONS | C4 | As indicated | A1 | vector |
+| 273 | PLA-AR-C-4108 | COMMON AREA FITOUTS - MSB_PLAN, RCP& ELEVATIONS | C4 | As indicated | A1 | vector |
+| 274 | PLA-AR-C-4802 | WET AREA FITOUTS - B22 | C6 | As indicated | A1 | vector |
+| 275 | PLA-AR-C-4803 | WET AREA FITOUTS - B42 | C6 | As indicated | A1 | vector |
+| 276 | PLA-AR-C-4804 | WET AREA FITOUTS - L21 | C3 | As indicated | A1 | vector |
+| 277 | PLA-AR-C-4805 | WET AREA FITOUTS - B43 | C3 | As indicated | A1 | vector |
+| 278 | PLA-AR-C-4806 | WET AREA FITOUTS - B23 | C3 | As indicated | A1 | vector |
+| 279 | PLA-AR-C-4901 | KITCHEN FITOUTS - K21 | C5 | As indicated | A1 | vector |
+| 280 | PLA-AR-C-4911 | KITCHEN FITOUTS - K41 | C5 | As indicated | A1 | vector |
+| 281 | PLA-AR-C-4922 | KITCHEN FITOUTS - KI22 | C5 | As indicated | A1 | vector |
+| 282 | PLA-AR-C-4931 | KITCHEN FITOUTS - KI41 | C5 | As indicated | A1 | vector |
+| 283 | PLA-AR-C-4932 | KITCHEN FITOUTS - KI42 | C5 | As indicated | A1 | vector |
+| 284 | PLA-AR-C-5000 | FACADE SECTION DETAILS - SHEET 01 | C3 | As indicated | A1 | vector |
+| 285 | PLA-AR-C-5100 | PLAN DETAILS - SHEET 01 | C2 | 1 : 5 | A1 | vector |
+| 286 | PLA-AR-C-5102 | PLAN DETAILS - SHEET 03 | C1 |  |  | vector |
+| 287 | PLA-AR-C-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | C5 | As indicated | A1 | vector |
+| 288 | PLA-AR-C-6100 | DOOR SCHEDULE - SHEET 01 | C4 | 1 : 100 | A1 | vector |
+| 289 | PLA-AR-C-6101 | DOOR SCHEDULE - SHEET 02 | C4 | 1 : 100 | A1 | vector |
+| 290 | PLA-AR-C-6102 | DOOR SCHEDULE - SHEET 03 | C4 | 1 : 100 | A1 | vector |
+| 291 | PLA-AR-C-6104 | DOOR SCHEDULE - SHEET 05 | C3 | As indicated | A1 | vector |
+| 292 | PLA-AR-C-6104 | DOOR SCHEDULE - SHEET 05 | C3 | As indicated | A1 | vector |
+| 293 | PLA-AR-C-6200 | BALUSTRADE SCHEDULE | C5 | As indicated | A1 | vector |
+| 294 | PLA-AR-C-6201 | LOUVRE SCREENS | C3 | As indicated | A1 | vector |
+| 295 | PLA-AR-C-7002 | JOINERY DETAILS - JR22 | C3 | As indicated | A1 | vector |
+| 296 | PLA-AR-C-7003 | JOINERY DETAILS - JR23 - JR24 | C3 | As indicated | A1 | vector |
+| 297 | PLA-AR-C-7011 | JOINERY DETAILS - JC21 | C3 | As indicated | A1 | vector |
+| 298 | PLA-AR-C-7012 | JOINERY DETAILS - JC22 | C3 | As indicated | A1 | vector |
+| 299 | PLA-AR-C-7013 | JOINERY DETAILS - JC23 | C2 | As indicated | A1 | vector |
+| 300 | PLA-AR-C-7021 | JOINERY DETAILS - JCA | C3 | 1 : 20 | A1 | vector |
+| 301 | PLA-AR-RAC-0000 | COVER PAGE |  |  |  | vector |
+| 302 | PLA-AR-RAC-0001 | LEGEND SHEET |  |  |  | mixed |
+| 303 | PLA-AR-RAC-0002 | DRAWING REGISTER |  |  |  | vector |
+| 304 | PLA-AR-RAC-1000 | OVERALL GENERAL ARRANGEMENT PLAN - GROUND |  | 1:200 | A1 | vector |
+| 305 | PLA-AR-RAC-1000B | OVERALL GENERAL ARRANGEMENT PLAN - BASEMENT |  | 1:200 | A1 | vector |
+| 306 | PLA-AR-RAC-1001 | OVERALL GENERAL ARRANGEMENT PLAN - LEVEL 01 |  | 1:200 | A1 | vector |
+| 307 | PLA-AR-RAC-1002 | OVERALL GENERAL ARRANGEMENT PLAN - LEVEL 02 |  | 1:200 | A1 | vector |
+| 308 | PLA-AR-RAC-1003 | OVERALL GENERAL ARRANGEMENT PLAN - LEVEL 03 |  | 1:200 | A1 | vector |
+| 309 | PLA-AR-RAC-1004 | OVERALL GENERAL ARRANGEMENT PLAN - ROOF |  | 1:200 | A1 | vector |
+| 310 |  |  |  | 1 : 100 | A1 | vector |
+| 311 |  | GENERAL ARRANGEMENT PLAN - BASEMENT - ZONE A | C5 | As indicated | A1 | vector |
+| 312 |  | GENERAL ARRANGEMENT PLAN - BASEMENT - ZONE B | C5 | As indicated | A1 | vector |
+| 313 | PLA-AR-RAC-1051 | GENERAL ARRANGEMENT PLAN - GROUND - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 314 | PLA-AR-RAC-1052 | GENERAL ARRANGEMENT PLAN - LEVEL 01 - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 315 | PLA-AR-RAC-1054 | GENERAL ARRANGEMENT PLAN - LEVEL 02 - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 316 | PLA-AR-RAC-1055 | GENERAL ARRANGEMENT PLAN - LEVEL 02 - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 317 | PLA-AR-RAC-1056 | GENERAL ARRANGEMENT PLAN - LEVEL 03 - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 318 | PLA-AR-RAC-1057 | GENERAL ARRANGEMENT PLAN - LEVEL 03 - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 319 | PLA-AR-RAC-1058 | GENERAL ARRANGEMENT PLAN - ROOF - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 320 | PLA-AR-RAC-1059 | GENERAL ARRANGEMENT PLAN - ROOF - ZONE B | C4 | 1 : 100 | A1 | vector |
+| 321 | PLA-AR-RAC-1100 | OVERALL REFLECTED CEILING PLANS - GROUND |  | 1:200 | A1 | vector |
+| 322 | PLA-AR-RAC-1100B | OVERALL REFLECTED CEILING PLANS - BASEMENT |  | 1:200 | A1 | vector |
+| 323 | PLA-AR-RAC-1101 | OVERALL REFLECTED CEILING PLANS - LEVEL 01 |  | 1:200 | A1 | vector |
+| 324 | PLA-AR-RAC-1102 | OVERALL REFLECTED CEILING PLANS - LEVEL 02 | C9 | As indicated | A1 | vector |
+| 325 | PLA-AR-RAC-1103 | OVERALL REFLECTED CEILING PLANS - LEVEL 03 | C9 | As indicated | A1 | vector |
+| 326 | PLA-AR-RAC-1150 | GENERAL REFLECTED CEILING PLANS - GROUND - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 327 | A-4000 | GENERAL REFLECTED CEILING PLANS - BASEMENT - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 328 | A-4000 | GENERAL REFLECTED CEILING PLANS - BASEMENT - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 329 | PLA-AR-RAC-1151 | GENERAL REFLECTED CEILING PLANS - GROUND - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 330 | PLA-AR-RAC-1152 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 331 | PLA-AR-RAC-1153 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 332 | PLA-AR-RAC-1154 | GENERAL REFLECTED CEILING PLANS - LEVEL 02 - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 333 | PLA-AR-RAC-1155 | GENERAL REFLECTED CEILING PLANS - LEVEL 02 - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 334 | PLA-AR-RAC-1156 | GENERAL REFLECTED CEILING PLANS - LEVEL 03 - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 335 | PLA-AR-RAC-1157 | GENERAL REFLECTED CEILING PLANS - LEVEL 03 - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 336 | PLA-AR-RAC-1200 | OVERALL FIRE RESISTANCE LEVEL PLANS - GROUND | C7 | As indicated | A1 | vector |
+| 337 | PLA-AR-RAC-1200B | OVERALL FIRE RESISTANCE LEVEL PLANS - BASEMENT | C7 | As indicated | A1 | vector |
+| 338 | PLA-AR-RAC-1201 | OVERALL FIRE RESISTANCE LEVEL PLANS - LEVEL 01 | C7 | As indicated | A1 | vector |
+| 339 | PLA-AR-RAC-1202 | OVERALL FIRE RESISTANCE LEVEL PLANS - LEVEL 02 | C7 | As indicated | A1 | vector |
+| 340 | PLA-AR-RAC-1203 | OVERALL FIRE RESISTANCE LEVEL PLANS - LEVEL 03 | C7 | As indicated | A1 | vector |
+| 341 | PLA-AR-RAC-1204 | OVERALL FIRE RESISTANCE LEVEL PLANS - ROOF | C4 | As indicated | A1 | vector |
+| 342 | PLA-AR-RAC-1250 | FIRE RESISTANCE PLAN - GROUND LEVEL - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 343 |  | FIRE RESISTANCE LEVEL PLAN - BASEMENT - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 344 |  | FIRE RESISTANCE LEVEL PLAN - BASEMENT - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 345 | PLA-AR-RAC-1251 | FIRE RESISTANCE PLAN - GROUND LEVEL - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 346 | PLA-AR-RAC-1252 | FIRE RESISTANCE LEVEL PLAN - LEVEL 01 - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 347 | PLA-AR-RAC-1253 | FIRE RESISTANCE LEVEL PLAN - LEVEL 01 - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 348 | PLA-AR-RAC-1254 | FIRE RESISTANCE LEVEL PLAN - LEVEL 02 - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 349 | PLA-AR-RAC-1255 | FIRE RESISTANCE LEVEL PLAN - LEVEL 02 - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 350 | PLA-AR-RAC-1256 | FIRE RESISTANCE LEVEL PLAN - LEVEL 03 - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 351 | PLA-AR-RAC-1257 | FIRE RESISTANCE LEVEL PLAN - LEVEL 03 - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 352 | PLA-AR-RAC-1258 | FIRE RESISTANCE LEVEL PLAN - ROOF - ZONE A | C3 | 1 : 100 | A1 | vector |
+| 353 | PLA-AR-RAC-1259 | FIRE RESISTANCE LEVEL PLAN - ROOF - ZONE B | C3 | 1 : 100 | A1 | vector |
+| 354 | PLA-AR-RAC-1300 | OVERALL CONCRETE PROFILE PLANS - GROUND | C8 | As indicated | A1 | vector |
+| 355 | PLA-AR-RAC-1300B | OVERALL CONCRETE PROFILE PLANS - BASEMENT | C8 | As indicated | A1 | vector |
+| 356 | PLA-AR-RAC-1301 | OVERALL CONCRETE PROFILE PLANS - LEVEL 01 | C8 | As indicated | A1 | vector |
+| 357 | PLA-AR-RAC-1302 | OVERALL CONCRETE PROFILE PLANS - LEVEL 02 | C8 | As indicated | A1 | vector |
+| 358 | PLA-AR-RAC-1303 | OVERALL CONCRETE PROFILE PLANS - LEVEL 03 | C8 | As indicated | A1 | vector |
+| 359 | PLA-AR-RAC-1304 | OVERALL CONCRETE PROFILE PLANS - ROOF | C7 | As indicated | A1 | vector |
+| 360 | PLA-AR-RAC-1350 | CONCRETE PROFILE PLANS - GROUND - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 361 |  | CONCRETE PROFILE PLANS - BASEMENT - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 362 |  | CONCRETE PROFILE PLANS - BASEMENT - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 363 | PLA-AR-RAC-1351 | CONCRETE PROFILE PLANS - GROUND - ZONE B | C5 | 1 : 100 | A1 | vector |
+| 364 | PLA-AR-RAC-1352 | CONCRETE PROFILE PLANS - LEVEL 01 - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 365 | PLA-AR-RAC-1353 | CONCRETE PROFILE PLANS - LEVEL 01 - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 366 | PLA-AR-RAC-1354 | CONCRETE PROFILE PLANS - LEVEL 02 - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 367 | PLA-AR-RAC-1355 | CONCRETE PROFILE PLANS - LEVEL 02 - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 368 | PLA-AR-RAC-1356 | CONCRETE PROFILE PLANS - LEVEL 03 - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 369 | PLA-AR-RAC-1357 | CONCRETE PROFILE PLANS - LEVEL 03 - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 370 | PLA-AR-RAC-1358 | CONCRETE PROFILE PLANS - ROOF - ZONE A | C5 | 1 : 100 | A1 | vector |
+| 371 | PLA-AR-RAC-1359 | CONCRETE PROFILE PLANS - ROOF - ZONE B | C4 | 1 : 100 | A1 | vector |
+| 372 | PLA-AR-RAC-1400 | OVERALL WALL SETOUT PLANS - GROUND |  | 1:200 | A1 | vector |
+| 373 | PLA-AR-RAC-1400B | OVERALL WALL SETOUT PLANS - BASEMENT | C9 | As indicated | A1 | vector |
+| 374 | PLA-AR-RAC-1401 | OVERALL WALL SETOUT PLANS - LEVEL 01 | C9 | As indicated | A1 | vector |
+| 375 | PLA-AR-RAC-1402 | OVERALL WALL SETOUT PLANS - LEVEL 02 | C9 | As indicated | A1 | vector |
+| 376 | PLA-AR-RAC-1403 | OVERALL WALL SETOUT PLANS - LEVEL 03 | C9 | As indicated | A1 | vector |
+| 377 | PLA-AR-RAC-1404 | OVERALL WALL SETOUT PLANS - ROOF | C8 | As indicated | A1 | vector |
+| 378 | PLA-AR-RAC-1450 | WALL SETOUT PLAN - GROUND LEVEL - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 379 | BW-190 | WALL SETOUT PLAN - BASEMENT - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 380 | A-1200 | WALL SETOUT PLAN - BASEMENT - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 381 | PLA-AR-RAC-1451 | WALL SETOUT PLAN - GROUND LEVEL - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 382 | PLA-AR-RAC-1452 | WALL SETOUT PLAN - LEVEL 01 - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 383 | PLA-AR-RAC-1453 | WALL SETOUT PLAN - LEVEL 01 - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 384 | PLA-AR-RAC-1454 | WALL SETOUT PLAN - LEVEL 02 - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 385 | PLA-AR-RAC-1455 | WALL SETOUT PLAN - LEVEL 02 - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 386 | PLA-AR-RAC-1456 | WALL SETOUT PLAN - LEVEL 03 - ZONE A | C7 | 1 : 100 | A1 | vector |
+| 387 | PLA-AR-RAC-1457 | WALL SETOUT PLAN - LEVEL 03 - ZONE B | C7 | 1 : 100 | A1 | vector |
+| 388 | PLA-AR-RAC-1458 | WALL SETOUT PLAN - ROOF - ZONE A | C6 | 1 : 100 | A1 | vector |
+| 389 | PLA-AR-RAC-1459 | WALL SETOUT PLAN - ROOF - ZONE B | C6 | 1 : 100 | A1 | vector |
+| 390 | PLA-AR-RAC-1500 | OVERALL WATERPROOFING PLAN - GROUND | C7 | As indicated | A1 | mixed |
+| 391 | PLA-AR-RAC-1500B | OVERALL WATERPROOFING PLAN - BASEMENT | C7 | As indicated | A1 | mixed |
+| 392 | PLA-AR-RAC-1501 | OVERALL WATERPROOFING PLAN - LEVEL 01 | C7 | As indicated | A1 | mixed |
+| 393 | PLA-AR-RAC-1502 | OVERALL WATERPROOFING PLAN - LEVEL 02 | C7 | As indicated | A1 | mixed |
+| 394 | PLA-AR-RAC-1503 | OVERALL WATERPROOFING PLAN - LEVEL 03 | C7 | As indicated | A1 | mixed |
+| 395 | PLA-AR-RAC-1504 | OVERALL WATERPROOFING PLAN - ROOF | C6 | As indicated | A1 | mixed |
+| 396 | PLA-AR-RAC-1550 | WATERPROOFING PLAN - GROUND LEVEL - ZONE A | C5 | 1 : 100 | A1 | mixed |
+| 397 |  | WATERPROOFING PLAN - BASEMENT - ZONE A | C5 | 1 : 100 | A1 | mixed |
+| 398 |  | WATERPROOFING PLAN - BASEMENT - ZONE B | C5 | 1 : 100 | A1 | mixed |
+| 399 | PLA-AR-RAC-1551 | WATERPROOFING PLAN - GROUND LEVEL - ZONE B | C5 | 1 : 100 | A1 | mixed |
+| 400 | PLA-AR-RAC-1552 | WATERPROOFING PLAN - LEVEL 01 - ZONE A | C5 | 1 : 100 | A1 | mixed |
+| 401 | PLA-AR-RAC-1553 | WATERPROOFING PLAN - LEVEL 01 - ZONE B | C5 | 1 : 100 | A1 | mixed |
+| 402 | PLA-AR-RAC-1554 | WATERPROOFING PLAN - LEVEL 02 - ZONE A | C5 | 1 : 100 | A1 | mixed |
+| 403 | PLA-AR-RAC-1555 | WATERPROOFING PLAN - LEVEL 02 - ZONE B | C5 | 1 : 100 | A1 | mixed |
+| 404 | PLA-AR-RAC-1556 | WATERPROOFING PLAN - LEVEL 03 - ZONE A | C5 | 1 : 100 | A1 | mixed |
+| 405 | PLA-AR-RAC-1557 | WATERPROOFING PLAN - LEVEL 03 - ZONE B | C5 | 1 : 100 | A1 | mixed |
+| 406 | PLA-AR-RAC-1558 | WATERPROOFING PLAN - ROOF - ZONE A | C4 | 1 : 100 | A1 | mixed |
+| 407 | PLA-AR-RAC-1559 | WATERPROOFING PLAN - ROOF - ZONE B | C4 | 1 : 100 | A1 | mixed |
+| 408 | PLA-AR-RAC-2000 | ELEVATION - EAST & WEST OVERALL | C5 | As indicated | A1 | mixed |
+| 409 | PLA-AR-RAC-2001 | ELEVATION - EAST PART 1 ALIGNED GRID RA & R1 | C5 | As indicated | A1 | vector |
+| 410 | PLA-AR-RAC-2002 | ELEVATION - EAST PART 2 ALIGNED GRID RA & R1 | C5 | As indicated | A1 | raster |
+| 411 | PLA-AR-RAC-2003 | ELEVATION - EAST PART 3 ALONG GRID RA & R1_3 | C5 | As indicated | A1 | raster |
+| 412 | PLA-AR-RAC-2004 | ELEVATION - WEST PART 1 ALIGNED GRID RA & R1 | C5 | As indicated | A1 | raster |
+| 413 | PLA-AR-RAC-2005 | ELEVATION - WEST PART 2 ALIGNED GRID A & 1 | C5 | As indicated | A1 | raster |
+| 414 | PLA-AR-RAC-2006 | ELEVATION - SOUTH | C5 | As indicated | A1 | raster |
+| 415 | PLA-AR-RAC-2007 | ELEVATION - NORTH | C5 | As indicated | A1 | vector |
+| 416 | PLA-AR-RAC-2100 | SECTION 01 & 02 | C4 | 1 : 100 | A1 | raster |
+| 417 | PLA-AR-RAC-2200 | DETAIL FACADE SECTIONS - SHEET 01 | C4 | 1 : 20 | A1 | raster |
+| 418 | PLA-AR-RAC-2201 | DETAIL FACADE SECTIONS - SHEET 02 | C4 | 1 : 20 | A1 | raster |
+| 419 | PLA-AR-RAC-2202 | DETAIL FACADE SECTIONS - SHEET 03 | C4 | 1 : 20 | A1 | raster |
+| 420 | PLA-AR-RAC-2203 | DETAIL FACADE SECTIONS - SHEET 04 | C4 | 1 : 20 | A1 | raster |
+| 421 | PLA-AR-RAC-2204 | DETAIL FACADE SECTIONS - SHEET 05 | C4 | 1 : 20 | A1 | raster |
+| 422 | PLA-AR-RAC-2205 | DETAIL FACADE SECTIONS - SHEET 06 | C4 | 1 : 20 | A1 | raster |
+| 423 | PLA-AR-RAC-2206 | DETAIL FACADE SECTIONS - SHEET 07 | C3 | 1 : 20 | A1 | mixed |
+| 424 | PLA-AR-RAC-2208 | DETAIL FACADE SECTIONS - SHEET 09 | C3 | 1 : 20 | A1 | mixed |
+| 425 | PLA-AR-RAC-2209 | DETAIL FACADE SECTIONS - SHEET 10 | C4 | 1 : 20 | A1 | raster |
+| 426 | PLA-AR-RAC-3000 | CORES, STAIRS & RAMPS - SHEET 01 / FS RAC 1 | C4 | As indicated | A1 | vector |
+| 427 | PLA-AR-RAC-3001 | CORES, STAIRS & RAMPS - SHEET 02 / FS RAC 2 | C4 | As indicated | A1 | vector |
+| 428 | PLA-AR-RAC-3002 | CORES, STAIRS & RAMPS - SHEET 03 / FS RAC 3 | C4 | As indicated | A1 | vector |
+| 429 | PLA-AR-RAC-3003 | CORES, STAIRS & RAMPS - SHEET 04 / FS RAC 4 | C4 | As indicated | A1 | vector |
+| 430 | PLA-AR-RAC-3004 | CORES, STAIRS & RAMPS - SHEET 05 / LIFT R1 & R2 | C4 | As indicated | A1 | vector |
+| 431 | PLA-AR-RAC-3005 | CORES, STAIRS & RAMPS - SHEET 06 / CARPARK DRIVEWAY | C4 | As indicated | A1 | vector |
+| 432 | PLA-AR-RAC-4000 | RAC BEDROOM - TYPE MATRIX | C4 | As indicated | A1 | vector |
+| 433 | PLA-AR-RAC-4001 | RAC BEDROOM - TYPE T01 PLAN & RCP | C6 | As indicated | A1 | vector |
+| 434 | PLA-AR-RAC-4003 | RAC BEDROOM - TYPE T02 PLAN & RCP | C6 | As indicated | A1 | vector |
+| 435 | PLA-AR-RAC-4004 | RAC BEDROOM - TYPE T03 PLAN & RCP | C6 | As indicated | A1 | vector |
+| 436 | PLA-AR-RAC-4006 | RAC BEDROOM - TYPE T05 PLAN & RCP | C6 | As indicated | A1 | vector |
+| 437 | PLA-AR-RAC-4007 | RAC BEDROOM - TYPE T06 PLAN & RCP | C6 | As indicated | A1 | vector |
+| 438 | PLA-AR-RAC-4011 | RAC BEDROOM - TYPE T01 ELEVATIONS | C6 | As indicated | A1 | vector |
+| 439 | PLA-AR-RAC-4012 | RAC BEDROOM - TYPE T02 ELEVATIONS | C6 | As indicated | A1 | vector |
+| 440 | PLA-AR-RAC-4013 | RAC BEDROOM - TYPE T03 ELEVATIONS | C6 | As indicated | A1 | vector |
+| 441 | PLA-AR-RAC-4014 | RAC BEDROOM - TYPE T04 ELEVATIONS | C3 |  |  | vector |
+| 442 | PLA-AR-RAC-4015 | RAC BEDROOM - TYPE T05 ELEVATIONS | C6 | As indicated | A1 | vector |
+| 443 | PLA-AR-RAC-4016 | RAC BEDROOM - TYPE T06 ELEVATIONS | C6 | As indicated | A1 | vector |
+| 444 | PLA-AR-RAC-4100 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE - PLAN | C6 | As indicated | A1 | vector |
+| 445 | PLA-AR-RAC-4101 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE - RCP | C5 | As indicated | A1 | vector |
+| 446 | PLA-AR-RAC-4102 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE- ELEVATIONS | C5 | As indicated | A1 | vector |
+| 447 | PLA-AR-RAC-4103 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE- ELEVATION 2 | C6 | As indicated | A1 | vector |
+| 448 | PLA-AR-RAC-4112 | COMMON AREA FITOUT - SF10 QUIET ROOMS - PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 449 | PLA-AR-RAC-4100 | COMMON AREA FITOUT - IL22 CLUBROOM - PLANS | C7 | As indicated | A1 | vector |
+| 450 | PLA-AR-RAC-4114 | COMMON AREA FITOUT - IL22 CLUBROOM - RCP | C5 | As indicated | A1 | vector |
+| 451 | PLA-AR-RAC-4115 | COMMON AREA FITOUT - IL22 CLUBROOM - ELEVATIONS | C6 | As indicated | A1 | vector |
+| 452 | PLA-AR-RAC-4116 | COMMON AREA FITOUT - IL23 GYM - PLAN & RCP | C7 | As indicated | A1 | vector |
+| 453 | PLA-AR-RAC-4117 | COMMON AREA FITOUT - IL23 GYM - ELEVATIONS 2 | C3 | As indicated | A1 | vector |
+| 454 | PLA-AR-RAC-4117 | COMMON AREA FITOUT - IL23 GYM - ELEVATIONS | C7 | As indicated | A1 | vector |
+| 455 | PLA-AR-RAC-4118 | COMMON AREA FITOUT - IL24 CINEMA_PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 456 | PLA-AR-RAC-4119 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 457 | PLA-AR-RAC-4120 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_ELEVATIONS 2 | C4 | As indicated | A1 | vector |
+| 458 | PLA-AR-RAC-4120 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_ELEVATIONS | C5 | As indicated | A1 | vector |
+| 459 | PLA-AR-RAC-4121 | COMMON AREA FITOUT - SB03 CENTRAL STORE ROOMS_PLAN & RCP | C5 | As indicated | A1 | vector |
+| 460 | PLA-AR-RAC-4122 | COMMON AREA FITOUT - SB03 CENTRAL STORE ROOMS_ELEVATIONS | C4 | As indicated | A1 | vector |
+| 461 | PLA-AR-RAC-4123 | COMMON AREA FITOUT - SB04 CLN / CHEM STORE_PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 462 | PLA-AR-RAC-4124 | COMMON AREA FITOUT - SB06 WASTE_PLAN, RCP & ELEVATIONS | C5 | As indicated | A1 | vector |
+| 463 | PLA-AR-RAC-4126 | COMMON AREA FITOUT - SB09 STAFF ROOM_PLAN, RCP & ELEVATIONS | C7 | As indicated | A1 | vector |
+| 464 | PLA-AR-RAC-4127 | COMMON AREA FITOUT - SB12 BUILDING MAINTENANCE_PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 465 | PLA-AR-RAC-4128 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_PLAN & RCP | C6 | As indicated | A1 | vector |
+| 466 | PLA-AR-RAC-4129 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_ELEVATIONS | C5 | As indicated | A1 | vector |
+| 467 | PLA-AR-RAC-4130 | COMMON AREA FITOUT - HHB03 DIRTY LINEN STORE_PLAN, RCP & ELEVATIONS | C7 | As indicated | A1 | vector |
+| 468 | PLA-AR-RAC-4131 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_PLAN & RCP | C7 | As indicated | A1 | vector |
+| 469 | PLA-AR-RAC-4132 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_ELEVATIONS | C6 | As indicated | A1 | vector |
+| 470 | PLA-AR-RAC-4134 | COMMON AREA FITOUT - COMMS & MSB_ ELEVATIONS | C4 | As indicated | A1 | vector |
+| 471 | PLA-AR-RAC-4134 | COMMON AREA FITOUT - COMMS & MSB_PLAN & RCP | C5 | As indicated | A1 | vector |
+| 472 | PLA-AR-RAC-4135 | COMMON AREA FITOUT - HHF01.TYP LIFT LOBBY / CORRIDOR_PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 473 | PLA-AR-RAC-4137 | COMMON AREA FITOUT - HHF02.TYP SITTING ROOM_PLAN, RCP & ELEVATIONS | C7 | As indicated | A1 | vector |
+| 474 | PLA-AR-RAC-4138 | COMMON AREA FITOUT - HHF03/04 LIVING DINING ROOM NORTH - PLAN, RCP & ELEVATIONS | C8 | As indicated | A1 | vector |
+| 475 | PLA-AR-RAC-4139 | COMMON AREA FITOUT - HHF03/04 LIVING DINING ROOM SOUTH - PLAN, RCP & ELEVATIONS | C7 | As indicated | A1 | vector |
+| 476 | PLA-AR-RAC-4140 | COMMON AREA FITOUT - HHF05 KITCHEN NORTH - PLAN, RCP & ELEVATIONS | C7 | As indicated | A1 | vector |
+| 477 | PLA-AR-RAC-4141 | COMMON AREA FITOUT - HHF05 KITCHEN SOUTH - PLAN, RCP & ELEVATIONS | C5 | As indicated | A1 | vector |
+| 478 | PLA-AR-RAC-4142 | COMMON AREA FITOUT - HHF09.TYP RESIDENT HALLWAY - PLAN & RCP | C6 | As indicated | A1 | vector |
+| 479 | PLA-AR-RAC-4143 | COMMON AREA FITOUT - HHF09.TYP RESIDENT HALLWAY - ELEVATIONS | C6 | As indicated | A1 | vector |
+| 480 | PLA-AR-RAC-4144 | COMMON AREA FITOUT - HHF11 LIFTER STORES - PLAN, RCP & ELEVATIONS | C5 | As indicated | A1 | vector |
+| 481 | PLA-AR-RAC-4145 | COMMON AREA FITOUT - HHB01 CLINICAL ROOM - PLAN, RCP & ELEVATIONS | C8 | As indicated | A1 | vector |
+| 482 | PLA-AR-RAC-4146 | COMMON AREA FITOUT - HHB02 DIRTY UTILITY - PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 483 | PLA-AR-RAC-4147 | COMMON AREA FITOUT - HHB04 CLEAN LINEN STORES_PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 484 | PLA-AR-RAC-4148 | COMMON AREA FITOUT - HHB05 BULK STORE_PLAN, RCP & ELEVATIONS | C5 | As indicated | A1 | vector |
+| 485 | PLA-AR-RAC-4149 | COMMON AREA FITOUT - HHB06/07 EQUIP & CLN'S STORE_PLAN, RCP & ELEVATIONS | C6 | As indicated | A1 | vector |
+| 486 | PLA-AR-RAC-4150 | COMMON AREA FITOUT - HHB09.TYP STAFF CORRIDOR_PLAN & RCP | C6 | As indicated | A1 | vector |
+| 487 | PLA-AR-RAC-4151 | COMMON AREA FITOUT - HHB09.TYP STAFF CORRIDOR_ELEVATIONS | C6 | As indicated | A1 | vector |
+| 488 | PLA-AR-RAC-4152 | COMMON AREA FITOUT - SITE FOH CORRIDOR | C3 | As indicated | A1 | vector |
+| 489 | PLA-AR-RAC-4153 | COMMON AREA FITOUT - SITE BOH CORRIDOR | C3 | As indicated | A1 | vector |
+| 490 | PLA-AR-RAC-4700 | COMMON WET AREA FITOUT - CLUBROOM AMENITIES_PLAN | C6 | As indicated | A1 | vector |
+| 491 | PLA-AR-RAC-4701 | COMMON WET AREA FITOUT - CLUBROOM AMENITIES_ RCP | C5 | As indicated | A1 | vector |
+| 492 | PLA-AR-RAC-4702 | COMMON WET AREA FITOUT - CLUBROOM AMENITIES_ACC ELEVATIONS | C5 | As indicated | A1 | vector |
+| 493 | PLA-AR-RAC-4703 | COMMON WET AREA FITOUT - CLUBROOM AMENITIES_F.W.C ELEVATIONS | C4 | As indicated | A1 | vector |
+| 494 | PLA-AR-RAC-4704 | COMMON WET AREA FITOUT - CLUBROOM AMENITIES_M.WC ELEVATIONS | C4 | As indicated | A1 | vector |
+| 495 | PLA-AR-RAC-4705 | COMMON WET AREA FITOUT - MPR AMENITIES_PLAN | C5 | As indicated | A1 | vector |
+| 496 | PLA-AR-RAC-4706 | COMMON WET AREA FITOUT - MPR AMENITIES_ RCP | C4 | As indicated | A1 | vector |
+| 497 | PLA-AR-RAC-4707 | COMMON WET AREA FITOUT - MPR AMENITIES_ACC ELEVATIONS | C5 | As indicated | A1 | vector |
+| 498 | PLA-AR-RAC-4708 | COMMON WET AREA FITOUT - MPR AMENITIES_F.W.C ELEVATIONS | C4 | As indicated | A1 | vector |
+| 499 | PLA-AR-RAC-4709 | COMMON WET AREA FITOUT - MPR AMENITIES_M.WC ELEVATIONS | C4 | As indicated | A1 | vector |
+| 500 | PLA-AR-RAC-4710 | COMMON WET AREA FITOUT - GYM AMENITIES_PLAN & RCP | C6 | As indicated | A1 | vector |
+| 501 | PLA-AR-RAC-4711 | COMMON WET AREA FITOUT - GYM AMENITIES_ELEVATIONS | C5 | As indicated | A1 | vector |
+| 502 | PLA-AR-RAC-4712 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_PLAN & RCP | C5 | As indicated | A1 | vector |
+| 503 | PLA-AR-RAC-4713 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_RCP | C5 | As indicated | A1 | vector |
+| 504 | PLA-AR-RAC-4714 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_M.WC ELEVATIONS | C5 | As indicated | A1 | vector |
+| 505 | PLA-AR-RAC-4715 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_F.WC ELEVATIONS | C5 | As indicated | A1 | vector |
+| 506 | PLA-AR-RAC-4716 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_ACC ELEVATIONS | C5 | As indicated | A1 | vector |
+| 507 | PLA-AR-RAC-4717 | COMMON WET AREA FITOUT - HHF06 WC'S_NORTH PLAN, RCP & ELEVATIONS | C4 | As indicated | A1 | vector |
+| 508 | PLA-AR-RAC-4718 | COMMON WET AREA FITOUT - HHF06 WC'S_SOUTH PLAN, RCP & ELEVATIONS | C5 | As indicated | A1 | vector |
+| 509 | PLA-AR-RAC-4719 | COMMON WET AREA FITOUT - HHF07 RESI LAUNDRIES_NORTH PLAN, RCP & ELEVATIONS | C5 | As indicated | A1 | vector |
+| 510 | PLA-AR-RAC-4720 | COMMON WET AREA FITOUT - HHF07 RESI LAUNDRIES_SOUTH PLAN, RCP & ELEVATIONS | C6 | 1 : 20 | A1 | vector |
+| 511 | PLA-AR-RAC-4721 | COMMON WET AREA FITOUT - HHB10 STAFF WC_PLAN, RCP & ELEVATIONS | C4 | As indicated | A1 | vector |
+| 512 | PLA-AR-RAC-4722 | COMMON WET AREA FITOUT - HHB08 HAND WASH STATION_PLAN & ELEVATION | C3 | As indicated | A1 | vector |
+| 513 | PLA-AR-RAC-4723 | COMMON WET AREA FITOUT - HHF10 HAND WASH STATION_PLAN & ELEVATION | C3 | 1 : 20 | A1 | vector |
+| 514 | PLA-AR-RAC-4800 | RAC ENSUITE - TYPE MATRIX | C4 | As indicated | A1 | vector |
+| 515 | PLA-AR-RAC-4801 | RAC ENSUITE - TYPE EN01 PLAN & RCP |  | 1:20 | A1 | vector |
+| 516 | PLA-AR-RAC-5000 | FACADE SECTION DETAILS - SHEET 01 | C4 | As indicated | A1 | mixed |
+| 517 | PLA-AR-RAC-5001 | FACADE SECTION DETAILS - SHEET 02 | C4 | As indicated | A1 | vector |
+| 518 | PLA-AR-RAC-5002 | FACADE SECTION DETAILS - SHEET 03 | C4 | As indicated | A1 | mixed |
+| 519 | PLA-AR-RAC-5003 | FACADE SECTION DETAILS - SHEET 04 | C4 | As indicated | A1 | vector |
+| 520 | PLA-AR-RAC-5004 | FACADE SECTION DETAILS - SHEET 05 | C4 | As indicated | A1 | raster |
+| 521 | PLA-AR-RAC-5005 | FACADE SECTION DETAILS - SHEET 06 | C4 | As indicated | A1 | raster |
+| 522 | PLA-AR-RAC-5006 | FACADE SECTION DETAILS - SHEET 07 | C3 | As indicated | A1 | raster |
+| 523 | PLA-AR-RAC-5007 | FACADE SECTION DETAILS - SHEET 08 | C4 | As indicated | A1 | raster |
+| 524 | PLA-AR-RAC-5009 | FACADE SECTION DETAILS - SHEET 10 | C5 | As indicated | A1 | raster |
+| 525 | PLA-AR-RAC-5010 | FACADE SECTION DETAILS - SHEET 11 | C6 | As indicated | A1 | raster |
+| 526 | PLA-AR-RAC-5011 | FACADE SECTION DETAILS - SHEET 12 | C2 | 1 : 5 | A1 | vector |
+| 527 | PLA-AR-RAC-5100 | PLAN DETAILS - SHEET 01 | C2 | 1 : 50 | A1 | vector |
+| 528 | PLA-AR-RAC-5101 | PLAN DETAILS - SHEET 02 | C2 | 1 : 5 | A1 | vector |
+| 529 | PLA-AR-RAC-5102 | PLAN DETAILS - SHEET 03 | C2 | 1 : 5 | A1 | vector |
+| 530 | PLA-AR-RAC-6000 | WINDOW LIST SCHEDULE - SHEET 01 | C5 | 1 : 100 | A1 | vector |
+| 531 | PLA-AR-RAC-6001 | WINDOW ELEVATIONS SCHEDULE - SHEET 02 | C5 | As indicated | A1 | vector |
+| 532 | PLA-AR-RAC-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | C5 | As indicated | A1 | vector |
+| 533 | PLA-AR-RAC-6100 | DOOR SCHEDULE - SHEET 01 | C6 | 1 : 100 | A1 | vector |
+| 534 | PLA-AR-RAC-6101 | DOOR SCHEDULE - SHEET 02 | C6 | 1 : 100 | A1 | vector |
+| 535 | PLA-AR-RAC-6102 | DOOR SCHEDULE - SHEET 03 | C6 | 1 : 100 | A1 | vector |
+| 536 | PLA-AR-RAC-6103 | DOOR SCHEDULE - SHEET 04 | C6 | 1 : 100 | A1 | vector |
+| 537 | PLA-AR-RAC-6104 | DOOR SCHEDULE - SHEET 05 | C6 | As indicated | A1 | vector |
+| 538 | PLA-AR-RAC-6105 | DOOR SCHEDULE - SHEET 06 | C6 | As indicated | A1 | vector |
+| 539 | PLA-AR-RAC-6106 | DOOR SCHEDULE - SHEET 07 | C4 | As indicated | A1 | vector |
+| 540 | PLA-AR-RAC-6150 | JOINERY DOOR SCHEDULE - SHEET 01 | C4 | 1 : 100 | A1 | vector |
+| 541 | PLA-AR-RAC-6151 | JOINERY DOOR SCHEDULE - SHEET 02 | C3 | As indicated | A1 | vector |
+| 542 | PLA-AR-RAC-6200 | BALUSTRADE SCHEDULE | C4 | As indicated | A1 | vector |
+| 543 | PLA-AR-RAC-6201 | LOUVRE SCREEN | C4 | As indicated | A1 | vector |
+| 544 | PLA-AR-RAC-7000 | RAC JOINERY DETAILS - TYPE JR01 | C4 | 1 : 20 | A1 | vector |
+| 545 | PLA-AR-RAC-7001 | RAC JOINERY DETAILS - TYPE JR02 | C4 | 1 : 20 | A1 | vector |
+| 546 | PLA-AR-RAC-7101 | COMMON AREA JOINERY DETAILS - TYPE JO01 RECEPTION BACKLINE | C4 | 1 : 20 | A1 | vector |
+| 547 | PLA-AR-RAC-7102 | COMMON AREA JOINERY DETAILS - TYPE JO02 RECEPTION DESK | C4 | 1 : 20 | A1 | vector |
+| 548 | PLA-AR-RAC-7103 | COMMON AREA JOINERY DETAILS - TYPE JO03 CAFÉ BACKLINE | C4 | As indicated | A1 | vector |
+| 549 | PLA-AR-RAC-7104 | COMMON AREA JOINERY DETAILS - TYPE JO04 CAFÉ ISLAND BENCH | C4 | 1 : 20 | A1 | vector |
+| 550 | PLA-AR-RAC-7105 | COMMON AREA JOINERY DETAILS - TYPE JO05 CAFÉ BOH BENCH | C4 | 1 : 20 | A1 | vector |
+| 551 | PLA-AR-RAC-7106 | COMMON AREA JOINERY DETAILS - TYPE JK06 MPR KITCHENETTE | C5 | As indicated | A1 | vector |
+| 552 | PLA-AR-RAC-7107 | COMMON AREA JOINERY DETAILS - TYPE JO07 MPR STORE CUPBOARD | C4 | 1 : 20 | A1 | vector |
+| 553 | PLA-AR-RAC-7109 | COMMON AREA JOINERY DETAILS - TYPE JO09 TRAINING ROOM KITCHENETTE | C4 | 1 : 20 | A1 | vector |
+| 554 | PLA-AR-RAC-7111 | COMMON AREA JOINERY DETAILS - TYPE JO11 HAIR SALON FOH CUPBOARD | C5 | 1 : 20 | A1 | vector |
+| 555 | PLA-AR-RAC-7112 | COMMON AREA JOINERY DETAILS - TYPE JK12 CLUBROOM KITCHEN BACKLINE | C6 | 1 : 20 | A1 | vector |
+| 556 | PLA-AR-RAC-7113 | COMMON AREA JOINERY DETAILS - TYPE JKI13 CLUBROOM KITCHEN ISLAND | C4 | 1 : 20 | A1 | vector |
+| 557 | PLA-AR-RAC-7115 | COMMON AREA JOINERY DETAILS - TYPE JO15 CLUBROOM PRIVATE DINING CREDENZA | C4 | 1 : 20 | A1 | vector |
+| 558 | PLA-AR-RAC-7116 | COMMON AREA JOINERY DETAILS - TYPE JO16 CLUBROOM TV BOOKCASE | C5 | 1 : 20 | A1 | vector |
+| 559 | PLA-AR-RAC-7118 | COMMON AREA JOINERY DETAILS - TYPE JO18 GYM RECEPTION DESK | C5 | 1 : 20 | A1 | vector |
+| 560 | PLA-AR-RAC-7118 | COMMON AREA JOINERY DETAILS - TYPE JO18 GYM RECEPTION DESK | C5 | 1 : 20 | A1 | vector |
+| 561 | PLA-AR-RAC-7120 | COMMON AREA JOINERY DETAILS - TYPE JO20 GYM BANQUETTE SEAT | C5 | 1 : 20 | A1 | vector |
+| 562 | PLA-AR-RAC-7121 | COMMON AREA JOINERY DETAILS - TYPE JO21 CINEMA KITCHENETTE | C4 | 1 : 20 | A1 | vector |
+| 563 | PLA-AR-RAC-7122 | COMMON AREA JOINERY DETAILS - TYPE JO22 STAFF ADMIN PRINTING | C4 | 1 : 20 | A1 | vector |
+| 564 | PLA-AR-RAC-7123 | COMMON AREA JOINERY DETAILS - TYPE JO23 STAFF BREAKOUT DESK | C4 | 1 : 20 | A1 | vector |
+| 565 | PLA-AR-RAC-7124 | COMMON AREA JOINERY DETAILS - TYPE JO24 STAFF BREAKOUT KITCHEN | C4 | 1 : 20 | A1 | vector |
+| 566 | PLA-AR-RAC-7126 | COMMON AREA JOINERY DETAILS - TYPE JO26 MPR CHAPEL BACKLINE | C5 | 1 : 20 | A1 | vector |
+| 567 | PLA-AR-RAC-7127 | COMMON AREA JOINERY DETAILS - TYPE JO27 HOUSEHOLD LIVING FIRE | C5 | 1 : 20 | A1 | vector |
+| 568 | PLA-AR-RAC-7129 | COMMON AREA JOINERY DETAILS - TYPE JK29 HOUSEHOLD NORTH KITCHEN BACKLINE | C7 | 1 : 20 | A1 | vector |
+| 569 | PLA-AR-RAC-7130 | COMMON AREA JOINERY DETAILS - TYPE JKI30 HOUSEHOLD NORTH KITCHEN ISLAND | C7 | 1 : 20 | A1 | vector |
+| 570 | PLA-AR-RAC-7131 | COMMON AREA JOINERY DETAILS - TYPE JK31 HOUSEHOLD SOUTH KITCHEN BACKLINE | C7 | 1 : 20 | A1 | vector |
+| 571 | PLA-AR-RAC-7132 | COMMON AREA JOINERY DETAILS - TYPE JKI32 HOUSEHOLD SOUTH KITCHEN ISLAND | C7 | 1 : 20 | A1 | vector |
+| 572 | PLA-AR-RAC-7133 | COMMON AREA JOINERY DETAILS - TYPE JK33 HOUSEHOLD NORTH KITCHEN STORE | C4 | 1 : 20 | A1 | vector |
+| 573 | PLA-AR-RAC-7134 | COMMON AREA JOINERY DETAILS - TYPE JO34 BATHROOM COMMON TYPICAL VANITY | C4 | 1 : 20 | A1 | vector |
+| 574 | PLA-AR-RAC-7135 | COMMON AREA JOINERY DETAILS - TYPE JO35 BATHROOM COMMON LOCKERS | C5 | 1 : 20 | A1 | vector |
+| 575 | PLA-AR-RAC-7136 | COMMON AREA JOINERY DETAILS - TYPE JO36 HOUSEHOLD RESIDENT TYPICAL LAUNDRY BENCH | C4 | 1 : 20 | A1 | vector |
+| 576 | PLA-AR-RAC-7137 | COMMON AREA JOINERY DETAILS - TYPE JO37 MEMORY BOX | C3 | 1 : 20 | A1 | vector |
+| 577 | PLA-AR-RAC-7138 | COMMON AREA JOINERY DETAILS - TYPE JO38 RECEPTION ROUND TABLE | C2 | 1 : 20 | A1 | vector |
+| 578 | PLA-AR-RAC-7140 | COMMON AREA JOINERY DETAILS - TYPE JO40 HAIR SALON STYLING STATION | C2 | 1 : 20 | A1 | vector |
+| 579 | PLA-AR-RAC-7141 | COMMON AREA JOINERY DETAILS - TYPE JO40 HAIR SALON MIRROR | C2 | 1 : 20 | A1 | vector |
+| 580 | PLA-AR-RAC-7143 | COMMON AREA JOINERY DETAILS - TYPE JO43 TYPICAL LAUNDRY WORK BENCH & IRONING CUPBOARD | C2 | 1 : 20 | A1 | vector |
+| 581 | PLA-AR-RAC-7144 | COMMON AREA JOINERY DETAILS - TYPE JO44, JO45, JO46, JO47 - CLINICAL ROOM JOINERY | C3 | 1 : 20 | A1 | vector |

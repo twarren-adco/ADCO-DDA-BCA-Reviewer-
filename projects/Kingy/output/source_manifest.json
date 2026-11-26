@@ -1,20 +1,1685 @@
 {
   "source": "drawing_drop_zone",
   "job": "Kingy",
-  "index_updated_at": "2026-11-26T02:44:31.278Z",
-  "restored_at": "2026-11-26T02:52:23Z",
+  "index_updated_at": "2026-11-26T22:26:10.690Z",
+  "restored_at": "2026-11-26T22:32:33Z",
   "scope": "whole pack",
   "files_in_index": 1,
   "files_restored": 1,
+  "pdfs_written": 84,
   "restored": [
     {
-      "file_id": "fa80ca0fb84f514e4",
-      "path": "drawings/Architectural Docs Reduced.pdf",
-      "size": 70533522,
-      "sha256": "901dbb2e0501877b68c6e2d9bc4e5224ccc40a6f2a4ec1acb544ce59ffd98038",
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p1-6].pdf",
+      "original_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "stored_as": "pdf",
+      "size": 14281593,
+      "sha256": "ebb0a3f21e0f35ae3c48a9a0884a7db03f6fcb9a42f78ec2c948cc9731d462c1",
       "sha256_verified": true,
-      "parts": 471,
-      "uploaded_at": "2026-11-26T02:44:31.278Z"
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p7-11].pdf",
+      "original_pages": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "stored_as": "pdf",
+      "size": 10281707,
+      "sha256": "f7f1f681cdc5c541b95aeaecb18770da33d98dbf984d88d5ca5da24ac47fa853",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p12-14].pdf",
+      "original_pages": [
+        12,
+        13,
+        14
+      ],
+      "stored_as": "pdf",
+      "size": 15592846,
+      "sha256": "62b8a0c7b5fc1a2c954e96b43eebd0c87f4f3cd543178b0f0654c7e2092687b3",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p15].pdf",
+      "original_pages": [
+        15
+      ],
+      "stored_as": "pdf",
+      "size": 12920203,
+      "sha256": "5daa9f17cdd76b53d7e0fbe7d2bd301f411a9a0eab2a48e40a31e9fd82002549",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p16].pdf",
+      "original_pages": [
+        16
+      ],
+      "stored_as": "pdf",
+      "size": 8184377,
+      "sha256": "f4ee09a9c3ef49f260859176a9962114c0dc18e6b3cb470f0c26800467a05c25",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p17].pdf",
+      "original_pages": [
+        17
+      ],
+      "stored_as": "pdf",
+      "size": 6321819,
+      "sha256": "c7a5a8d58b4d0021f47d49cd8e6c2eea6398cffe9d98120e9d5dfdf0b21086c8",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p18-20].pdf",
+      "original_pages": [
+        18,
+        19,
+        20
+      ],
+      "stored_as": "pdf",
+      "size": 14804453,
+      "sha256": "c8b12fb719c46a654ef51a59f677aea49f53719c6e80ed21a69abae5e5a1827e",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p21-22].pdf",
+      "original_pages": [
+        21,
+        22
+      ],
+      "stored_as": "pdf",
+      "size": 13515255,
+      "sha256": "b83d733b1196dcf17740dcf3cdc3e165f565546adc68e5f5554a480608c9eeb8",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p23-28].pdf",
+      "original_pages": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "stored_as": "pdf",
+      "size": 13094758,
+      "sha256": "089476db8b9770ed14256ba3658adc653fb4693693501daea96f7427d9756a89",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p29-33].pdf",
+      "original_pages": [
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "stored_as": "pdf",
+      "size": 6751275,
+      "sha256": "c153dcf929472c4911b9f88e99dc309cb8f7fb5db5a34d49a8cd6c5910827113",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p34-44].pdf",
+      "original_pages": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "stored_as": "pdf",
+      "size": 6968289,
+      "sha256": "51a9c6e462a0e0cea8ab8ee7c5518326c90fb0a9f3a66bbf09ad6da88db68d56",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p45-55].pdf",
+      "original_pages": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "stored_as": "pdf",
+      "size": 5728854,
+      "sha256": "6cbd5f5dbfb99aa6f8d973bd211d2e40b3563458da20fd32ff75bbb632f5ce85",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p56-66].pdf",
+      "original_pages": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "stored_as": "pdf",
+      "size": 2500951,
+      "sha256": "5114cf881793239904ba2effbb9f223edbb6b99835f70ea09fd9c654b3ac148f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p67-77].pdf",
+      "original_pages": [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ],
+      "stored_as": "pdf",
+      "size": 8654823,
+      "sha256": "1fa4f5ff838a7c10147d3929c0e1a72f0973735fcb948f87871e03fe6782af9c",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p78-88].pdf",
+      "original_pages": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "stored_as": "pdf",
+      "size": 12162193,
+      "sha256": "2ea85067ff1a5f44a59457b0e321a1d1f3ab43439b7ae7d64290701500f5faf7",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p89-91].pdf",
+      "original_pages": [
+        89,
+        90,
+        91
+      ],
+      "stored_as": "pdf",
+      "size": 15269007,
+      "sha256": "ffa2e7430c6ccb6bc4f5868cffc58334ca6d1577bb07d8c16d6cb78b5366ee05",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p92-94].pdf",
+      "original_pages": [
+        92,
+        93,
+        94
+      ],
+      "stored_as": "pdf",
+      "size": 13111654,
+      "sha256": "291a711f383e415783d59a1928940884836fb27636d0a972db112122b2058c6f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p95-99].pdf",
+      "original_pages": [
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "stored_as": "pdf",
+      "size": 2004666,
+      "sha256": "b993b5c21ef82df25b7d3e232aba66f043d1e88870f90efe1f28efdebf525d7d",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p100-110].pdf",
+      "original_pages": [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110
+      ],
+      "stored_as": "pdf",
+      "size": 6185680,
+      "sha256": "b4ca466e82fb8085982d2075d342445965a1e0aeda77fd7e6805d8320deeb881",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p111-121].pdf",
+      "original_pages": [
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121
+      ],
+      "stored_as": "pdf",
+      "size": 2780847,
+      "sha256": "9da4a649af9f17a13964df639a9e2586f65e9f047667400b4d1d7ca10c894379",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p122-132].pdf",
+      "original_pages": [
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132
+      ],
+      "stored_as": "pdf",
+      "size": 11899069,
+      "sha256": "78d204336e70762d0152abe1ee4dca9739948f2675a14fd9e6decbe5caa6ef51",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p133-143].pdf",
+      "original_pages": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143
+      ],
+      "stored_as": "pdf",
+      "size": 9897319,
+      "sha256": "b167644f98064db24fef6672e1f1683d5576bcbe05caaa09388c5d95344e533f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p144-154].pdf",
+      "original_pages": [
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "stored_as": "pdf",
+      "size": 15251897,
+      "sha256": "08b244280e39dd556d970b8a099a9f51910d7960a8288c9c371ebbe134e131c4",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p155-157].pdf",
+      "original_pages": [
+        155,
+        156,
+        157
+      ],
+      "stored_as": "pdf",
+      "size": 16035591,
+      "sha256": "bac8b0004fb90cdf68addbeeabade05f8a35a25ce5d2f6474b5e0e31a9a11637",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p158-160].pdf",
+      "original_pages": [
+        158,
+        159,
+        160
+      ],
+      "stored_as": "pdf",
+      "size": 11490595,
+      "sha256": "65e5f14f2e52a3e42136e239291fb17dd6102a98e7cfff52b0d5726110e518d1",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p161-165].pdf",
+      "original_pages": [
+        161,
+        162,
+        163,
+        164,
+        165
+      ],
+      "stored_as": "pdf",
+      "size": 2556395,
+      "sha256": "d46070808cd4439d16a9cc857094ca7e87e8f04173f00de32dca7e695a286522",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p166-176].pdf",
+      "original_pages": [
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176
+      ],
+      "stored_as": "pdf",
+      "size": 4995298,
+      "sha256": "2655c001af0acb1c118b3cc9357cba476cc58719b18a5fddd7dfd0d82b1be66f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p177-187].pdf",
+      "original_pages": [
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187
+      ],
+      "stored_as": "pdf",
+      "size": 10439183,
+      "sha256": "7fc6bc76bae6b20b2d87571b2b8c5b48fc15d31ef1fcd061ee3264654ba05c35",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p188-190].pdf",
+      "original_pages": [
+        188,
+        189,
+        190
+      ],
+      "stored_as": "pdf",
+      "size": 15284584,
+      "sha256": "56325a2934b585a6a8f81d9010b6820c5a244de9df5d936b7465c300dd676cf1",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p191].pdf",
+      "original_pages": [
+        191
+      ],
+      "stored_as": "pdf",
+      "size": 2779092,
+      "sha256": "727e3d8c86b64783930725ec4cf95590bc74c9ee1137341874fa0800860e98c7",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p192].pdf",
+      "original_pages": [
+        192
+      ],
+      "stored_as": "base64 text parts",
+      "size": 23013791,
+      "sha256": "f92f5481200862f91a5400040daaa0f82af791da87bdd47586fb3cdef6a8064d",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p193].pdf",
+      "original_pages": [
+        193
+      ],
+      "stored_as": "pdf",
+      "size": 343672,
+      "sha256": "da85b0ac34250eb59e88454211e64798c0d6378657d2a13bfa652eec56287f5c",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p194-198].pdf",
+      "original_pages": [
+        194,
+        195,
+        196,
+        197,
+        198
+      ],
+      "stored_as": "pdf",
+      "size": 1218828,
+      "sha256": "d9b687e8e2f9ed881d61387d256024bda0586ee5679510d2b4e56d820cdac93f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p199-209].pdf",
+      "original_pages": [
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "stored_as": "pdf",
+      "size": 7165954,
+      "sha256": "25f5f8574520a29b2be328f339f1fc915add904dd18ef04544757625bdd85544",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p210-220].pdf",
+      "original_pages": [
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220
+      ],
+      "stored_as": "pdf",
+      "size": 18274806,
+      "sha256": "472883e72f055596b0cd12e1d28dd7e03a55ded3a9889b0a3cf31911bf64bdfa",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p221-231].pdf",
+      "original_pages": [
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231
+      ],
+      "stored_as": "pdf",
+      "size": 10945001,
+      "sha256": "b7bbe542a9cd8ca4f7d84cce2a7016ac4daaa7fb5b925276e908f90d7cbd72ae",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p232-234].pdf",
+      "original_pages": [
+        232,
+        233,
+        234
+      ],
+      "stored_as": "pdf",
+      "size": 2200177,
+      "sha256": "b843a57124fa3a02dd0665a3e74711df3eea8d552c12f3a6d322ce56ab889ad3",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p235-237].pdf",
+      "original_pages": [
+        235,
+        236,
+        237
+      ],
+      "stored_as": "pdf",
+      "size": 16881037,
+      "sha256": "4f8b02c869dd337f65b7a69d10acebcdc1bd1897e85eb0d77602473a01292e34",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p238-239].pdf",
+      "original_pages": [
+        238,
+        239
+      ],
+      "stored_as": "pdf",
+      "size": 18394327,
+      "sha256": "97bfe3f1713530756370f6c07126ca4c3cf056351a6cf6185161dfe7b108fdef",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p240].pdf",
+      "original_pages": [
+        240
+      ],
+      "stored_as": "pdf",
+      "size": 3493288,
+      "sha256": "254ddaabe776071068197d03acb063532ca36a0e903510399bc4791b92f045eb",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p241-242].pdf",
+      "original_pages": [
+        241,
+        242
+      ],
+      "stored_as": "pdf",
+      "size": 6883210,
+      "sha256": "99385339edcb88b126ea15f8426f0acbef0d86f1635ee04ce1a20c5da6b28e8e",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p243-253].pdf",
+      "original_pages": [
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253
+      ],
+      "stored_as": "pdf",
+      "size": 15003807,
+      "sha256": "264719888612c0dd7248dfb98302b11affe23241d481a9242f863ff20c72cf41",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p254-264].pdf",
+      "original_pages": [
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264
+      ],
+      "stored_as": "pdf",
+      "size": 5908398,
+      "sha256": "e72abd1059afefc16e9e78ba39478a48bc9c96b87c4dcb54dda6a3d4a64a22ae",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p265-275].pdf",
+      "original_pages": [
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275
+      ],
+      "stored_as": "pdf",
+      "size": 4204862,
+      "sha256": "726e6153e90cc9e366a9bb660ec08f5065ecee908e3921a59c4ba410909d3338",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p276-286].pdf",
+      "original_pages": [
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286
+      ],
+      "stored_as": "pdf",
+      "size": 3465063,
+      "sha256": "1a30b80e21ad0989b70ec78050af3a84eaa86053b5548fbb3d4b6991dc880542",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p287-297].pdf",
+      "original_pages": [
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297
+      ],
+      "stored_as": "pdf",
+      "size": 2634698,
+      "sha256": "681e914ad60c7122fade1b1325daf517ac93c17736b9e7578ccc55092d612254",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p298-308].pdf",
+      "original_pages": [
+        298,
+        299,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308
+      ],
+      "stored_as": "pdf",
+      "size": 16509264,
+      "sha256": "d92e20ebb78dc4dde13a2a39c4a423231fa33eabe23feecd53297d642b935a30",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p309-314].pdf",
+      "original_pages": [
+        309,
+        310,
+        311,
+        312,
+        313,
+        314
+      ],
+      "stored_as": "pdf",
+      "size": 13683102,
+      "sha256": "5215bbc3575819a78400db01270f2d00a6f25785c9b68a44435ef07d163fad9a",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p315-319].pdf",
+      "original_pages": [
+        315,
+        316,
+        317,
+        318,
+        319
+      ],
+      "stored_as": "pdf",
+      "size": 7384498,
+      "sha256": "70152671814e8b5b4467f412f9ac53bff64dc9a499efa61e37bf08e8d0afe302",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p320-325].pdf",
+      "original_pages": [
+        320,
+        321,
+        322,
+        323,
+        324,
+        325
+      ],
+      "stored_as": "pdf",
+      "size": 11178402,
+      "sha256": "eb5361f1d26b07bff9acf315a60a542243ab98b574eca6319294956c03125e4f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p326-330].pdf",
+      "original_pages": [
+        326,
+        327,
+        328,
+        329,
+        330
+      ],
+      "stored_as": "pdf",
+      "size": 8118834,
+      "sha256": "5bfe371e9a7ee5b4bb721d78d1f3519eabc8e83afeab4f20976583adb21e29dc",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p331-336].pdf",
+      "original_pages": [
+        331,
+        332,
+        333,
+        334,
+        335,
+        336
+      ],
+      "stored_as": "pdf",
+      "size": 10421090,
+      "sha256": "fd5ec0548c8319ae5a0c99bfafa45d9473309d86a931d31b4fc6a7a0674c738d",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p337-341].pdf",
+      "original_pages": [
+        337,
+        338,
+        339,
+        340,
+        341
+      ],
+      "stored_as": "pdf",
+      "size": 9632572,
+      "sha256": "3ee35c249a6691083fa27a215f0cf55698a877e3e504989a6d6ee30da5580a99",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p342-347].pdf",
+      "original_pages": [
+        342,
+        343,
+        344,
+        345,
+        346,
+        347
+      ],
+      "stored_as": "pdf",
+      "size": 13615899,
+      "sha256": "77fc116752b434f0b5a9d19b4d969d3eef364c2ff01fe53a3dc0ac329021a81d",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p348-352].pdf",
+      "original_pages": [
+        348,
+        349,
+        350,
+        351,
+        352
+      ],
+      "stored_as": "pdf",
+      "size": 5344482,
+      "sha256": "14e3ea0bca6fe21b550e12e9199ec65d458c9f01ad6f1dc168ea9fdc7051564d",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p353-363].pdf",
+      "original_pages": [
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363
+      ],
+      "stored_as": "pdf",
+      "size": 13281579,
+      "sha256": "8858d39cc897ee2db7a749cb3032085099b725fd6b7011e09ff072f8b64cbaf3",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p364-374].pdf",
+      "original_pages": [
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373,
+        374
+      ],
+      "stored_as": "pdf",
+      "size": 17599042,
+      "sha256": "38d90c7b95ed2015ef80306d0075b984478b4bd52c2e59c8ac26f9c7973eea5b",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p375-385].pdf",
+      "original_pages": [
+        375,
+        376,
+        377,
+        378,
+        379,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385
+      ],
+      "stored_as": "pdf",
+      "size": 18852009,
+      "sha256": "ee38c3dd310efb2c3c79bb5587934f03c3c2d9a504196f77f789d34df6a2cc77",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p386-396].pdf",
+      "original_pages": [
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396
+      ],
+      "stored_as": "pdf",
+      "size": 12022804,
+      "sha256": "5b421c544dbdea6bf6bb45f555c6069e8e295444506a6b20ab04f2a554777651",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p397-407].pdf",
+      "original_pages": [
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407
+      ],
+      "stored_as": "pdf",
+      "size": 8904213,
+      "sha256": "42504f74375a802c4f1acc2591468f46bd2c39564d60b30176cba6344907bb89",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p408-410].pdf",
+      "original_pages": [
+        408,
+        409,
+        410
+      ],
+      "stored_as": "pdf",
+      "size": 7673405,
+      "sha256": "1b43d1aa85389ef55cd576b4849948514edf4412e7f0a0a20caa177a9fce3b8e",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p411-413].pdf",
+      "original_pages": [
+        411,
+        412,
+        413
+      ],
+      "stored_as": "pdf",
+      "size": 15743576,
+      "sha256": "01527fbadab0a49e23926f1af3ae7ca9aff267aedc91f1670fcf45276a3df65c",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p414-416].pdf",
+      "original_pages": [
+        414,
+        415,
+        416
+      ],
+      "stored_as": "pdf",
+      "size": 17652709,
+      "sha256": "574c011892917a5aeaceac04595fcfa77edc8e8d67ece5c22c3462ec6c7f9632",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p417-418].pdf",
+      "original_pages": [
+        417,
+        418
+      ],
+      "stored_as": "pdf",
+      "size": 9063104,
+      "sha256": "6f7e9ea1258a1c87c141f516439b41ea9ea961a1484ff2eec6e43873b5b3284c",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p419-421].pdf",
+      "original_pages": [
+        419,
+        420,
+        421
+      ],
+      "stored_as": "pdf",
+      "size": 14404169,
+      "sha256": "0c7af4aadd4b3f48ae867dd0e05db5a14d9915d2149c1a92cd2506720bd36421",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p422-424].pdf",
+      "original_pages": [
+        422,
+        423,
+        424
+      ],
+      "stored_as": "pdf",
+      "size": 8256439,
+      "sha256": "0266730a73b70cc524236f70b22a8fc35c2ce131d7ba0b4699e9f764388c7ff4",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p425-429].pdf",
+      "original_pages": [
+        425,
+        426,
+        427,
+        428,
+        429
+      ],
+      "stored_as": "pdf",
+      "size": 4697954,
+      "sha256": "ab5beff5726db7dcfb30df3d744cea72849789f54a9129530cb29c726ed35572",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p430-440].pdf",
+      "original_pages": [
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440
+      ],
+      "stored_as": "pdf",
+      "size": 4153135,
+      "sha256": "f43ce39be61c72f66427f304c4def24a63bd64a56e3487f36681b5663785b29f",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p441-451].pdf",
+      "original_pages": [
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451
+      ],
+      "stored_as": "pdf",
+      "size": 8009866,
+      "sha256": "c17bcc4a6ffbcfeeb7f81f4855b1603ec28cfecfaa79dbe91f89771286aecc68",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p452-462].pdf",
+      "original_pages": [
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462
+      ],
+      "stored_as": "pdf",
+      "size": 6537886,
+      "sha256": "72f7bbe6251f72f4b1cd555925ca41665fb6e48df7253707711fd71685715a92",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p463-473].pdf",
+      "original_pages": [
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473
+      ],
+      "stored_as": "pdf",
+      "size": 4435668,
+      "sha256": "df8140caa81c3e745c4b4ed20c7d8ab6b0a82ee2cdb0a50855d0efb3c8b98422",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p474-484].pdf",
+      "original_pages": [
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484
+      ],
+      "stored_as": "pdf",
+      "size": 6375195,
+      "sha256": "cf922c716d6b214281c8b1f4dbedc32b579986d77760902e4fb06b21b3d01cb5",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p485-495].pdf",
+      "original_pages": [
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493,
+        494,
+        495
+      ],
+      "stored_as": "pdf",
+      "size": 3002669,
+      "sha256": "515716135ec27839e54a7ca7fef2995306754f46107373565675cc6eaece1fbc",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p496-506].pdf",
+      "original_pages": [
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506
+      ],
+      "stored_as": "pdf",
+      "size": 2754773,
+      "sha256": "4752cdf297c19a5dabf9394b61551d7e6135c257d6af43848fbe1094d0fb0b4b",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p507-517].pdf",
+      "original_pages": [
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517
+      ],
+      "stored_as": "pdf",
+      "size": 5322732,
+      "sha256": "d8e3753571abf62401f736e0adaccd50c895205a8d077d01cc4a43cb8281ad01",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p518-520].pdf",
+      "original_pages": [
+        518,
+        519,
+        520
+      ],
+      "stored_as": "pdf",
+      "size": 9378482,
+      "sha256": "ad61feb2b4c5c46e5a0e692e9e7a8a8792be7d0f65794a6de4602a08df9ef787",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p521-522].pdf",
+      "original_pages": [
+        521,
+        522
+      ],
+      "stored_as": "pdf",
+      "size": 16589989,
+      "sha256": "0c40f54d1cefd69631e82d1e796a6fa0772da65dde1af53d2dd52a760b4958f5",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p523].pdf",
+      "original_pages": [
+        523
+      ],
+      "stored_as": "pdf",
+      "size": 3772297,
+      "sha256": "f9450b352365f808e7d4c9b34118592cfeb1133c4f4c927e1bfd6f5cfb31dd3a",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p524-528].pdf",
+      "original_pages": [
+        524,
+        525,
+        526,
+        527,
+        528
+      ],
+      "stored_as": "pdf",
+      "size": 13451282,
+      "sha256": "0e2035ecd5f9c3bab23eaa7f56dde924d33592a29149c045e463cbc7fda3b188",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p529-539].pdf",
+      "original_pages": [
+        529,
+        530,
+        531,
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539
+      ],
+      "stored_as": "pdf",
+      "size": 3702177,
+      "sha256": "43df8b27cdba3fc435f51c6a0f933da2f60240cea65877701d3ef56a60149340",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p540-550].pdf",
+      "original_pages": [
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549,
+        550
+      ],
+      "stored_as": "pdf",
+      "size": 5825005,
+      "sha256": "846a6f5168ca91758bcf7fe42a750db766e4b35a7cff9de0c4611c78076248e7",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p551-561].pdf",
+      "original_pages": [
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561
+      ],
+      "stored_as": "pdf",
+      "size": 4859766,
+      "sha256": "454d11b0ba77402e5d286a4254318575d57dd82251f6f9b767fa4d0f16eeb2d2",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p562-572].pdf",
+      "original_pages": [
+        562,
+        563,
+        564,
+        565,
+        566,
+        567,
+        568,
+        569,
+        570,
+        571,
+        572
+      ],
+      "stored_as": "pdf",
+      "size": 3083290,
+      "sha256": "d2f84ca79e02a46f599fbc01218afd338c64a5eb6c087cf17b4a89fcba0d344a",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
+    },
+    {
+      "file_id": "fcadc6db67a3453e5",
+      "path": "drawings/Architectural Combined.pdf",
+      "local": "drawings/Architectural Combined [p573-581].pdf",
+      "original_pages": [
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581
+      ],
+      "stored_as": "pdf",
+      "size": 2622328,
+      "sha256": "58f4ec311f69889e94d6c2ef9a18caca957e6ab0e4b74eb2bbe1e8cb1fe0cd7c",
+      "sha256_verified": true,
+      "uploaded_at": "2026-11-26T22:26:10.690Z",
+      "pages_total": 581
     }
   ],
   "not_restored": [],
