@@ -23,7 +23,10 @@ assessment, access audit or certification. Never describe it as one.
    2. a measurement from vector geometry at a scale that is **confirmed**:
       `CALIBRATED` (the sheet's own dimensions agree), `CALIBRATED BY VIEWPORT`
       (inside the listed region only), `CALIBRATED FROM GRIDS` (grid spacings
-      carried from calibrated plans), or `PRINTED SCALE` / `PRINTED SCALE BY
+      carried from calibrated plans), `CALIBRATED FROM LEVELS` (pairs of level
+      heads such as FFL 0.00 / FCL 2700 on elevations and sections),
+      `CALIBRATED FROM MATCHING SHEETS` (the same linework as 2+ calibrated
+      sheets), or `PRINTED SCALE` / `PRINTED SCALE BY
       VIEWPORT` (the scale printed under the viewport title, e.g.
       "SCALE 1 : 50 @A1", accepted because the page is the full paper size the
       note names; owner's direction 27/11/26);
@@ -38,8 +41,11 @@ assessment, access audit or certification. Never describe it as one.
    "Printed viewport scale 1:50 @A1").
 4. **Calibrate before measuring.** Each sheet/viewport gets calibrated before any
    geometry measurement. For a whole job: `sheetindex.py`, `calibrate_all.py`,
-   then `grids.py learn` and `grids.py check` for sheets with no dimensions,
-   then `printedscale.py --job <job>` for sheets with neither. If calibration is `UNRELIABLE`, has multiple scales and
+   (which also tries level heads and skips schedule tables), then `grids.py learn`
+   and `grids.py check` for sheets with no dimensions, then `sheetmatch.py <job>`,
+   then `printedscale.py --job <job>` for whatever is left. `SCHEDULE` and
+   `NOTHING TO MEASURE` sheets (tables, covers, registers, legends, blank
+   sheets) are read as text. If calibration is `UNRELIABLE`, has multiple scales and
    no region, or the sheet is a scan, do not measure geometry on it. Log every
    calibration result in `output/calibration-log.md`.
 5. **Clear dimensions, not nominal ones.** Door widths, circulation spaces and
@@ -191,6 +197,7 @@ python3 tools/sheetindex.py <job>                         # one row per sheet: d
 python3 tools/calibrate_all.py <job> [--workers 4]        # scale check on every sheet (resumable), writes calibration-log.md
 python3 tools/grids.py learn <job>                        # grid spacings from calibrated plans -> grid-table.json
 python3 tools/grids.py check <job>                        # calibrate dimension-less sheets from the shared grid
+python3 tools/sheetmatch.py <job>                         # match linework against calibrated sheets (site plans, fitout plans)
 python3 tools/printedscale.py --job <job>                 # viewport-title scales ("SCALE 1 : 5 @A1") for what's left
 ```
 
@@ -200,6 +207,16 @@ no dimensions is accepted (`CALIBRATED FROM GRIDS`) only when at least 3 grid
 pairs agree with one scale within 1% **and** that scale matches the printed
 one; a disagreement with the printed scale is reported as a query, never
 silently used.
+
+Level heads: on an elevation or section, two level heads in the same column
+(e.g. FFL 0.00 and FCL 2700) are a printed height. At least 3 such pairs must
+agree with one standard scale within 2%, and with the printed scale number.
+
+Matching sheets: a sheet with no dimensions, grids or levels (site plans,
+fitout plans) often repeats linework from a calibrated sheet at another scale.
+Accepted only when at least 15 edges share one length ratio **and** line up
+after one shift, at least twice as many as for any other ratio, on at least 2
+reference sheets that give the same standard scale.
 
 Rendering tips: render the whole sheet at low dpi (50 to 75) with `--grid 100` to
 get your bearings, then zoom with `--region` at 150 to 200 dpi and a finer grid.

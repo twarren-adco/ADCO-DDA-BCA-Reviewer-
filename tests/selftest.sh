@@ -99,4 +99,16 @@ assert not c(m(40.1, 39.8, 40.0, 20.0), [20], 0.02), "three dims at 1:40 contrad
 assert not c(m(25.0, 24.9, 25.2, 19.0), [20], 0.02), "1:25 is another standard scale"
 assert not c(m(19.0, 19.5), [20, 50], 0.02), "two printed scales: not this rule"
 PY
+# fallbacks for sheets without dimensions: level heads, tables, matching linework
+python3 tests/make_levels.py "$T"
+l=$(python3 tools/drawing.py calibrate "$T/levels.pdf" -p 1)
+echo "$l" | grep -q "CALIBRATED FROM LEVELS.*1:50" || { echo "$l"; fail "FFL/FCL heads should calibrate 1:50"; }
+echo "$l" | grep -q "printed    920\|printed   2040" && fail "schedule table cells read as dimensions"
+python3 - "$T" <<'PY' || fail "sheet matching"
+import sys; sys.path.insert(0, "tools")
+from sheetmatch import edges, best_ratio
+T = sys.argv[1]
+r, n, n2 = best_ratio(edges(f"{T}/planB.pdf", 1), edges(f"{T}/planA.pdf", 1))
+assert abs(r - 2.0) < 0.005 and n >= 15 and n >= 2 * max(n2, 1), (r, n, n2)
+PY
 echo "all self-tests passed"

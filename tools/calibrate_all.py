@@ -9,7 +9,7 @@ output/calibration.jsonl as they finish (so an interrupted run resumes and
 skips sheets already done), and summarised in output/calibration-log.md.
 Raster sheets are recorded without running geometry.
 """
-import argparse, json, pathlib, subprocess, sys
+import argparse, json, pathlib, re, subprocess, sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -29,11 +29,42 @@ def run_one(args):
                                          "matched", "by_scale", "median_implied_scale", "viewports")}
         keep["mismatches"] = len(r.get("mismatches") or [])
         keep["sheet"] = row["sheet"]
+        for k in ("level_pairs", "level_query"):
+            if r.get(k):
+                keep[k] = r[k]
+        if (keep["verdict"] or "").startswith(("NO DIMENSIONS", "NO SCALE STRING")):
+            why = nothing_to_measure(base / row["file"], row["page_in_file"], row.get("title") or "")
+            if why:
+                keep["previous_verdict"] = keep["verdict"]
+                keep["verdict"] = "NOTHING TO MEASURE - " + why
         return keep
     except subprocess.TimeoutExpired:
         return {"sheet": row["sheet"], "verdict": "TIMEOUT - too heavy to check automatically", "matched": 0}
     except Exception as e:  # noqa: BLE001
         return {"sheet": row["sheet"], "verdict": f"ERROR - {type(e).__name__}", "matched": 0}
+
+
+NOT_DRAWING = re.compile(r"COVER (SHEET|PAGE)|DRAWING (REGISTER|LIST|SCHEDULE)|LEGEND SHEET|^LEGEND", re.I)
+
+
+def nothing_to_measure(pdf, page, title):
+    """Cover sheets, registers, legends, sheets marked not in use and sheets with
+    nothing drawn outside the title block and notes column."""
+    if NOT_DRAWING.search(title):
+        return "cover / register / legend sheet"
+    import pymupdf
+    p = pymupdf.open(pdf)[page - 1]
+    if re.search(r"SHEET NOT IN USE|NOT USED|INTENTIONALLY (LEFT )?BLANK", p.get_text(), re.I):
+        return "sheet marked not in use"
+    W, H = p.rect.width, p.rect.height
+    n = 0
+    for d in p.get_drawings():
+        r = d["rect"]
+        if r.y1 < H * 0.86 and r.x1 < W * 0.84 and max(r.width, r.height) >= 20:
+            n += 1
+            if n >= 30:
+                return None
+    return "nothing drawn (notes / title block only)"
 
 
 def parse_sheets(s):
@@ -53,13 +84,19 @@ def summarise(job):
     def short(v):
         v = v or ""
         if v.startswith("CALIBRATED FROM GRIDS"): return "From grids"
+        if v.startswith("CALIBRATED FROM LEVELS"): return "From levels"
+        if v.startswith("CALIBRATED FROM MATCHING"): return "Matched sheets"
+        if v.startswith("SCHEDULE"): return "Schedule (text)"
+        if v.startswith("NOTHING TO MEASURE"): return "Nothing to measure"
         if v.startswith("PRINTED SCALE BY VIEWPORT"): return "Printed (by viewport)"
         if v.startswith("PRINTED SCALE"): return "Printed scale"
         if v.startswith("CALIBRATED BY VIEWPORT"): return "By viewport"
         if v.startswith("CALIBRATED"): return "Calibrated"
         return {"NO DIMENSIONS": "No dimensions", "NO SCALE STRING": "No scale printed", "UNRELIABLE": "Unreliable",
                 "MULTIPLE SCALES": "Mixed scales", "SCAN/RASTER": "Image"}.get(v.split(" - ")[0], v.split(" - ")[0])
-    cols = ["Calibrated", "By viewport", "From grids", "Printed scale", "Printed (by viewport)", "No dimensions", "No scale printed", "Unreliable", "Mixed scales", "Image"]
+    cols = ["Calibrated", "By viewport", "From grids", "From levels", "Matched sheets", "Printed scale",
+            "Printed (by viewport)", "Schedule (text)", "Nothing to measure", "No dimensions", "No scale printed",
+            "Unreliable", "Mixed scales", "Image"]
     names = {"0": "General / site", "1": "GA plans, RCPs, wall types", "2": "Elevations", "3": "Sections",
              "4": "Unit & common-area fitouts, wet areas", "5": "Details", "6": "Schedules", "7": "Joinery / details", "8": "FF&E schedules"}
     tab, tot = {}, {}
@@ -68,9 +105,13 @@ def summarise(job):
         k = n[:1] if n[:1].isdigit() else "?"
         tab.setdefault(k, {}); c = short(r["verdict"])
         tab[k][c] = tab[k].get(c, 0) + 1; tot[c] = tot.get(c, 0) + 1
-    measurable = sum(tot.get(c, 0) for c in ("Calibrated", "By viewport", "From grids", "Printed scale", "Printed (by viewport)"))
+    measurable = sum(tot.get(c, 0) for c in ("Calibrated", "By viewport", "From grids", "From levels", "Matched sheets",
+                                              "Printed scale", "Printed (by viewport)"))
+    no_need = tot.get("Schedule (text)", 0) + tot.get("Nothing to measure", 0)
     md = [f"# Calibration log – {job}", "",
-          f"**{measurable} of {len(res)} sheets can be measured from geometry.**", "",
+          f"**{measurable} of {len(res)} sheets can be measured from geometry.** "
+          f"{no_need} more need no measuring (schedules read as text, covers, registers, legends, blank sheets); "
+          f"{tot.get('Image', 0)} are images.", "",
           "Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines "
           "(any angle) and measured witness line to witness line; horizontal/vertical dimension lines need witness lines "
           "crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%, "
@@ -82,7 +123,11 @@ def summarise(job):
           "calibrated plans) agree with one scale within +-1% and with the printed scale. "
           "*Printed scale*: no dimensions or grids to check against, so the scale printed under each viewport title "
           "(e.g. 'SCALE 1 : 5 @A1') is used, accepted only because the page is the full paper size the note names "
-          "(`tools/printedscale.py`). Mixed-scale sheets get a region per viewport.", "",
+          "(`tools/printedscale.py`). Mixed-scale sheets get a region per viewport. "
+          "*From levels*: >=3 pairs of level heads on elevations/sections (FFL 0.00 / FCL 2700, RL ...) agree with one "
+          "scale within +-2%. *Matched sheets*: the sheet's linework is the same as >=2 calibrated sheets "
+          "(edges of equal angle with one length ratio that also line up after one shift; `tools/sheetmatch.py`). "
+          "*Schedule (text)*: the figures are table cells, read as text.", "",
           "| Series | " + " | ".join(cols) + " |", "|---|" + "---|" * len(cols)]
     for k in sorted(tab):
         md.append(f"| {k}xxx {names.get(k, 'Other')} | " + " | ".join(str(tab[k].get(c, 0)) for c in cols) + " |")

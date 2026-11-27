@@ -584,6 +584,110 @@ def printed_scale_confirmed(matches, scales, tol):
             f"dimensions within +-{int(NOISE_BAND*100)}% (no other standard scale fits)", P)
 
 
+LEVEL_LABEL = re.compile(r"\b(FFL|FCL|SSL|TOS|TOW|TOC|RL|CL|LEVEL|FL|SL|USS|U/S)\b|LEVEL", re.I)
+LEVEL_INLINE = re.compile(r"^(?:[A-Z_ ]*?(?:FFL|FCL|SSL|TOS|TOW|RL|CL|FL|SL)\b)(?:\s*[:=]\s*|\s+)\+?(-?\d+(?:\.\d{1,3})?)\s*$", re.I)
+LEVEL_VALUE = re.compile(r"^\+?(-?\d{1,6}(?:\.\d{1,3})?)$")
+
+
+def _level_mm(v):
+    return round(float(v) * 1000) if "." in v else int(v)
+
+
+def level_markers(words):
+    """Level heads on elevations and sections: 'FFL 0.00', 'FCL 2700', or a level
+    name with its height on the line below ('C_LEVEL 184' / '6950'). Returns
+    (x, y, mm) using the text baseline, so heads of one family line up."""
+    out = []
+    ups = [w for w in words if w.get("origin") and w["upright"]]
+    for w in ups:
+        m = LEVEL_INLINE.match(w["text"])
+        if m:
+            out.append((w["origin"][0], w["origin"][1], _level_mm(m.group(1))))
+    for v in ups:
+        m = LEVEL_VALUE.match(v["text"])
+        if not m:
+            continue
+        for lab in ups:
+            if lab is v or LEVEL_INLINE.match(lab["text"]):
+                continue
+            # a level name ('C_LEVEL 184', 'BUILDING C_LEVEL 1', 'FFL'); not a tag code
+            # such as 'CL' over '-101'
+            if not (re.search(r"LEVEL", lab["text"], re.I) or re.fullmatch(r"(FFL|FCL|SSL|RL|TOS)", lab["text"].strip(), re.I)):
+                continue
+            if v["text"].startswith("-") and "." not in v["text"]:
+                continue
+            if abs(lab["origin"][0] - v["origin"][0]) < 1.0 and 0 < v["origin"][1] - lab["origin"][1] < 2.2 * v["size"]:
+                out.append((v["origin"][0], v["origin"][1], _level_mm(m.group(1))))
+                break
+    return sorted(set(out))
+
+
+def level_scales(words):
+    """Implied scales from neighbouring level heads in the same column (same
+    text x within 1.5 pt). The higher level must be higher on the page; pairs
+    that cross from one view into another fail that test or the scale vote."""
+    cols = []
+    for x, y, mm in level_markers(words):
+        for c in cols:
+            if abs(c[0][0] - x) < 1.5:
+                c.append((x, y, mm)); break
+        else:
+            cols.append([(x, y, mm)])
+    pairs = []
+    for c in cols:
+        c.sort(key=lambda t: t[1])
+        for (x0, y0, a), (x1, y1, b) in zip(c, c[1:]):
+            if a > b and y1 - y0 > 20:
+                pairs.append({"from": a, "to": b, "xy": (round(x0), round(y0)), "paper_mm": (y1 - y0) * PT_TO_MM,
+                              "implied_scale": (a - b) / ((y1 - y0) * PT_TO_MM)})
+    return pairs
+
+
+def find_tables(segs, min_rows=6, max_gap=30.0):
+    """Schedule tables: >= min_rows horizontal rules sharing the same left and
+    right ends (+-2 pt), consecutive rules no more than max_gap apart. Returns
+    bounding boxes. Numbers inside a table are cell values, not dimensions."""
+    from collections import defaultdict
+    # join collinear horizontal pieces that touch (rules drawn cell by cell)
+    rows = defaultdict(list)
+    for sg in segs:
+        if abs(sg["y0"] - sg["y1"]) > 0.3:
+            continue
+        rows[round(sg["y0"] * 2) / 2].append(tuple(sorted((sg["x0"], sg["x1"]))))
+    groups = defaultdict(list)
+    for y, spans in rows.items():
+        spans.sort()
+        cur = list(spans[0])
+        for x0, x1 in spans[1:] + [(1e9, 1e9)]:
+            if x0 <= cur[1] + 1.0:
+                cur[1] = max(cur[1], x1); continue
+            if cur[1] - cur[0] >= 40:
+                groups[(round(cur[0] / 2), round(cur[1] / 2))].append(y)
+            cur = [x0, x1]
+    # merge neighbouring keys (rounding boundaries)
+    keys = sorted(groups)
+    boxes = []
+    used = set()
+    for k in keys:
+        if k in used:
+            continue
+        ys = []
+        for dx0 in (-1, 0, 1):
+            for dx1 in (-1, 0, 1):
+                kk = (k[0] + dx0, k[1] + dx1)
+                if kk in groups and kk not in used:
+                    ys += groups[kk]; used.add(kk)
+        ys = sorted(set(round(y, 1) for y in ys))
+        run = [ys[0]] if ys else []
+        for y in ys[1:] + [None]:
+            if y is not None and y - run[-1] <= max_gap:
+                run.append(y); continue
+            if len(run) >= min_rows:
+                boxes.append((k[0] * 2 - 2, run[0] - 2, k[1] * 2 + 2, run[-1] + 2))
+            run = [y] if y is not None else []
+    return boxes
+
+
 def find_viewports(matches, tol, min_agree):
     """Sheets often carry several viewports at different scales (plan 1:50,
     elevations 1:20, a key plan 1:500). Group the matched dimensions by the
@@ -616,6 +720,13 @@ def cmd_calibrate(a):
         # ignore the title block strip along the bottom of the sheet (project numbers, dates)
         page_h = max(max(sg["y0"], sg["y1"]) for sg in segs)
         ws = [w for w in ws if w["cy"] < page_h * 0.93]
+    tables = find_tables(segs)
+    in_tables = 0
+    if tables:
+        inside = lambda w: any(x0 <= w["cx"] <= x1 and y0 <= w["cy"] <= y1 for x0, y0, x1, y1 in tables)
+        n0 = len(ws)
+        ws = [w for w in ws if not inside(w)]
+        in_tables = n0 - len(ws)
     near = _index_segments(segs)
     tag_words = all_words
 
@@ -681,7 +792,8 @@ def cmd_calibrate(a):
                             "witness": used_witness})
 
     report = {"page": a.page, "region": region, "scales_on_sheet": scales,
-              "dimension_texts": len(ws), "matched": len(matches)}
+              "dimension_texts": len(ws), "matched": len(matches),
+              "tables": [[round(v) for v in t] for t in tables]}
 
     implied = [m["implied_scale"] for m in matches]
     verdicts = []
@@ -726,6 +838,30 @@ def cmd_calibrate(a):
         report["calibrated_scale"] = pc[1]
     else:
         report["verdict"] = "UNRELIABLE - do not measure from geometry on this sheet/region"
+    # level heads (FFL / FCL / RL) are printed heights: they calibrate elevations and
+    # sections that carry few dimension strings
+    if not report["verdict"].startswith("CALIBRATED") and not a.scale:
+        lv = level_scales(all_words)
+        report["level_pairs"] = len(lv)
+        best = None
+        for sc in STANDARD_SCALES:
+            ok = [p for p in lv if abs(p["implied_scale"] / sc - 1) <= a.tol]
+            if not best or len(ok) > len(best[1]):
+                best = (sc, ok)
+        if best and len(best[1]) >= 3 and len(best[1]) >= 0.6 * len(lv):
+            sc = best[0]
+            dims_ok = not matches or sum(abs(m["implied_scale"] / sc - 1) <= NOISE_BAND for m in matches) >= 0.5 * len(matches)
+            if dims_ok and (not page_scales or sc in page_scales):
+                report["verdict"] = (f"CALIBRATED FROM LEVELS - {len(best[1])}/{len(lv)} pairs of level heads "
+                                     f"(FFL/FCL/RL) agree with 1:{sc}")
+                report["calibrated_scale"] = sc
+            else:
+                report["level_query"] = (f"level heads say 1:{sc} ({len(best[1])} pairs) but the sheet prints "
+                                         f"{', '.join('1:%d' % x for x in page_scales) or 'no scale'}"
+                                         + ("" if dims_ok else " and its dimensions disagree"))
+    if report["verdict"].startswith("NO DIMENSIONS") and in_tables >= 10 and len(ws) < 3:
+        report["verdict"] = ("SCHEDULE - tables only (%d figures are table cells); read as text, "
+                             "nothing to measure" % in_tables)
     if report["verdict"].startswith("NO SCALE STRING") and viewports:
         report["verdict"] = "CALIBRATED BY VIEWPORT - measure only inside the listed regions"
     if len(scales) > 1:
