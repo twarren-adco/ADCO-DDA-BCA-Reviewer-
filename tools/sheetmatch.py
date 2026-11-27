@@ -104,7 +104,7 @@ def snap(sc):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("job"); ap.add_argument("--sheets"); ap.add_argument("--max-refs", type=int, default=12)
+    ap.add_argument("job"); ap.add_argument("--sheets"); ap.add_argument("--max-refs", type=int, default=30)
     a = ap.parse_args()
     base = ROOT / "projects" / a.job
     idx = {r["sheet"]: r for r in json.loads((base / "output" / "sheet-index.json").read_text())}

@@ -161,7 +161,7 @@ def cmd_check(a):
         if want is not None and s not in want:
             continue
         v = r.get("verdict") or ""
-        if want is None and v.startswith("CALIBRATED"):
+        if want is None and v.startswith(("CALIBRATED", "SCHEDULE", "NOTHING TO MEASURE")):
             continue
         row = idx[s]
         if row["kind"] == "raster":

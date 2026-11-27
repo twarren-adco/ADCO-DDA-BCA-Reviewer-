@@ -107,7 +107,7 @@ def apply_job(job):
     counts = {}
     for r in rows:
         v = r.get("verdict") or ""
-        if v.startswith(("CALIBRATED", "SCAN/RASTER", "UNRELIABLE")):
+        if v.startswith(("CALIBRATED", "SCAN/RASTER", "UNRELIABLE", "SCHEDULE", "NOTHING TO MEASURE")):
             continue          # already confirmed, not vector, or contradicted by its own dimensions
         row = idx[r["sheet"]]
         j = judge(base / row["file"], row["page_in_file"])

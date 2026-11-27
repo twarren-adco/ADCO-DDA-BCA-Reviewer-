@@ -32,8 +32,9 @@ def run_one(args):
         for k in ("level_pairs", "level_query"):
             if r.get(k):
                 keep[k] = r[k]
-        if (keep["verdict"] or "").startswith(("NO DIMENSIONS", "NO SCALE STRING")):
-            why = nothing_to_measure(base / row["file"], row["page_in_file"], row.get("title") or "")
+        if (keep["verdict"] or "").startswith(("NO DIMENSIONS", "NO SCALE STRING", "SCHEDULE")):
+            why = nothing_to_measure(base / row["file"], row["page_in_file"], row.get("title") or "",
+                                     title_only=keep["verdict"].startswith("SCHEDULE"))
             if why:
                 keep["previous_verdict"] = keep["verdict"]
                 keep["verdict"] = "NOTHING TO MEASURE - " + why
@@ -47,11 +48,13 @@ def run_one(args):
 NOT_DRAWING = re.compile(r"COVER (SHEET|PAGE)|DRAWING (REGISTER|LIST|SCHEDULE)|LEGEND SHEET|^LEGEND", re.I)
 
 
-def nothing_to_measure(pdf, page, title):
+def nothing_to_measure(pdf, page, title, title_only=False):
     """Cover sheets, registers, legends, sheets marked not in use and sheets with
     nothing drawn outside the title block and notes column."""
     if NOT_DRAWING.search(title):
         return "cover / register / legend sheet"
+    if title_only:
+        return None
     import pymupdf
     p = pymupdf.open(pdf)[page - 1]
     if re.search(r"SHEET NOT IN USE|NOT USED|INTENTIONALLY (LEFT )?BLANK", p.get_text(), re.I):

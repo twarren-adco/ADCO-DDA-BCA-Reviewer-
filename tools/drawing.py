@@ -859,9 +859,13 @@ def cmd_calibrate(a):
                 report["level_query"] = (f"level heads say 1:{sc} ({len(best[1])} pairs) but the sheet prints "
                                          f"{', '.join('1:%d' % x for x in page_scales) or 'no scale'}"
                                          + ("" if dims_ok else " and its dimensions disagree"))
-    if report["verdict"].startswith("NO DIMENSIONS") and in_tables >= 10 and len(ws) < 3:
-        report["verdict"] = ("SCHEDULE - tables only (%d figures are table cells); read as text, "
-                             "nothing to measure" % in_tables)
+    if report["verdict"].startswith("NO DIMENSIONS") and tables and len(matches) < a.min_agree:
+        page_area = max(1.0, max(max(sg["x1"], sg["x0"]) for sg in segs) * max(max(sg["y1"], sg["y0"]) for sg in segs))
+        table_area = sum((x1 - x0) * (y1 - y0) for x0, y0, x1, y1 in tables)
+        if in_tables >= 10 or table_area >= 0.08 * page_area:
+            report["verdict"] = ("SCHEDULE - tables (%d figures are table cells, tables cover %d%% of the sheet); "
+                                 "read as text, any type elevations are sized by the schedule"
+                                 % (in_tables, round(100 * table_area / page_area)))
     if report["verdict"].startswith("NO SCALE STRING") and viewports:
         report["verdict"] = "CALIBRATED BY VIEWPORT - measure only inside the listed regions"
     if len(scales) > 1:
