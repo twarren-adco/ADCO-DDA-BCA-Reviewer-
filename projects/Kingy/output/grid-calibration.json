@@ -1663,5 +1663,75 @@
   "printed": "1 : 20",
   "grid_pairs": 0,
   "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "58": {
+  "sheet": 58,
+  "drawing": "PLA-AR-OA-6001",
+  "printed": "",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "59": {
+  "sheet": 59,
+  "drawing": "PLA-AR-OA-6002",
+  "printed": "As indicated",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "62": {
+  "sheet": 62,
+  "drawing": "PLA-AR-OA-6005",
+  "printed": "1 : 100",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "63": {
+  "sheet": 63,
+  "drawing": "PLA-AR-OA-8000",
+  "printed": "1 : 100",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "68": {
+  "sheet": 68,
+  "drawing": "PLA-AR-OA-8103",
+  "printed": "",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "69": {
+  "sheet": 69,
+  "drawing": "PLA-AR-OA-8103",
+  "printed": "",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "115": {
+  "sheet": 115,
+  "drawing": "PLA-AR-A-6102",
+  "printed": "As indicated",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "195": {
+  "sheet": 195,
+  "drawing": "PLA-AR-B-6002",
+  "printed": "As indicated",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "200": {
+  "sheet": 200,
+  "drawing": "PLA-AR-B-6103",
+  "printed": "As indicated",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
+ },
+ "538": {
+  "sheet": 538,
+  "drawing": "PLA-AR-RAC-6105",
+  "printed": "As indicated",
+  "grid_pairs": 0,
+  "verdict": "NOT CALIBRATED - too few shared grid pairs"
  }
 }

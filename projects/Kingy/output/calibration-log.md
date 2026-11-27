@@ -1,38 +1,38 @@
 # Calibration log – Kingy
 
-**489 of 581 sheets can be measured from geometry.**
+**486 of 581 sheets can be measured from geometry.** 57 more need no measuring (schedules read as text, covers, registers, legends, blank sheets); 38 are images.
 
-Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines (any angle) and measured witness line to witness line; horizontal/vertical dimension lines need witness lines crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%, or, where one scale is printed, when most dimensions are within +-12% of it and no other standard scale is supported by 3 or more (standard scales are 25%+ apart, so small drafting errors can't fake one). *By viewport*: each consistent viewport (>=3 dimensions, >=65% agreement inside its area) is calibrated separately and measuring is valid only inside its listed region (`calibration.jsonl`). *From grids*: the sheet has no usable dimensions, but >=3 grid spacings (from `grid-table.json`, built from calibrated plans) agree with one scale within +-1% and with the printed scale. *Printed scale*: no dimensions or grids to check against, so the scale printed under each viewport title (e.g. 'SCALE 1 : 5 @A1') is used, accepted only because the page is the full paper size the note names (`tools/printedscale.py`). Mixed-scale sheets get a region per viewport.
+Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines (any angle) and measured witness line to witness line; horizontal/vertical dimension lines need witness lines crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%, or, where one scale is printed, when most dimensions are within +-12% of it and no other standard scale is supported by 3 or more (standard scales are 25%+ apart, so small drafting errors can't fake one). *By viewport*: each consistent viewport (>=3 dimensions, >=65% agreement inside its area) is calibrated separately and measuring is valid only inside its listed region (`calibration.jsonl`). *From grids*: the sheet has no usable dimensions, but >=3 grid spacings (from `grid-table.json`, built from calibrated plans) agree with one scale within +-1% and with the printed scale. *Printed scale*: no dimensions or grids to check against, so the scale printed under each viewport title (e.g. 'SCALE 1 : 5 @A1') is used, accepted only because the page is the full paper size the note names (`tools/printedscale.py`). Mixed-scale sheets get a region per viewport. *From levels*: >=3 pairs of level heads on elevations/sections (FFL 0.00 / FCL 2700, RL ...) agree with one scale within +-2%. *Matched sheets*: the sheet's linework is the same as >=2 calibrated sheets (edges of equal angle with one length ratio that also line up after one shift; `tools/sheetmatch.py`). *Schedule (text)*: the figures are table cells, read as text.
 
-| Series | Calibrated | By viewport | From grids | Printed scale | Printed (by viewport) | No dimensions | No scale printed | Unreliable | Mixed scales | Image |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 0xxx General / site | 7 | 0 | 0 | 0 | 0 | 15 | 1 | 0 | 0 | 4 |
-| 1xxx GA plans, RCPs, wall types | 108 | 19 | 53 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 2xxx Elevations | 18 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 22 |
-| 3xxx Sections | 10 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
-| 4xxx Unit & common-area fitouts, wet areas | 90 | 2 | 1 | 54 | 0 | 6 | 0 | 0 | 0 | 0 |
-| 5xxx Details | 9 | 4 | 0 | 24 | 3 | 1 | 0 | 0 | 0 | 11 |
-| 6xxx Schedules | 6 | 9 | 0 | 2 | 0 | 0 | 9 | 17 | 0 | 0 |
-| 7xxx Joinery / details | 43 | 3 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 |
-| 8xxx FF&E schedules | 0 | 3 | 0 | 0 | 0 | 1 | 3 | 0 | 0 | 0 |
-| ?xxx Other | 2 | 0 | 5 | 2 | 0 | 0 | 1 | 0 | 0 | 0 |
-| **Total** | **293** | **42** | **59** | **91** | **4** | **23** | **14** | **17** | **0** | **38** |
+| Series | Calibrated | By viewport | From grids | From levels | Matched sheets | Printed scale | Printed (by viewport) | Schedule (text) | Nothing to measure | No dimensions | No scale printed | Unreliable | Mixed scales | Image |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0xxx General / site | 7 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 14 | 0 | 0 | 0 | 0 | 4 |
+| 1xxx GA plans, RCPs, wall types | 108 | 19 | 53 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 2xxx Elevations | 18 | 0 | 0 | 3 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 22 |
+| 3xxx Sections | 10 | 2 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 4xxx Unit & common-area fitouts, wet areas | 90 | 2 | 1 | 30 | 8 | 21 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| 5xxx Details | 9 | 4 | 0 | 0 | 0 | 24 | 3 | 0 | 1 | 0 | 0 | 0 | 0 | 11 |
+| 6xxx Schedules | 6 | 2 | 0 | 0 | 0 | 2 | 0 | 33 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 7xxx Joinery / details | 43 | 3 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| 8xxx FF&E schedules | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 | 0 | 0 |
+| ?xxx Other | 2 | 0 | 5 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Total** | **293** | **32** | **59** | **33** | **11** | **54** | **4** | **41** | **16** | **0** | **0** | **0** | **0** | **38** |
 
 *No dimensions*: fewer than 3 printed dimensions and no shared grid (e.g. details, joinery). *Unreliable*: dimensions disagree (mostly reflected ceiling plans and sparsely dimensioned fitouts). *Image*: mostly raster. Schedules are read as text, not measured.
 
 ## Queries raised by the scale check
 
-- **C-4101 to C-4104 and C-4107 (sheets 268-272), Building C common-area fitouts:** viewports labelled "SCALE 1 : 50 @A3" on A1 sheets (841 x 594 mm). Either the views are effectively 1:25 on these sheets or the labels are wrong. Not measured until the architect confirms.
+- **C-4101 to C-4104 and C-4107 (sheets 268-272), Building C common-area fitouts:** viewport titles say "SCALE 1 : 50 @A3" but the sheets are A1 (841 x 594 mm). The sheets' own geometry shows 1:50 at A1: on C-4101, C-4103 and C-4107 the FFL 0.00 / FCL 2700 level heads give 1:50, and the C-4102 and C-4104 plans match the 1:100 Building C GA plans at exactly half size. So the "@A3" in the labels is wrong, and the views measure correctly at 1:50 on the A1 sheet. Suggested RFI: ask the architect to correct the viewport labels to "@A1".
 
 ## Per sheet
 
 | Sheet | Drawing | Title | Scale (printed) | Result | Agree |
 |---|---|---|---|---|---|
-| 1 | PLA-AR-OA-0000 | COVER SHEET |  | No dimensions |  |
-| 2 | PLA-AR-OA-0001 | DRAWING REGISTER |  | No dimensions |  |
-| 3 | PLA-AR-OA-0002 | SITE PLAN | As indicated | No dimensions |  |
+| 1 | PLA-AR-OA-0000 | COVER SHEET |  | Nothing to measure |  |
+| 2 | PLA-AR-OA-0001 | DRAWING REGISTER |  | Nothing to measure |  |
+| 3 | PLA-AR-OA-0002 | SITE PLAN | As indicated | Matched sheets 1:500 |  |
 | 4 | PLA-AR-OA-0004 | SITE SETOUT PLAN | 1 : 400 | Calibrated 1:400 | 1:400 77/77 |
-| 5 | PLA-AR-OA-0005 | SITE PLAN EASEMENTS | As indicated | No scale printed |  |
+| 5 | PLA-AR-OA-0005 | SITE PLAN EASEMENTS | As indicated | Matched sheets 1:500 |  |
 | 6 | PLA-AR-OA-0006 | SUBSTATION PLANS | 1 : 100 | Calibrated 1:100 | 1:100 22/22 |
 | 7 | PLA-AR-OA-0007 | SUBSTATION ELEVATION | 1 : 100 | Calibrated 1:100 | 1:100 14/14 |
 | 8 | PLA-AR-OA-0007 | SUBSTATION ELEVATION | 1 : 100 | Calibrated 1:100 | 1:100 14/14 |
@@ -85,21 +85,21 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 55 | PLA-AR-OA-5601 | JOINERY DETAILS - SHEET 02 | 1 : 2 | Printed scale 1:2 | 1:2 2/2 |
 | 56 | PLA-AR-OA-5602 | JOINERY DETAILS - SHEET 03 | As indicated | Printed (by viewport) (1:5, 1:5, 1:5, 1:2, 1:5, 1:5, 1:5) | 1:5 0/0 / 1:2 0/0 |
 | 57 | PLA-AR-OA-5700 | CEILING DETAILS - SHEET 01 | 1 : 5 | Printed scale 1:5 | 1:5 0/0 |
-| 58 | PLA-AR-OA-6001 | DOOR SCHEDULE - STAGE 1 |  | By viewport (1:125) |  |
-| 59 | PLA-AR-OA-6002 | DOOR TYPE DETAILS | As indicated | By viewport (1:125) |  |
-| 60 | PLA-AR-OA-6003 | OVERALL DOOR TYPE SCHEDULE | 1 : 100 | Unreliable | 1:100 1/269 |
-| 61 | PLA-AR-OA-6004 | OVERALL DOOR TYPE SCHEDULE | 1 : 100 | Unreliable | 1:100 6/301 |
-| 62 | PLA-AR-OA-6005 | OVERALL DOOR TYPE SCHEDULE | 1 : 100 | By viewport (1:125) | 1:100 4/94 |
-| 63 | PLA-AR-OA-8000 | STORAGE SCHEDULE - SHEET 01 | 1 : 100 | By viewport (1:125) | 1:100 2/249 |
-| 64 | PLA-AR-OA-8001 | STORAGE SCHEDULE - SHEET 02 |  | No dimensions |  |
-| 65 | PLA-AR-OA-8100 | JOINERY SCHEDULE - SHEET 1 |  | No scale printed |  |
-| 66 | PLA-AR-OA-8101 | JOINERY SCHEDULE - SHEET 2 |  | No scale printed |  |
-| 67 | PLA-AR-OA-8102 | JOINERY SCHEDULE - SHEET 3 |  | No scale printed |  |
-| 68 | PLA-AR-OA-8103 | JOINERY SCHEDULE - SHEET 4 |  | By viewport (1:150) |  |
-| 69 | PLA-AR-OA-8103 | JOINERY SCHEDULE - SHEET 4 |  | By viewport (1:150) |  |
-| 70 | PLA-AR-A-0000 | COVER SHEET |  | No dimensions |  |
-| 71 | PLA-AR-A-0001 | LEGEND SHEET | As indicated | No dimensions | 1:100 0/0 |
-| 72 | PLA-AR-A-0003 | DRAWING REGISTER |  | No dimensions |  |
+| 58 | PLA-AR-OA-6001 | DOOR SCHEDULE - STAGE 1 |  | Schedule (text) |  |
+| 59 | PLA-AR-OA-6002 | DOOR TYPE DETAILS | As indicated | Schedule (text) |  |
+| 60 | PLA-AR-OA-6003 | OVERALL DOOR TYPE SCHEDULE | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 61 | PLA-AR-OA-6004 | OVERALL DOOR TYPE SCHEDULE | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 62 | PLA-AR-OA-6005 | OVERALL DOOR TYPE SCHEDULE | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 63 | PLA-AR-OA-8000 | STORAGE SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 64 | PLA-AR-OA-8001 | STORAGE SCHEDULE - SHEET 02 |  | Schedule (text) |  |
+| 65 | PLA-AR-OA-8100 | JOINERY SCHEDULE - SHEET 1 |  | Schedule (text) |  |
+| 66 | PLA-AR-OA-8101 | JOINERY SCHEDULE - SHEET 2 |  | Schedule (text) |  |
+| 67 | PLA-AR-OA-8102 | JOINERY SCHEDULE - SHEET 3 |  | Schedule (text) |  |
+| 68 | PLA-AR-OA-8103 | JOINERY SCHEDULE - SHEET 4 |  | Schedule (text) |  |
+| 69 | PLA-AR-OA-8103 | JOINERY SCHEDULE - SHEET 4 |  | Schedule (text) |  |
+| 70 | PLA-AR-A-0000 | COVER SHEET |  | Nothing to measure |  |
+| 71 | PLA-AR-A-0001 | LEGEND SHEET | As indicated | Nothing to measure | 1:100 0/0 |
+| 72 | PLA-AR-A-0003 | DRAWING REGISTER |  | Nothing to measure |  |
 | 73 | PLA-AR-A-1001 | GENERAL ARRANGEMENT PLAN - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 8/8 |
 | 74 | PLA-AR-A-1002 | GENERAL ARRANGEMENT PLAN - ROOF | 1 : 100 | Calibrated 1:100 | 1:100 8/8 |
 | 75 | PLA-AR-A-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | As indicated | Calibrated 1:100 | 1:100 8/10 |
@@ -123,13 +123,13 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 93 | PLA-AR-A-2202 | DETAIL FACADE SECTIONS - SHEET 03 | 1 : 20 | Calibrated 1:20 | 1:20 4/4 |
 | 94 | PLA-AR-A-2203 | DETAIL FACADE SECTIONS - SHEET 04 | 1 : 20 | Image |  |
 | 95 | PLA-AR-A-3000 | CORES, STAIRS & RAMPS - SHEET 01 | As indicated | By viewport (1:50) | 1:100 0/85 / 1:50 64/85 |
-| 96 | PLA-AR-A-4000 | APARTMENT TYPE - T01_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/11 |
-| 97 | PLA-AR-A-4001 | APARTMENT TYPE - T02_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/13 |
-| 98 | PLA-AR-A-4002 | APARTMENT TYPE - T03_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/11 |
-| 99 | PLA-AR-A-4101 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 100 | PLA-AR-A-4102 | COMMON AREA FITOUTS - L1 CORRIDOR_PLAN & RCP | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 101 | PLA-AR-A-4103 | COMMON AREA FITOUTS - L1 CORRIDOR_ELEVATIONS | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 102 | PLA-AR-A-4105 | COMMON AREA FITOUTS - BIN ROOM_PLAN, RCP & ELEVATION | 1 : 50 | Printed scale 1:50 | 1:50 2/2 |
+| 96 | PLA-AR-A-4000 | APARTMENT TYPE - T01_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/10 |
+| 97 | PLA-AR-A-4001 | APARTMENT TYPE - T02_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/12 |
+| 98 | PLA-AR-A-4002 | APARTMENT TYPE - T03_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/10 |
+| 99 | PLA-AR-A-4101 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 100 | PLA-AR-A-4102 | COMMON AREA FITOUTS - L1 CORRIDOR_PLAN & RCP | 1 : 50 | Matched sheets 1:50 | 1:50 0/0 |
+| 101 | PLA-AR-A-4103 | COMMON AREA FITOUTS - L1 CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 102 | PLA-AR-A-4105 | COMMON AREA FITOUTS - BIN ROOM_PLAN, RCP & ELEVATION | 1 : 50 | From levels 1:50 | 1:50 2/2 |
 | 103 | PLA-AR-A-4801 | WET AREA FITOUTS B01 | As indicated | Calibrated 1:20 | 1:20 31/34 |
 | 104 | PLA-AR-A-4802 | WET AREA FITOUTS L01 | As indicated | Calibrated 1:20 | 1:20 8/9 |
 | 105 | PLA-AR-A-4901 | KITCHEN FITOUTS - K01 | As indicated | Calibrated 1:20 | 1:20 19/28 |
@@ -138,23 +138,23 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 108 | PLA-AR-A-5004 | FACADE SECTION DETAILS - SHEET 05 | As indicated | Calibrated 1:5 | 1:5 3/4 |
 | 109 | PLA-AR-A-5005 | FACADE SECTION DETAILS - SHEET 06 | As indicated | Printed scale 1:5 | 1:5 2/2 |
 | 110 | PLA-AR-A-5100 | PLAN DETAILS - SHEET 01 | 1 : 5 | Printed scale 1:5 | 1:5 0/0 |
-| 111 | PLA-AR-A-6000 | WINDOW MASTER SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 14/141 |
-| 112 | PLA-AR-A-6001 | WINDOW TYPE SCHEDULE - SHEET 02 | As indicated | By viewport (1:50, 1:150, 1:200) |  |
-| 113 | PLA-AR-A-6100 | DOOR MASTER SCHEDULE | 1 : 100 | Unreliable | 1:100 1/294 |
-| 114 | PLA-AR-A-6101 | DOOR TYPE SCHEDULE | As indicated | No scale printed |  |
-| 115 | PLA-AR-A-6102 | DOOR TYPE SCHEDULE | As indicated | By viewport (1:125) |  |
-| 116 | PLA-AR-A-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 19/26 |
+| 111 | PLA-AR-A-6000 | WINDOW MASTER SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 112 | PLA-AR-A-6001 | WINDOW TYPE SCHEDULE - SHEET 02 | As indicated | By viewport (1:50) |  |
+| 113 | PLA-AR-A-6100 | DOOR MASTER SCHEDULE | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 114 | PLA-AR-A-6101 | DOOR TYPE SCHEDULE | As indicated | Schedule (text) |  |
+| 115 | PLA-AR-A-6102 | DOOR TYPE SCHEDULE | As indicated | Schedule (text) |  |
+| 116 | PLA-AR-A-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 19/19 |
 | 117 | PLA-AR-A-6201 | LOUVRE SCREEN | As indicated | Printed scale 1:20 | 1:20 1/1 |
 | 118 | PLA-AR-A-7001 | JOINERY DETAILS- JR01 - JC01 | As indicated | By viewport (1:20) | 1:20 4/10 |
 | 119 | PLA-AR-A-7002 | JOINERY DETAILS - JC02-JC03 | 1 : 20 | Calibrated 1:20 | 1:20 4/8 |
-| 120 | PLA-AR-B-0000 | COVER SHEET |  | No dimensions |  |
-| 121 | PLA-AR-B-0001 | LEGEND SHEET | As indicated | No dimensions | 1:100 0/0 |
-| 122 | PLA-AR-B-0002 | DRAWING REGISTER |  | No dimensions |  |
+| 120 | PLA-AR-B-0000 | COVER SHEET |  | Nothing to measure |  |
+| 121 | PLA-AR-B-0001 | LEGEND SHEET | As indicated | Nothing to measure | 1:100 0/0 |
+| 122 | PLA-AR-B-0002 | DRAWING REGISTER |  | Nothing to measure |  |
 | 123 | PLA-AR-B-1000 | GENERAL ARRANGEMENT PLAN - GROUND | 1 : 100 | From grids 1:100 | 29/29 |
 | 124 | PLA-AR-B-1000B | GENERAL ARRANGEMENT PLAN - BASEMENT | 1 : 100 | Calibrated 1:100 | 1:100 8/8 |
 | 125 | PLA-AR-B-1001 | GENERAL ARRANGEMENT PLAN - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 8/10 |
 | 126 | PLA-AR-B-1002 | GENERAL ARRANGEMENT PLAN - LEVEL 02 | 1 : 100 | Calibrated 1:100 | 1:100 10/11 |
-| 127 | PLA-AR-B-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | 1 : 100 | Calibrated 1:100 | 1:100 4/6 |
+| 127 | PLA-AR-B-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | 1 : 100 | Calibrated 1:100 | 1:100 4/5 |
 | 128 | PLA-AR-B-1004 | GENERAL ARRANGEMENT PLAN - ROOF | 1 : 100 | Calibrated 1:100 | 1:100 5/5 |
 | 129 | PLA-AR-B-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | As indicated | Calibrated 1:100 | 1:100 8/8 |
 | 130 | PLA-AR-B-1100B | GENERAL REFLECTED CEILING PLANS - BASEMENT | As indicated | Calibrated 1:100 | 1:100 8/8 |
@@ -192,21 +192,21 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 162 | PLA-AR-B-3001 | CORES, STAIRS & RAMPS - SHEET 02 | As indicated | Calibrated 1:50 | 1:50 67/79 |
 | 163 | PLA-AR-B-3002 | CORES, STAIRS & RAMPS - SHEET 03 | As indicated | Calibrated 1:50 | 1:50 57/76 |
 | 164 | PLA-AR-B-4001 | APARTMENT TYPE - T02_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 11/13 |
-| 165 | PLA-AR-B-4002 | APARTMENT TYPE - T03_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 14/16 |
+| 165 | PLA-AR-B-4002 | APARTMENT TYPE - T03_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/10 |
 | 166 | PLA-AR-B-4003 | APARTMENT TYPE - T04_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 11/12 |
 | 167 | PLA-AR-B-4004 | APARTMENT TYPE - T05.S_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/11 |
-| 168 | PLA-AR-B-4005 | APARTMENT TYPE - T06_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 11/14 |
+| 168 | PLA-AR-B-4005 | APARTMENT TYPE - T06_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/12 |
 | 169 | PLA-AR-B-4008 | APARTMENT TYPE - T09_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 18/21 |
-| 170 | PLA-AR-B-4009 | APARTMENT TYPE - T10_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 15/23 |
+| 170 | PLA-AR-B-4009 | APARTMENT TYPE - T10_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/18 |
 | 171 | PLA-AR-B-4010 | APARTMENT TYPE - T11_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 16/19 |
-| 172 | PLA-AR-B-4100 | COMMON AREA FITOUTS - GF CORRIDOR_PLAN | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 173 | PLA-AR-B-4101 | COMMON AREA FITOUTS - GF CORRIDOR_RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 174 | PLA-AR-B-4102 | COMMON AREA FITOUTS - L01-02 CORRIDOR_PLAN | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 175 | PLA-AR-B-4103 | COMMON AREA FITOUTS - L01-02 CORRIDOR_RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 176 | PLA-AR-B-4106 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 177 | PLA-AR-B-4107 | COMMON AREA FITOUTS - L01-02 CORRIDOR_ELEVATIONS | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 178 | PLA-AR-B-4108 | COMMON AREA FITOUTS - L03 CORRIDOR_ELEVATIONS | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
-| 179 | PLA-AR-B-4110 | COMMON AREA FITOUTS - MSB _ PLAN, RCP & ELEVATIONS | 1 : 50 | Printed scale 1:50 | 1:50 0/0 |
+| 172 | PLA-AR-B-4100 | COMMON AREA FITOUTS - GF CORRIDOR_PLAN | 1 : 50 | Matched sheets 1:50 | 1:50 0/0 |
+| 173 | PLA-AR-B-4101 | COMMON AREA FITOUTS - GF CORRIDOR_RCP | As indicated | Matched sheets 1:50 | 1:50 0/0 |
+| 174 | PLA-AR-B-4102 | COMMON AREA FITOUTS - L01-02 CORRIDOR_PLAN | 1 : 50 | Matched sheets 1:50 | 1:50 0/0 |
+| 175 | PLA-AR-B-4103 | COMMON AREA FITOUTS - L01-02 CORRIDOR_RCP | As indicated | Matched sheets 1:50 | 1:50 0/0 |
+| 176 | PLA-AR-B-4106 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 177 | PLA-AR-B-4107 | COMMON AREA FITOUTS - L01-02 CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 178 | PLA-AR-B-4108 | COMMON AREA FITOUTS - L03 CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 179 | PLA-AR-B-4110 | COMMON AREA FITOUTS - MSB _ PLAN, RCP & ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
 | 180 | PLA-AR-B-4801 | WET AREA FITOUTS - B21.B | As indicated | Calibrated 1:20 | 1:20 15/16 |
 | 181 | PLA-AR-B-4801 | WET AREA FITOUTS - B21.B | As indicated | Calibrated 1:20 | 1:20 15/16 |
 | 182 | PLA-AR-B-4802 | WET AREA FITOUS - B41.A | As indicated | Calibrated 1:20 | 1:20 12/13 |
@@ -221,28 +221,28 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 191 | PLA-AR-B-5004 | FACADE SECTION DETAILS - SHEET 05 | As indicated | Image |  |
 | 192 | PLA-AR-B-5100 | PLAN DETAILS - SHEET 01 | 1 : 5 | Printed scale 1:5 | 1:5 0/0 |
 | 193 | PLA-AR-B-5101 | PLAN DETAILS - SHEET 02 | 1 : 5 | Printed scale 1:5 | 1:5 1/1 |
-| 194 | PLA-AR-B-6000 | WINDOW MASTER SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 8/400 |
-| 195 | PLA-AR-B-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | As indicated | By viewport (1:150) |  |
-| 196 | PLA-AR-B-6100 | DOOR MASTER SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 4/306 |
-| 197 | PLA-AR-B-6101 | DOOR MASTER SCHEDULE - SHEET 02 | 1 : 100 | Unreliable | 1:100 6/271 |
-| 198 | PLA-AR-B-6101 | DOOR MASTER SCHEDULE - SHEET 02 | 1 : 100 | Unreliable | 1:100 6/271 |
-| 199 | PLA-AR-B-6102 | DOOR ELEVATION SCHEDULE - SHEET 01 | As indicated | No scale printed |  |
-| 200 | PLA-AR-B-6103 | DOOR ELEVATION SCHEDULE - SHEET 02 | As indicated | By viewport (1:125) |  |
-| 201 | PLA-AR-B-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 12/17 |
+| 194 | PLA-AR-B-6000 | WINDOW MASTER SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 195 | PLA-AR-B-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | As indicated | Schedule (text) |  |
+| 196 | PLA-AR-B-6100 | DOOR MASTER SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 197 | PLA-AR-B-6101 | DOOR MASTER SCHEDULE - SHEET 02 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 198 | PLA-AR-B-6101 | DOOR MASTER SCHEDULE - SHEET 02 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 199 | PLA-AR-B-6102 | DOOR ELEVATION SCHEDULE - SHEET 01 | As indicated | Schedule (text) |  |
+| 200 | PLA-AR-B-6103 | DOOR ELEVATION SCHEDULE - SHEET 02 | As indicated | Schedule (text) |  |
+| 201 | PLA-AR-B-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 12/12 |
 | 202 | PLA-AR-B-6201 | LOUVRE SCREEN | As indicated | Printed scale 1:20 | 1:20 1/1 |
 | 203 | PLA-AR-B-7001 | JOINERY DETAILS JR25 | As indicated | Image |  |
 | 204 | PLA-AR-B-7002 | JOINERY DETAILS - JM21 | As indicated | Calibrated 1:20 | 1:20 7/7 |
-| 205 | PLA-AR-C-0000 | COVER SHEET |  | No dimensions |  |
-| 206 | PLA-AR-C-0001 | LEGEND SHEET | As indicated | No dimensions | 1:100 0/0 |
-| 207 | PLA-AR-C-0002 | DRAWING REGISTER |  | No dimensions |  |
+| 205 | PLA-AR-C-0000 | COVER SHEET |  | Nothing to measure |  |
+| 206 | PLA-AR-C-0001 | LEGEND SHEET | As indicated | Nothing to measure | 1:100 0/0 |
+| 207 | PLA-AR-C-0002 | DRAWING REGISTER |  | Nothing to measure |  |
 | 208 | PLA-AR-C-1000 | GENERAL ARRANGEMENT PLAN - GROUND | 1 : 100 | By viewport (1:100) | 1:20 0/19 / 1:100 13/19 |
 | 209 | PLA-AR-C-1001 | GENERAL ARRANGEMENT PLAN - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 13/15 |
 | 210 | PLA-AR-C-1002 | GENERAL ARRANGEMENT PLAN - LEVEL 02 | 1 : 100 | Calibrated 1:100 | 1:100 12/13 |
-| 211 | PLA-AR-C-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | 1 : 100 | Calibrated 1:100 | 1:100 13/19 |
+| 211 | PLA-AR-C-1003 | GENERAL ARRANGEMENT PLAN - LEVEL 03 | 1 : 100 | Calibrated 1:100 | 1:100 13/17 |
 | 212 | PLA-AR-C-1004 | GENERAL ARRANGEMENT PLAN - ROOF | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
-| 213 | PLA-AR-C-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | 1 : 100 | Calibrated 1:100 | 1:100 12/22 |
-| 214 | PLA-AR-C-1101 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 12/22 |
-| 215 | PLA-AR-C-1102 | GENERAL REFLECTED CEILING PLANS - LEVEL 02 | 1 : 100 | Calibrated 1:100 | 1:100 12/21 |
+| 213 | PLA-AR-C-1100 | GENERAL REFLECTED CEILING PLANS - GROUND | 1 : 100 | Calibrated 1:100 | 1:100 12/21 |
+| 214 | PLA-AR-C-1101 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 12/21 |
+| 215 | PLA-AR-C-1102 | GENERAL REFLECTED CEILING PLANS - LEVEL 02 | 1 : 100 | Calibrated 1:100 | 1:100 12/20 |
 | 216 | PLA-AR-C-1103 | GENERAL REFLECTED CEILING PLANS - LEVEL 03 | 1 : 100 | Calibrated 1:100 | 1:100 12/16 |
 | 217 | PLA-AR-C-1200 | FIRE RESISTANCE LEVEL PLANS - GROUND | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
 | 218 | PLA-AR-C-1201 | FIRE RESISTANCE LEVEL PLANS - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
@@ -257,7 +257,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 227 | PLA-AR-C-1401 | WALL SETOUT PLANS - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
 | 228 | PLA-AR-C-1402 | WALL SETOUT PLANS - LEVEL 02 | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
 | 229 | PLA-AR-C-1404 | WALL SETOUT PLANS - ROOF | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
-| 230 |  | WALL SCHEDULE |  | No scale printed |  |
+| 230 |  | WALL SCHEDULE |  | Schedule (text) |  |
 | 231 | PLA-AR-C-1500 | WATERPROOFING PLANS - GROUND | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
 | 232 | PLA-AR-C-1500B | WATERPROOFING PLANS -BASEMENT | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
 | 233 | PLA-AR-C-1501 | WATERPROOFING PLANS - LEVEL 01 | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
@@ -271,40 +271,40 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 241 | PLA-AR-C-2201 | DETAIL FACADE SECTIONS - SHEET 02 | 1 : 20 | Calibrated 1:20 | 1:20 6/6 |
 | 242 | PLA-AR-C-2202 | DETAIL FACADE SECTIONS - SHEET 03 | 1 : 20 | Calibrated 1:20 | 1:20 4/4 |
 | 243 | PLA-AR-C-2203 | DETAIL FACADE SECTIONS - SHEET 04 | 1 : 20 | Printed scale 1:20 | 1:20 2/2 |
-| 244 | PLA-AR-C-2205 | DETAIL FACADE SECTIONS - SHEET 06 | 1 : 20 | Calibrated 1:20 | 1:20 5/7 |
+| 244 | PLA-AR-C-2205 | DETAIL FACADE SECTIONS - SHEET 06 | 1 : 20 | Calibrated 1:20 | 1:20 4/4 |
 | 245 | PLA-AR-C-2206 | DETAIL FACADE SECTIONS - SHEET 07 | 1 : 20 | Calibrated 1:20 | 1:20 3/3 |
-| 246 | PLA-AR-C-2207 | DETAIL FACADE SECTIONS - SHEET 08 | 1 : 20 | Printed scale 1:20 | 1:20 2/2 |
+| 246 | PLA-AR-C-2207 | DETAIL FACADE SECTIONS - SHEET 08 | 1 : 20 | From levels 1:20 | 1:20 2/2 |
 | 247 | PLA-AR-C-3000 | CORES, STAIRS & RAMPS - SHEET 01 / FS C1 | As indicated | Calibrated 1:50 | 1:50 97/111 |
 | 248 | PLA-AR-C-3001 | CORES, STAIRS & RAMPS - SHEET 02 / FS C2 | As indicated | Calibrated 1:50 | 1:50 76/84 |
 | 249 | PLA-AR-C-3002 | CORES, STAIRS & RAMPS - SHEET 03 - LIFT C1& C2 | As indicated | By viewport (1:50) | 1:100 0/99 / 1:50 87/99 |
-| 250 | PLA-AR-C-4003 | APARTMENT TYPE - T04.P_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 16/21 |
+| 250 | PLA-AR-C-4003 | APARTMENT TYPE - T04.P_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 13/17 |
 | 251 | PLA-AR-C-4004 | APARTMENT TYPE - T05_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 13/14 |
-| 252 | PLA-AR-C-4005 | APARTMENT TYPE - T06_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 12/16 |
-| 253 | PLA-AR-C-4006 | APARTMENT TYPE - T07_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/14 |
-| 254 | PLA-AR-C-4007 | APARTMENT TYPE - T08_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 19/23 |
-| 255 | PLA-AR-C-4008 | APARTMENT TYPE - T09.P_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 17/19 |
+| 252 | PLA-AR-C-4005 | APARTMENT TYPE - T06_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 12/14 |
+| 253 | PLA-AR-C-4006 | APARTMENT TYPE - T07_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/12 |
+| 254 | PLA-AR-C-4007 | APARTMENT TYPE - T08_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 16/18 |
+| 255 | PLA-AR-C-4008 | APARTMENT TYPE - T09.P_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 16/18 |
 | 256 | PLA-AR-C-4009 | APARTMENT TYPE - T10_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/11 |
-| 257 | PLA-AR-C-4010 | APARTMENT TYPE - T11_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 11/19 |
-| 258 | PLA-AR-C-4011 | APARTMENT TYPE - T12_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 11/18 |
-| 259 | PLA-AR-C-4012 | APARTMENT TYPE - T13_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 16/21 |
-| 260 | PLA-AR-C-4013 | APARTMENT TYPE - T14_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 13/16 |
-| 261 | PLA-AR-C-4014 | APARTMENT TYPE - T15_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 14/16 |
-| 262 | PLA-AR-C-4015 | APARTMENT TYPE - T16_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 19/19 |
+| 257 | PLA-AR-C-4010 | APARTMENT TYPE - T11_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 8/15 |
+| 258 | PLA-AR-C-4011 | APARTMENT TYPE - T12_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/13 |
+| 259 | PLA-AR-C-4012 | APARTMENT TYPE - T13_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 13/18 |
+| 260 | PLA-AR-C-4013 | APARTMENT TYPE - T14_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/13 |
+| 261 | PLA-AR-C-4014 | APARTMENT TYPE - T15_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 11/13 |
+| 262 | PLA-AR-C-4015 | APARTMENT TYPE - T16_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 16/16 |
 | 263 | PLA-AR-C-4016 | APARTMENT TYPE - T17_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 10/16 |
 | 264 | PLA-AR-C-4017 | APARTMENT TYPE - T18_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 15/17 |
 | 265 | PLA-AR-C-4018 | APARTMENT TYPE - T19_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 13/15 |
 | 266 | PLA-AR-C-4028 | APARTMENT TYPE - T02.S_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 9/12 |
 | 267 | PLA-AR-C-4029 | APARTMENT TYPE - T04.S_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 15/21 |
-| 268 | PLA-AR-C-4101 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | 1 : 50 | No dimensions | 1:50 0/0 |
-| 269 | PLA-AR-C-4102 | COMMON AREA FITOUTS - L1-2 CORRIDOR_PLAN & RCP | As indicated | No dimensions | 1:50 0/0 |
-| 270 | PLA-AR-C-4103 | COMMON AREA FITOUTS - L1-2 CORRIDOR_ELEVATIONS | 1 : 50 | No dimensions | 1:50 0/0 |
-| 271 | PLA-AR-C-4104 | COMMON AREA FITOUTS - L3 CORRIDOR_PLAN & RCP | As indicated | No dimensions | 1:50 0/0 |
-| 272 | PLA-AR-C-4107 | COMMON AREA FITOUTS - COMMS_PLAN, RCP& ELEVATIONS | As indicated | No dimensions | 1:50 0/0 |
+| 268 | PLA-AR-C-4101 | COMMON AREA FITOUTS - GF CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 269 | PLA-AR-C-4102 | COMMON AREA FITOUTS - L1-2 CORRIDOR_PLAN & RCP | As indicated | Matched sheets 1:50 | 1:50 0/0 |
+| 270 | PLA-AR-C-4103 | COMMON AREA FITOUTS - L1-2 CORRIDOR_ELEVATIONS | 1 : 50 | From levels 1:50 | 1:50 0/0 |
+| 271 | PLA-AR-C-4104 | COMMON AREA FITOUTS - L3 CORRIDOR_PLAN & RCP | As indicated | Matched sheets 1:50 | 1:50 0/0 |
+| 272 | PLA-AR-C-4107 | COMMON AREA FITOUTS - COMMS_PLAN, RCP& ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 273 | PLA-AR-C-4108 | COMMON AREA FITOUTS - MSB_PLAN, RCP& ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 5/5 |
 | 274 | PLA-AR-C-4802 | WET AREA FITOUTS - B22 | As indicated | Calibrated 1:20 | 1:20 29/32 |
 | 275 | PLA-AR-C-4803 | WET AREA FITOUTS - B42 | As indicated | Calibrated 1:20 | 1:20 23/25 |
 | 276 | PLA-AR-C-4804 | WET AREA FITOUTS - L21 | As indicated | Calibrated 1:20 | 1:20 8/9 |
-| 277 | PLA-AR-C-4805 | WET AREA FITOUTS - B43 | As indicated | Calibrated 1:20 | 1:20 13/13 |
+| 277 | PLA-AR-C-4805 | WET AREA FITOUTS - B43 | As indicated | Calibrated 1:20 | 1:20 11/11 |
 | 278 | PLA-AR-C-4806 | WET AREA FITOUTS - B23 | As indicated | Calibrated 1:20 | 1:20 9/10 |
 | 279 | PLA-AR-C-4901 | KITCHEN FITOUTS - K21 | As indicated | Calibrated 1:20 | 1:20 6/12 |
 | 280 | PLA-AR-C-4911 | KITCHEN FITOUTS - K41 | As indicated | Calibrated 1:20 | 1:20 5/9 |
@@ -313,14 +313,14 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 283 | PLA-AR-C-4932 | KITCHEN FITOUTS - KI42 | As indicated | Calibrated 1:20 | 1:20 6/6 |
 | 284 | PLA-AR-C-5000 | FACADE SECTION DETAILS - SHEET 01 | As indicated | Printed scale 1:5 | 1:5 1/1 |
 | 285 | PLA-AR-C-5100 | PLAN DETAILS - SHEET 01 | 1 : 5 | Printed scale 1:5 | 1:5 0/0 |
-| 286 | PLA-AR-C-5102 | PLAN DETAILS - SHEET 03 |  | No dimensions |  |
-| 287 | PLA-AR-C-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | As indicated | No scale printed |  |
-| 288 | PLA-AR-C-6100 | DOOR SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 6/324 |
-| 289 | PLA-AR-C-6101 | DOOR SCHEDULE - SHEET 02 | 1 : 100 | Unreliable | 1:100 2/310 |
-| 290 | PLA-AR-C-6102 | DOOR SCHEDULE - SHEET 03 | 1 : 100 | Unreliable | 1:100 2/338 |
-| 291 | PLA-AR-C-6104 | DOOR SCHEDULE - SHEET 05 | As indicated | No scale printed |  |
-| 292 | PLA-AR-C-6104 | DOOR SCHEDULE - SHEET 05 | As indicated | No scale printed |  |
-| 293 | PLA-AR-C-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 15/22 |
+| 286 | PLA-AR-C-5102 | PLAN DETAILS - SHEET 03 |  | Nothing to measure |  |
+| 287 | PLA-AR-C-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | As indicated | Schedule (text) |  |
+| 288 | PLA-AR-C-6100 | DOOR SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 289 | PLA-AR-C-6101 | DOOR SCHEDULE - SHEET 02 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 290 | PLA-AR-C-6102 | DOOR SCHEDULE - SHEET 03 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 291 | PLA-AR-C-6104 | DOOR SCHEDULE - SHEET 05 | As indicated | Schedule (text) |  |
+| 292 | PLA-AR-C-6104 | DOOR SCHEDULE - SHEET 05 | As indicated | Schedule (text) |  |
+| 293 | PLA-AR-C-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 15/15 |
 | 294 | PLA-AR-C-6201 | LOUVRE SCREENS | As indicated | Calibrated 1:20 | 1:20 4/4 |
 | 295 | PLA-AR-C-7002 | JOINERY DETAILS - JR22 | As indicated | Calibrated 1:20 | 1:20 8/13 |
 | 296 | PLA-AR-C-7003 | JOINERY DETAILS - JR23 - JR24 | As indicated | Calibrated 1:20 | 1:20 4/4 |
@@ -328,10 +328,10 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 298 | PLA-AR-C-7012 | JOINERY DETAILS - JC22 | As indicated | Calibrated 1:20 | 1:20 1/6 |
 | 299 | PLA-AR-C-7013 | JOINERY DETAILS - JC23 | As indicated | Calibrated 1:20 | 1:20 1/3 |
 | 300 | PLA-AR-C-7021 | JOINERY DETAILS - JCA | 1 : 20 | Calibrated 1:20 | 1:20 9/9 |
-| 301 | PLA-AR-RAC-0000 | COVER PAGE |  | No dimensions |  |
-| 302 | PLA-AR-RAC-0001 | LEGEND SHEET |  | No dimensions | 1:100 0/0 |
-| 303 | PLA-AR-RAC-0002 | DRAWING REGISTER |  | No dimensions |  |
-| 304 | PLA-AR-RAC-1000 | OVERALL GENERAL ARRANGEMENT PLAN - GROUND | 1:200 | Calibrated 1:200 | 1:200 11/13 |
+| 301 | PLA-AR-RAC-0000 | COVER PAGE |  | Nothing to measure |  |
+| 302 | PLA-AR-RAC-0001 | LEGEND SHEET |  | Nothing to measure | 1:100 0/0 |
+| 303 | PLA-AR-RAC-0002 | DRAWING REGISTER |  | Nothing to measure |  |
+| 304 | PLA-AR-RAC-1000 | OVERALL GENERAL ARRANGEMENT PLAN - GROUND | 1:200 | Calibrated 1:200 | 1:200 10/12 |
 | 305 | PLA-AR-RAC-1000B | OVERALL GENERAL ARRANGEMENT PLAN - BASEMENT | 1:200 | Calibrated 1:200 | 1:200 26/26 |
 | 306 | PLA-AR-RAC-1001 | OVERALL GENERAL ARRANGEMENT PLAN - LEVEL 01 | 1:200 | Calibrated 1:200 | 1:200 11/13 |
 | 307 | PLA-AR-RAC-1002 | OVERALL GENERAL ARRANGEMENT PLAN - LEVEL 02 | 1:200 | Calibrated 1:200 | 1:200 11/13 |
@@ -354,7 +354,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 324 | PLA-AR-RAC-1102 | OVERALL REFLECTED CEILING PLANS - LEVEL 02 | As indicated | From grids 1:200 | 169/169 |
 | 325 | PLA-AR-RAC-1103 | OVERALL REFLECTED CEILING PLANS - LEVEL 03 | As indicated | From grids 1:200 | 169/169 |
 | 326 | PLA-AR-RAC-1150 | GENERAL REFLECTED CEILING PLANS - GROUND - ZONE A | 1 : 100 | From grids 1:100 | 69/76 |
-| 327 | A-4000 | GENERAL REFLECTED CEILING PLANS - BASEMENT - ZONE A | 1 : 100 | Printed scale 1:100 | 1:100 0/1 |
+| 327 | A-4000 | GENERAL REFLECTED CEILING PLANS - BASEMENT - ZONE A | 1 : 100 | Matched sheets 1:100 | 1:100 0/1 |
 | 328 | A-4000 | GENERAL REFLECTED CEILING PLANS - BASEMENT - ZONE B | 1 : 100 | From grids 1:100 | 43/43 |
 | 329 | PLA-AR-RAC-1151 | GENERAL REFLECTED CEILING PLANS - GROUND - ZONE B | 1 : 100 | From grids 1:100 | 43/43 |
 | 330 | PLA-AR-RAC-1152 | GENERAL REFLECTED CEILING PLANS - LEVEL 01 - ZONE A | 1 : 100 | From grids 1:100 | 69/71 |
@@ -424,7 +424,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 394 | PLA-AR-RAC-1503 | OVERALL WATERPROOFING PLAN - LEVEL 03 | As indicated | Calibrated 1:200 | 1:200 32/32 |
 | 395 | PLA-AR-RAC-1504 | OVERALL WATERPROOFING PLAN - ROOF | As indicated | Calibrated 1:200 | 1:200 32/32 |
 | 396 | PLA-AR-RAC-1550 | WATERPROOFING PLAN - GROUND LEVEL - ZONE A | 1 : 100 | From grids 1:100 | 36/51 |
-| 397 |  | WATERPROOFING PLAN - BASEMENT - ZONE A | 1 : 100 | Printed scale 1:100 | 1:100 0/0 |
+| 397 |  | WATERPROOFING PLAN - BASEMENT - ZONE A | 1 : 100 | Matched sheets 1:100 | 1:100 0/0 |
 | 398 |  | WATERPROOFING PLAN - BASEMENT - ZONE B | 1 : 100 | From grids 1:100 | 36/36 |
 | 399 | PLA-AR-RAC-1551 | WATERPROOFING PLAN - GROUND LEVEL - ZONE B | 1 : 100 | From grids 1:100 | 36/36 |
 | 400 | PLA-AR-RAC-1552 | WATERPROOFING PLAN - LEVEL 01 - ZONE A | 1 : 100 | Calibrated 1:100 | 1:100 12/12 |
@@ -450,8 +450,8 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 420 | PLA-AR-RAC-2203 | DETAIL FACADE SECTIONS - SHEET 04 | 1 : 20 | Image |  |
 | 421 | PLA-AR-RAC-2204 | DETAIL FACADE SECTIONS - SHEET 05 | 1 : 20 | Image |  |
 | 422 | PLA-AR-RAC-2205 | DETAIL FACADE SECTIONS - SHEET 06 | 1 : 20 | Image |  |
-| 423 | PLA-AR-RAC-2206 | DETAIL FACADE SECTIONS - SHEET 07 | 1 : 20 | Printed scale 1:20 | 1:20 1/1 |
-| 424 | PLA-AR-RAC-2208 | DETAIL FACADE SECTIONS - SHEET 09 | 1 : 20 | Printed scale 1:20 | 1:20 1/1 |
+| 423 | PLA-AR-RAC-2206 | DETAIL FACADE SECTIONS - SHEET 07 | 1 : 20 | From levels 1:20 | 1:20 1/1 |
+| 424 | PLA-AR-RAC-2208 | DETAIL FACADE SECTIONS - SHEET 09 | 1 : 20 | From levels 1:20 | 1:20 1/1 |
 | 425 | PLA-AR-RAC-2209 | DETAIL FACADE SECTIONS - SHEET 10 | 1 : 20 | Image |  |
 | 426 | PLA-AR-RAC-3000 | CORES, STAIRS & RAMPS - SHEET 01 / FS RAC 1 | As indicated | Calibrated 1:50 | 1:50 108/118 |
 | 427 | PLA-AR-RAC-3001 | CORES, STAIRS & RAMPS - SHEET 02 / FS RAC 2 | As indicated | Calibrated 1:50 | 1:50 143/159 |
@@ -468,7 +468,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 438 | PLA-AR-RAC-4011 | RAC BEDROOM - TYPE T01 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 15/16 |
 | 439 | PLA-AR-RAC-4012 | RAC BEDROOM - TYPE T02 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 4/4 |
 | 440 | PLA-AR-RAC-4013 | RAC BEDROOM - TYPE T03 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 5/5 |
-| 441 | PLA-AR-RAC-4014 | RAC BEDROOM - TYPE T04 ELEVATIONS |  | No dimensions |  |
+| 441 | PLA-AR-RAC-4014 | RAC BEDROOM - TYPE T04 ELEVATIONS |  | Nothing to measure |  |
 | 442 | PLA-AR-RAC-4015 | RAC BEDROOM - TYPE T05 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 4/4 |
 | 443 | PLA-AR-RAC-4016 | RAC BEDROOM - TYPE T06 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 5/5 |
 | 444 | PLA-AR-RAC-4100 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE - PLAN | As indicated | Calibrated 1:50 | 1:50 4/4 |
@@ -478,43 +478,43 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 448 | PLA-AR-RAC-4112 | COMMON AREA FITOUT - SF10 QUIET ROOMS - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 3/3 |
 | 449 | PLA-AR-RAC-4100 | COMMON AREA FITOUT - IL22 CLUBROOM - PLANS | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 450 | PLA-AR-RAC-4114 | COMMON AREA FITOUT - IL22 CLUBROOM - RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 451 | PLA-AR-RAC-4115 | COMMON AREA FITOUT - IL22 CLUBROOM - ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 451 | PLA-AR-RAC-4115 | COMMON AREA FITOUT - IL22 CLUBROOM - ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 452 | PLA-AR-RAC-4116 | COMMON AREA FITOUT - IL23 GYM - PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 453 | PLA-AR-RAC-4117 | COMMON AREA FITOUT - IL23 GYM - ELEVATIONS 2 | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 454 | PLA-AR-RAC-4117 | COMMON AREA FITOUT - IL23 GYM - ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 453 | PLA-AR-RAC-4117 | COMMON AREA FITOUT - IL23 GYM - ELEVATIONS 2 | As indicated | From levels 1:50 | 1:50 0/0 |
+| 454 | PLA-AR-RAC-4117 | COMMON AREA FITOUT - IL23 GYM - ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 455 | PLA-AR-RAC-4118 | COMMON AREA FITOUT - IL24 CINEMA_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 1/1 |
 | 456 | PLA-AR-RAC-4119 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_PLAN & RCP | As indicated | Calibrated 1:50 | 1:50 3/4 |
 | 457 | PLA-AR-RAC-4120 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_ELEVATIONS 2 | As indicated | Calibrated 1:50 | 1:50 1/4 |
-| 458 | PLA-AR-RAC-4120 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 458 | PLA-AR-RAC-4120 | COMMON AREA FITOUT - SB01 CENTRAL KITCHEN_ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 459 | PLA-AR-RAC-4121 | COMMON AREA FITOUT - SB03 CENTRAL STORE ROOMS_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 460 | PLA-AR-RAC-4122 | COMMON AREA FITOUT - SB03 CENTRAL STORE ROOMS_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 461 | PLA-AR-RAC-4123 | COMMON AREA FITOUT - SB04 CLN / CHEM STORE_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 1/1 |
+| 460 | PLA-AR-RAC-4122 | COMMON AREA FITOUT - SB03 CENTRAL STORE ROOMS_ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
+| 461 | PLA-AR-RAC-4123 | COMMON AREA FITOUT - SB04 CLN / CHEM STORE_PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 1/1 |
 | 462 | PLA-AR-RAC-4124 | COMMON AREA FITOUT - SB06 WASTE_PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 5/5 |
-| 463 | PLA-AR-RAC-4126 | COMMON AREA FITOUT - SB09 STAFF ROOM_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 464 | PLA-AR-RAC-4127 | COMMON AREA FITOUT - SB12 BUILDING MAINTENANCE_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 463 | PLA-AR-RAC-4126 | COMMON AREA FITOUT - SB09 STAFF ROOM_PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
+| 464 | PLA-AR-RAC-4127 | COMMON AREA FITOUT - SB12 BUILDING MAINTENANCE_PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 465 | PLA-AR-RAC-4128 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 466 | PLA-AR-RAC-4129 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 466 | PLA-AR-RAC-4129 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 467 | PLA-AR-RAC-4130 | COMMON AREA FITOUT - HHB03 DIRTY LINEN STORE_PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 6/6 |
 | 468 | PLA-AR-RAC-4131 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 2/2 |
-| 469 | PLA-AR-RAC-4132 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 470 | PLA-AR-RAC-4134 | COMMON AREA FITOUT - COMMS & MSB_ ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 469 | PLA-AR-RAC-4132 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
+| 470 | PLA-AR-RAC-4134 | COMMON AREA FITOUT - COMMS & MSB_ ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 471 | PLA-AR-RAC-4134 | COMMON AREA FITOUT - COMMS & MSB_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 472 | PLA-AR-RAC-4135 | COMMON AREA FITOUT - HHF01.TYP LIFT LOBBY / CORRIDOR_PLAN, RCP & ELEVA | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 473 | PLA-AR-RAC-4137 | COMMON AREA FITOUT - HHF02.TYP SITTING ROOM_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 474 | PLA-AR-RAC-4138 | COMMON AREA FITOUT - HHF03/04 LIVING DINING ROOM NORTH - PLAN, RCP & E | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 475 | PLA-AR-RAC-4139 | COMMON AREA FITOUT - HHF03/04 LIVING DINING ROOM SOUTH - PLAN, RCP & E | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 476 | PLA-AR-RAC-4140 | COMMON AREA FITOUT - HHF05 KITCHEN NORTH - PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 472 | PLA-AR-RAC-4135 | COMMON AREA FITOUT - HHF01.TYP LIFT LOBBY / CORRIDOR_PLAN, RCP & ELEVA | As indicated | From levels 1:50 | 1:50 0/0 |
+| 473 | PLA-AR-RAC-4137 | COMMON AREA FITOUT - HHF02.TYP SITTING ROOM_PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
+| 474 | PLA-AR-RAC-4138 | COMMON AREA FITOUT - HHF03/04 LIVING DINING ROOM NORTH - PLAN, RCP & E | As indicated | From levels 1:50 | 1:50 0/0 |
+| 475 | PLA-AR-RAC-4139 | COMMON AREA FITOUT - HHF03/04 LIVING DINING ROOM SOUTH - PLAN, RCP & E | As indicated | From levels 1:50 | 1:50 0/0 |
+| 476 | PLA-AR-RAC-4140 | COMMON AREA FITOUT - HHF05 KITCHEN NORTH - PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 477 | PLA-AR-RAC-4141 | COMMON AREA FITOUT - HHF05 KITCHEN SOUTH - PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 478 | PLA-AR-RAC-4142 | COMMON AREA FITOUT - HHF09.TYP RESIDENT HALLWAY - PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/2 |
-| 479 | PLA-AR-RAC-4143 | COMMON AREA FITOUT - HHF09.TYP RESIDENT HALLWAY - ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 1/1 |
+| 479 | PLA-AR-RAC-4143 | COMMON AREA FITOUT - HHF09.TYP RESIDENT HALLWAY - ELEVATIONS | As indicated | From levels 1:50 | 1:50 1/1 |
 | 480 | PLA-AR-RAC-4144 | COMMON AREA FITOUT - HHF11 LIFTER STORES - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 4/4 |
 | 481 | PLA-AR-RAC-4145 | COMMON AREA FITOUT - HHB01 CLINICAL ROOM - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 10/10 |
 | 482 | PLA-AR-RAC-4146 | COMMON AREA FITOUT - HHB02 DIRTY UTILITY - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 3/3 |
-| 483 | PLA-AR-RAC-4147 | COMMON AREA FITOUT - HHB04 CLEAN LINEN STORES_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 2/2 |
-| 484 | PLA-AR-RAC-4148 | COMMON AREA FITOUT - HHB05 BULK STORE_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 2/2 |
+| 483 | PLA-AR-RAC-4147 | COMMON AREA FITOUT - HHB04 CLEAN LINEN STORES_PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 2/2 |
+| 484 | PLA-AR-RAC-4148 | COMMON AREA FITOUT - HHB05 BULK STORE_PLAN, RCP & ELEVATIONS | As indicated | From levels 1:50 | 1:50 2/2 |
 | 485 | PLA-AR-RAC-4149 | COMMON AREA FITOUT - HHB06/07 EQUIP & CLN'S STORE_PLAN, RCP & ELEVATIO | As indicated | Calibrated 1:50 | 1:50 8/8 |
 | 486 | PLA-AR-RAC-4150 | COMMON AREA FITOUT - HHB09.TYP STAFF CORRIDOR_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 487 | PLA-AR-RAC-4151 | COMMON AREA FITOUT - HHB09.TYP STAFF CORRIDOR_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
+| 487 | PLA-AR-RAC-4151 | COMMON AREA FITOUT - HHB09.TYP STAFF CORRIDOR_ELEVATIONS | As indicated | From levels 1:50 | 1:50 0/0 |
 | 488 | PLA-AR-RAC-4152 | COMMON AREA FITOUT - SITE FOH CORRIDOR | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 489 | PLA-AR-RAC-4153 | COMMON AREA FITOUT - SITE BOH CORRIDOR | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 490 | PLA-AR-RAC-4700 | COMMON WET AREA FITOUT - CLUBROOM AMENITIES_PLAN | As indicated | Calibrated 1:20 | 1:20 16/26 |
@@ -529,7 +529,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 499 | PLA-AR-RAC-4709 | COMMON WET AREA FITOUT - MPR AMENITIES_M.WC ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 8/8 |
 | 500 | PLA-AR-RAC-4710 | COMMON WET AREA FITOUT - GYM AMENITIES_PLAN & RCP | As indicated | Calibrated 1:20 | 1:20 7/7 |
 | 501 | PLA-AR-RAC-4711 | COMMON WET AREA FITOUT - GYM AMENITIES_ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 11/11 |
-| 502 | PLA-AR-RAC-4712 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_PLAN & RCP | As indicated | Calibrated 1:20 | 1:20 17/22 |
+| 502 | PLA-AR-RAC-4712 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_PLAN & RCP | As indicated | Calibrated 1:20 | 1:20 17/21 |
 | 503 | PLA-AR-RAC-4713 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_RCP | As indicated | Printed scale 1:20 | 1:20 0/0 |
 | 504 | PLA-AR-RAC-4714 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_M.WC ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 10/10 |
 | 505 | PLA-AR-RAC-4715 | COMMON WET AREA FITOUT - ADMIN EOT AMENITIES_F.WC ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 4/4 |
@@ -557,20 +557,20 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 527 | PLA-AR-RAC-5100 | PLAN DETAILS - SHEET 01 | 1 : 50 | Calibrated 1:50 | 1:50 9/11 |
 | 528 | PLA-AR-RAC-5101 | PLAN DETAILS - SHEET 02 | 1 : 5 | Calibrated 1:5 | 1:5 2/3 |
 | 529 | PLA-AR-RAC-5102 | PLAN DETAILS - SHEET 03 | 1 : 5 | Calibrated 1:5 | 1:5 11/11 |
-| 530 | PLA-AR-RAC-6000 | WINDOW LIST SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 0/624 |
-| 531 | PLA-AR-RAC-6001 | WINDOW ELEVATIONS SCHEDULE - SHEET 02 | As indicated | No scale printed |  |
-| 532 | PLA-AR-RAC-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | As indicated | No scale printed |  |
-| 533 | PLA-AR-RAC-6100 | DOOR SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 17/377 |
-| 534 | PLA-AR-RAC-6101 | DOOR SCHEDULE - SHEET 02 | 1 : 100 | Unreliable | 1:100 43/384 |
-| 535 | PLA-AR-RAC-6102 | DOOR SCHEDULE - SHEET 03 | 1 : 100 | Unreliable | 1:100 40/372 |
-| 536 | PLA-AR-RAC-6103 | DOOR SCHEDULE - SHEET 04 | 1 : 100 | Unreliable | 1:100 37/352 |
-| 537 | PLA-AR-RAC-6104 | DOOR SCHEDULE - SHEET 05 | As indicated | By viewport (1:50, 1:125) |  |
-| 538 | PLA-AR-RAC-6105 | DOOR SCHEDULE - SHEET 06 | As indicated | By viewport (1:125) |  |
-| 539 | PLA-AR-RAC-6106 | DOOR SCHEDULE - SHEET 07 | As indicated | No scale printed |  |
-| 540 | PLA-AR-RAC-6150 | JOINERY DOOR SCHEDULE - SHEET 01 | 1 : 100 | Unreliable | 1:100 0/59 |
-| 541 | PLA-AR-RAC-6151 | JOINERY DOOR SCHEDULE - SHEET 02 | As indicated | No scale printed |  |
-| 542 | PLA-AR-RAC-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 17/28 |
-| 543 | PLA-AR-RAC-6201 | LOUVRE SCREEN | As indicated | Calibrated 1:20 | 1:20 6/11 |
+| 530 | PLA-AR-RAC-6000 | WINDOW LIST SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 531 | PLA-AR-RAC-6001 | WINDOW ELEVATIONS SCHEDULE - SHEET 02 | As indicated | Schedule (text) |  |
+| 532 | PLA-AR-RAC-6002 | WINDOW ELEVATIONS SCHEDULE - SHEET 03 | As indicated | Schedule (text) |  |
+| 533 | PLA-AR-RAC-6100 | DOOR SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 534 | PLA-AR-RAC-6101 | DOOR SCHEDULE - SHEET 02 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 535 | PLA-AR-RAC-6102 | DOOR SCHEDULE - SHEET 03 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 536 | PLA-AR-RAC-6103 | DOOR SCHEDULE - SHEET 04 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 537 | PLA-AR-RAC-6104 | DOOR SCHEDULE - SHEET 05 | As indicated | By viewport (1:50) |  |
+| 538 | PLA-AR-RAC-6105 | DOOR SCHEDULE - SHEET 06 | As indicated | Schedule (text) |  |
+| 539 | PLA-AR-RAC-6106 | DOOR SCHEDULE - SHEET 07 | As indicated | Schedule (text) |  |
+| 540 | PLA-AR-RAC-6150 | JOINERY DOOR SCHEDULE - SHEET 01 | 1 : 100 | Schedule (text) | 1:100 0/0 |
+| 541 | PLA-AR-RAC-6151 | JOINERY DOOR SCHEDULE - SHEET 02 | As indicated | Schedule (text) |  |
+| 542 | PLA-AR-RAC-6200 | BALUSTRADE SCHEDULE | As indicated | Calibrated 1:20 | 1:20 17/19 |
+| 543 | PLA-AR-RAC-6201 | LOUVRE SCREEN | As indicated | Calibrated 1:20 | 1:20 6/10 |
 | 544 | PLA-AR-RAC-7000 | RAC JOINERY DETAILS - TYPE JR01 | 1 : 20 | Calibrated 1:20 | 1:20 31/44 |
 | 545 | PLA-AR-RAC-7001 | RAC JOINERY DETAILS - TYPE JR02 | 1 : 20 | Calibrated 1:20 | 1:20 11/11 |
 | 546 | PLA-AR-RAC-7101 | COMMON AREA JOINERY DETAILS - TYPE JO01 RECEPTION BACKLINE | 1 : 20 | Calibrated 1:20 | 1:20 12/13 |
