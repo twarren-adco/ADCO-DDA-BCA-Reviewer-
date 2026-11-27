@@ -363,6 +363,7 @@ def _mupdf_geometry(pdf_path, page_no, region, min_len):
                     continue
                 dx, dy = ln["dir"]
                 ws.append({"text": t, "cx": cx, "cy": cy, "size": sp["size"],
+                           "origin": tuple(sp["origin"]), "dir": (dx, dy),
                            "upright": abs(dx) >= abs(dy),
                            "angle": math.degrees(math.atan2(dy, dx)) % 180})
     return scales, segs, ws
@@ -491,6 +492,24 @@ def tick_length(near, s):
     return L, False
 
 
+def _through_glyphs(w, s):
+    """True when line s runs through the figures of word w (between the text's
+    baseline and its cap height), rather than beside them as a dimension line does."""
+    if "origin" not in w:
+        return False
+    (ox, oy), (dx, dy) = w["origin"], w["dir"]
+    ux, uy = dy, -dx                       # "up" for the text, in page coordinates (y down)
+    ax, ay, bx, by = s["x0"], s["y0"], s["x1"], s["y1"]
+    L = s["len_pt"]
+    nx, ny = -(by - ay) / L, (bx - ax) / L  # unit normal of the line
+    # height above the baseline at which the line crosses the text's up axis
+    den = ux * nx + uy * ny
+    if abs(den) < 0.5:
+        return False
+    h = ((ax - ox) * nx + (ay - oy) * ny) / den
+    return 0.1 * w["size"] < h < 0.7 * w["size"]
+
+
 def witness_length(near, s):
     """Distance between the witness (extension) lines at each end of a matched
     dimension line. Revit and ArchiCAD draw the dimension line a little past its
@@ -537,6 +556,32 @@ def _closed_box(near, w, s, offs, th):
                 break
         caps += found
     return caps == 2
+
+
+NOISE_BAND = 0.12   # standard scales are >= 25% apart, so errors under 12% can't be another scale
+
+
+def printed_scale_confirmed(matches, scales, tol):
+    """The sheet prints one scale and has printed dimensions that don't meet the
+    strict +-2% rule. Small, one-sided errors (dimension lines overshooting their
+    ticks, chained dimensions, rounding) can't turn one standard scale into
+    another, because neighbouring standard scales differ by 25% or more. So the
+    printed scale is confirmed when most dimensions land within +-12% of it and
+    no other standard scale is supported by 3 or more dimensions. A real
+    contradiction (e.g. an @A3 sheet at twice the size) still fails."""
+    if len(scales) != 1 or not matches:
+        return None
+    P = scales[0]
+    near = [m for m in matches if abs(m["implied_scale"] / P - 1) <= NOISE_BAND]
+    if len(near) < 2 or len(near) < 0.6 * len(matches):
+        return None
+    for Q in STANDARD_SCALES:
+        if Q == P or abs(Q / P - 1) <= NOISE_BAND:
+            continue
+        if sum(1 for m in matches if abs(m["implied_scale"] / Q - 1) <= tol) >= 3:
+            return None
+    return (f"CALIBRATED - printed scale 1:{int(P)} confirmed by {len(near)}/{len(matches)} printed "
+            f"dimensions within +-{int(NOISE_BAND*100)}% (no other standard scale fits)", P)
 
 
 def find_viewports(matches, tol, min_agree):
@@ -598,8 +643,11 @@ def cmd_calibrate(a):
             perp = abs((w["cx"] - ax) * dy - (w["cy"] - ay) * dx) / L
             if perp > th * 2.0:
                 continue
-            # dimension text sits roughly mid-span; prefer central + close
-            score = perp + abs(t - 0.5) * th * 4
+            # dimension text sits roughly mid-span; prefer central + close.
+            # Text never sits ON its own dimension line: a line running through
+            # the figure is background line work (studs, hatching), so it only
+            # wins if nothing better is near.
+            score = perp + abs(t - 0.5) * th * 4 + (th * 3 if _through_glyphs(w, s) else 0)
             if best is None or score < best[0]:
                 # a tag box (e.g. ceiling type "CL-000 / 3080") has a line of the
                 # same length on the far side of the text; a dimension line doesn't
@@ -673,6 +721,9 @@ def cmd_calibrate(a):
             report["verdict"] = "NO SCALE STRING - scale inferred only, NOT verified"
     elif viewports:
         report["verdict"] = "CALIBRATED BY VIEWPORT - measure only inside the listed regions"
+    elif (pc := printed_scale_confirmed(matches, scales, a.tol)):
+        report["verdict"] = pc[0]
+        report["calibrated_scale"] = pc[1]
     else:
         report["verdict"] = "UNRELIABLE - do not measure from geometry on this sheet/region"
     if report["verdict"].startswith("NO SCALE STRING") and viewports:

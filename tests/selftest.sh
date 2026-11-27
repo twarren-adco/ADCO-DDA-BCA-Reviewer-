@@ -79,4 +79,24 @@ sp = spacings(lines)
 assert set(sp) == {"1|2"}, sp
 assert abs(sp["1|2"] * PT_TO_MM * 100 - 8000) < 1, sp
 PY
+# joinery regressions (Kingscliff JC21-23, C-2202, JO38): chained drawer dims with
+# overshooting dimension lines, a background line through the figures, diagonal
+# radius dims with ticks, ceiling tags. Must calibrate at the printed 1:20.
+python3 tests/make_joinery.py "$T/j.pdf"
+j=$(python3 tools/drawing.py calibrate "$T/j.pdf" -p 1)
+echo "$j" | grep -q "VERDICT: CALIBRATED (1:20)" || { echo "$j"; fail "joinery sheet should calibrate 1:20"; }
+echo "$j" | grep -q "printed   3080\|printed   2400\|printed   2700" && fail "ceiling tag read as a dimension"
+[ "$(echo "$j" | grep -c 'printed    450.*OK')" -ge 3 ] || { echo "$j"; fail "drawer stack dims should match their witness lines"; }
+# printed-scale confirmation: small one-sided errors confirm the printed scale;
+# a genuine contradiction (another standard scale) never does
+python3 - <<'PY' || fail "printed scale confirmation"
+import sys; sys.path.insert(0, "tools")
+from drawing import printed_scale_confirmed as c
+m = lambda *v: [{"implied_scale": x} for x in v]
+assert c(m(18.4, 18.4, 18.4, 19.1, 19.0), [20], 0.02), "6-8% long readings at 1:20 should confirm 1:20"
+assert c(m(50.0, 47.6, 48.1, 44.2), [50], 0.02)
+assert not c(m(40.1, 39.8, 40.0, 20.0), [20], 0.02), "three dims at 1:40 contradict 1:20"
+assert not c(m(25.0, 24.9, 25.2, 19.0), [20], 0.02), "1:25 is another standard scale"
+assert not c(m(19.0, 19.5), [20, 50], 0.02), "two printed scales: not this rule"
+PY
 echo "all self-tests passed"
