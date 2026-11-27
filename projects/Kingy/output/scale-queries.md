@@ -1,0 +1,1 @@
+- **C-4101 to C-4104 and C-4107 (sheets 268-272), Building C common-area fitouts:** viewports labelled "SCALE 1 : 50 @A3" on A1 sheets (841 x 594 mm). Either the views are effectively 1:25 on these sheets or the labels are wrong. Not measured until the architect confirms.

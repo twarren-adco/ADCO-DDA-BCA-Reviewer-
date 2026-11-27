@@ -1831,7 +1831,7 @@
       "note": ""
     }
   },
-  "handover": "477 of 581 sheets measurable (280 own dims, 42 by viewport, 59 grids, 96 printed scale). 21 drawings not measurable (5 C-41xx @A3 query, 4 with no scale, 12 joinery/fitout with few disagreeing dims). Next: project.md facts + standards library, then checklist review.",
+  "handover": "482 of 581 sheets measurable. Remaining drawings not measurable: 5 C-41xx (@A3 query), 4 unscaled, ~10 sparse/disagreeing joinery-fitout. Next: project.md facts + standards library, then checklist review.",
   "log": [
     {
       "at": "2026-11-26T03:08:27Z",
@@ -1872,7 +1872,12 @@
       "at": "2026-11-27T00:48:17Z",
       "event": "handover",
       "note": "477 of 581 sheets measurable (280 own dims, 42 by viewport, 59 grids, 96 printed scale). 21 drawings not measurable (5 C-41xx @A3 query, 4 with no scale, 12 joinery/fitout with few disagreeing dims). Next: project.md facts + standards library, then checklist review."
+    },
+    {
+      "at": "2026-11-27T01:19:28Z",
+      "event": "handover",
+      "note": "482 of 581 sheets measurable. Remaining drawings not measurable: 5 C-41xx (@A3 query), 4 unscaled, ~10 sparse/disagreeing joinery-fitout. Next: project.md facts + standards library, then checklist review."
     }
   ],
-  "updated_at": "2026-11-27T00:48:17Z"
+  "updated_at": "2026-11-27T01:19:28Z"
 }

@@ -1,6 +1,6 @@
 # Calibration log – Kingy
 
-**477 of 581 sheets can be measured from geometry.**
+**482 of 581 sheets can be measured from geometry.**
 
 Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines (any angle) and measured witness line to witness line; horizontal/vertical dimension lines need witness lines crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%. *By viewport*: each consistent viewport (>=3 dimensions, >=65% agreement inside its area) is calibrated separately and measuring is valid only inside its listed region (`calibration.jsonl`). *From grids*: the sheet has no usable dimensions, but >=3 grid spacings (from `grid-table.json`, built from calibrated plans) agree with one scale within +-1% and with the printed scale. *Printed scale*: no dimensions or grids to check against, so the scale printed under each viewport title (e.g. 'SCALE 1 : 5 @A1') is used, accepted only because the page is the full paper size the note names (`tools/printedscale.py`). Mixed-scale sheets get a region per viewport.
 
@@ -10,13 +10,13 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 1xxx GA plans, RCPs, wall types | 108 | 19 | 53 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 2xxx Elevations | 17 | 0 | 0 | 5 | 0 | 0 | 0 | 1 | 0 | 22 |
 | 3xxx Sections | 10 | 2 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
-| 4xxx Unit & common-area fitouts, wet areas | 86 | 1 | 1 | 55 | 0 | 6 | 0 | 4 | 0 | 0 |
+| 4xxx Unit & common-area fitouts, wet areas | 89 | 2 | 1 | 54 | 0 | 6 | 0 | 1 | 0 | 0 |
 | 5xxx Details | 8 | 4 | 0 | 24 | 3 | 1 | 0 | 1 | 0 | 11 |
 | 6xxx Schedules | 5 | 10 | 0 | 2 | 0 | 0 | 9 | 17 | 0 | 0 |
-| 7xxx Joinery / details | 37 | 3 | 0 | 1 | 0 | 0 | 0 | 6 | 0 | 1 |
+| 7xxx Joinery / details | 39 | 3 | 0 | 1 | 0 | 0 | 0 | 4 | 0 | 1 |
 | 8xxx FF&E schedules | 0 | 3 | 0 | 0 | 0 | 1 | 3 | 0 | 0 | 0 |
 | ?xxx Other | 2 | 0 | 5 | 2 | 0 | 0 | 1 | 0 | 0 | 0 |
-| **Total** | **280** | **42** | **59** | **92** | **4** | **23** | **14** | **29** | **0** | **38** |
+| **Total** | **285** | **43** | **59** | **91** | **4** | **23** | **14** | **24** | **0** | **38** |
 
 *No dimensions*: fewer than 3 printed dimensions and no shared grid (e.g. details, joinery). *Unreliable*: dimensions disagree (mostly reflected ceiling plans and sparsely dimensioned fitouts). *Image*: mostly raster. Schedules are read as text, not measured.
 
@@ -471,7 +471,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 441 | PLA-AR-RAC-4014 | RAC BEDROOM - TYPE T04 ELEVATIONS |  | No dimensions |  |
 | 442 | PLA-AR-RAC-4015 | RAC BEDROOM - TYPE T05 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 4/4 |
 | 443 | PLA-AR-RAC-4016 | RAC BEDROOM - TYPE T06 ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 5/5 |
-| 444 | PLA-AR-RAC-4100 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE - PLAN | As indicated | Unreliable | 1:50 0/4 |
+| 444 | PLA-AR-RAC-4100 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE - PLAN | As indicated | Calibrated 1:50 | 1:50 4/4 |
 | 445 | PLA-AR-RAC-4101 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE - RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 446 | PLA-AR-RAC-4102 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE- ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 447 | PLA-AR-RAC-4103 | COMMON AREA FITOUT - SF01-02 RECEPTION & CAFE- ELEVATION 2 | As indicated | Printed scale 1:50 | 1:50 0/0 |
@@ -494,7 +494,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 464 | PLA-AR-RAC-4127 | COMMON AREA FITOUT - SB12 BUILDING MAINTENANCE_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 465 | PLA-AR-RAC-4128 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 466 | PLA-AR-RAC-4129 | COMMON AREA FITOUT - HHF01.GF LIFT LOBBY / CORRIDOR_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
-| 467 | PLA-AR-RAC-4130 | COMMON AREA FITOUT - HHB03 DIRTY LINEN STORE_PLAN, RCP & ELEVATIONS | As indicated | Unreliable | 1:50 1/6 |
+| 467 | PLA-AR-RAC-4130 | COMMON AREA FITOUT - HHB03 DIRTY LINEN STORE_PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 6/6 |
 | 468 | PLA-AR-RAC-4131 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_PLAN & RCP | As indicated | Printed scale 1:50 | 1:50 2/2 |
 | 469 | PLA-AR-RAC-4132 | COMMON AREA FITOUT - HHB09 GF STAFF CORRIDOR_ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
 | 470 | PLA-AR-RAC-4134 | COMMON AREA FITOUT - COMMS & MSB_ ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 0/0 |
@@ -509,7 +509,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 479 | PLA-AR-RAC-4143 | COMMON AREA FITOUT - HHF09.TYP RESIDENT HALLWAY - ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 1/1 |
 | 480 | PLA-AR-RAC-4144 | COMMON AREA FITOUT - HHF11 LIFTER STORES - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 4/4 |
 | 481 | PLA-AR-RAC-4145 | COMMON AREA FITOUT - HHB01 CLINICAL ROOM - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 10/10 |
-| 482 | PLA-AR-RAC-4146 | COMMON AREA FITOUT - HHB02 DIRTY UTILITY - PLAN, RCP & ELEVATIONS | As indicated | Unreliable | 1:50 1/3 |
+| 482 | PLA-AR-RAC-4146 | COMMON AREA FITOUT - HHB02 DIRTY UTILITY - PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:50 | 1:50 3/3 |
 | 483 | PLA-AR-RAC-4147 | COMMON AREA FITOUT - HHB04 CLEAN LINEN STORES_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 2/2 |
 | 484 | PLA-AR-RAC-4148 | COMMON AREA FITOUT - HHB05 BULK STORE_PLAN, RCP & ELEVATIONS | As indicated | Printed scale 1:50 | 1:50 2/2 |
 | 485 | PLA-AR-RAC-4149 | COMMON AREA FITOUT - HHB06/07 EQUIP & CLN'S STORE_PLAN, RCP & ELEVATIO | As indicated | Calibrated 1:50 | 1:50 8/8 |
@@ -541,7 +541,7 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 511 | PLA-AR-RAC-4721 | COMMON WET AREA FITOUT - HHB10 STAFF WC_PLAN, RCP & ELEVATIONS | As indicated | Calibrated 1:20 | 1:20 8/8 |
 | 512 | PLA-AR-RAC-4722 | COMMON WET AREA FITOUT - HHB08 HAND WASH STATION_PLAN & ELEVATION | As indicated | Printed scale 1:20 | 1:20 1/2 |
 | 513 | PLA-AR-RAC-4723 | COMMON WET AREA FITOUT - HHF10 HAND WASH STATION_PLAN & ELEVATION | 1 : 20 | Printed scale 1:20 | 1:20 2/2 |
-| 514 | PLA-AR-RAC-4800 | RAC ENSUITE - TYPE MATRIX | As indicated | Printed scale 1:20 | 1:100 0/3 / 1:20 2/3 |
+| 514 | PLA-AR-RAC-4800 | RAC ENSUITE - TYPE MATRIX | As indicated | By viewport (1:20) | 1:100 0/3 / 1:20 3/3 |
 | 515 | PLA-AR-RAC-4801 | RAC ENSUITE - TYPE EN01 PLAN & RCP | 1:20 | By viewport (1:20) | 1:100 0/36 / 1:20 30/36 |
 | 516 | PLA-AR-RAC-5000 | FACADE SECTION DETAILS - SHEET 01 | As indicated | Calibrated 1:5 | 1:5 7/7 |
 | 517 | PLA-AR-RAC-5001 | FACADE SECTION DETAILS - SHEET 02 | As indicated | Printed scale 1:5 | 1:5 0/0 |
@@ -604,8 +604,8 @@ Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are pair
 | 574 | PLA-AR-RAC-7135 | COMMON AREA JOINERY DETAILS - TYPE JO35 BATHROOM COMMON LOCKERS | 1 : 20 | Calibrated 1:20 | 1:20 8/8 |
 | 575 | PLA-AR-RAC-7136 | COMMON AREA JOINERY DETAILS - TYPE JO36 HOUSEHOLD RESIDENT TYPICAL LAU | 1 : 20 | Calibrated 1:20 | 1:20 15/17 |
 | 576 | PLA-AR-RAC-7137 | COMMON AREA JOINERY DETAILS - TYPE JO37 MEMORY BOX | 1 : 20 | Unreliable | 1:20 1/3 |
-| 577 | PLA-AR-RAC-7138 | COMMON AREA JOINERY DETAILS - TYPE JO38 RECEPTION ROUND TABLE | 1 : 20 | Unreliable | 1:20 2/4 |
-| 578 | PLA-AR-RAC-7140 | COMMON AREA JOINERY DETAILS - TYPE JO40 HAIR SALON STYLING STATION | 1 : 20 | Unreliable | 1:20 2/3 |
+| 577 | PLA-AR-RAC-7138 | COMMON AREA JOINERY DETAILS - TYPE JO38 RECEPTION ROUND TABLE | 1 : 20 | Calibrated 1:20 | 1:20 4/4 |
+| 578 | PLA-AR-RAC-7140 | COMMON AREA JOINERY DETAILS - TYPE JO40 HAIR SALON STYLING STATION | 1 : 20 | Calibrated 1:20 | 1:20 3/3 |
 | 579 | PLA-AR-RAC-7141 | COMMON AREA JOINERY DETAILS - TYPE JO40 HAIR SALON MIRROR | 1 : 20 | Calibrated 1:20 | 1:20 13/15 |
 | 580 | PLA-AR-RAC-7143 | COMMON AREA JOINERY DETAILS - TYPE JO43 TYPICAL LAUNDRY WORK BENCH & I | 1 : 20 | Calibrated 1:20 | 1:20 5/5 |
 | 581 | PLA-AR-RAC-7144 | COMMON AREA JOINERY DETAILS - TYPE JO44, JO45, JO46, JO47 - CLINICAL R | 1 : 20 | Calibrated 1:20 | 1:20 19/25 |

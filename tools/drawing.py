@@ -439,7 +439,56 @@ def _index_segments(segs):
         # a witness line crosses the dimension line: it extends past it on both sides
         return [k for k, (lo_, hi_) in spans.items() if lo_ < at - 0.7 and hi_ > at + 0.7]
     near.crossers = crossers
+    allgrid = {}
+
+    def all_near(x, y, r):
+        if not allgrid:
+            for s2 in segs:
+                for px, py in ((s2["x0"], s2["y0"]), (s2["x1"], s2["y1"]),
+                               ((s2["x0"] + s2["x1"]) / 2, (s2["y0"] + s2["y1"]) / 2)):
+                    allgrid.setdefault((int(px // 20), int(py // 20)), []).append(s2)
+        out, seen = [], set()
+        k = int(r // 20) + 1
+        for ix in range(int(x // 20) - k, int(x // 20) + k + 1):
+            for iy in range(int(y // 20) - k, int(y // 20) + k + 1):
+                for s2 in allgrid.get((ix, iy), ()):
+                    if id(s2) not in seen:
+                        seen.add(id(s2)); out.append(s2)
+        return out
+    near.all_near = all_near
     return near
+
+
+def tick_length(near, s):
+    """Angled dimension (radius, diameter, skewed grid): measure between the tick
+    marks or crossing lines nearest each end, instead of the whole drawn line,
+    which runs past the ticks. Falls back to the segment length."""
+    x0, y0, x1, y1, L = s["x0"], s["y0"], s["x1"], s["y1"], s["len_pt"]
+    dx, dy = (x1 - x0) / L, (y1 - y0) / L
+    best = {0: None, 1: None}
+    for end, (ex, ey) in enumerate(((x0, y0), (x1, y1))):
+        for s2 in near.all_near(ex, ey, max(3.0, 0.08 * L)):
+            if s2 is s or s2["len_pt"] > 0.5 * L:
+                continue
+            a2 = abs(((s2["angle"] - s["angle"]) % 180))
+            if min(a2, 180 - a2) < 20:           # must cross, not run along
+                continue
+            # intersection of s2 with the dimension line
+            ux, uy = s2["x1"] - s2["x0"], s2["y1"] - s2["y0"]
+            den = dx * uy - dy * ux
+            if abs(den) < 1e-9:
+                continue
+            t = ((s2["x0"] - x0) * uy - (s2["y0"] - y0) * ux) / den      # along s, in pt
+            u = ((s2["x0"] - x0) * dy - (s2["y0"] - y0) * dx) / den      # along s2, 0..1
+            if not (-0.05 <= u <= 1.05):
+                continue
+            target = 0.0 if end == 0 else L
+            if abs(t - target) <= max(3.0, 0.08 * L):
+                if best[end] is None or abs(t - target) < abs(best[end] - target):
+                    best[end] = t
+    if best[0] is not None and best[1] is not None and best[1] - best[0] > 0.5 * L:
+        return best[1] - best[0], True
+    return L, False
 
 
 def witness_length(near, s):
@@ -449,7 +498,7 @@ def witness_length(near, s):
     the segment length when no witness line is found near both ends."""
     horizontal = min(s["angle"], 180 - s["angle"]) <= 3
     if not horizontal and abs(s["angle"] - 90) > 3:
-        return s["len_pt"], False      # angled: no witness search, overshoot < 2% at plan scales
+        return tick_length(near, s)
     if horizontal:
         a, b, at = sorted((s["x0"], s["x1"])) + [(s["y0"] + s["y1"]) / 2]
     else:

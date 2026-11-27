@@ -87,7 +87,11 @@ def summarise(job):
     md.append("| **Total** | " + " | ".join(f"**{tot.get(c, 0)}**" for c in cols) + " |")
     md += ["", "*No dimensions*: fewer than 3 printed dimensions and no shared grid (e.g. details, joinery). "
            "*Unreliable*: dimensions disagree (mostly reflected ceiling plans and sparsely dimensioned fitouts). "
-           "*Image*: mostly raster. Schedules are read as text, not measured.", "", "## Per sheet", "",
+           "*Image*: mostly raster. Schedules are read as text, not measured.", ""]
+    q = base / "scale-queries.md"
+    if q.exists() and q.read_text().strip():
+        md += ["## Queries raised by the scale check", "", q.read_text().strip(), ""]
+    md += ["## Per sheet", "",
            "| Sheet | Drawing | Title | Scale (printed) | Result | Agree |", "|---|---|---|---|---|---|"]
     for s in sorted(res):
         r, x = res[s], idx.get(s, {})
