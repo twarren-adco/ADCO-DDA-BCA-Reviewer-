@@ -70,6 +70,16 @@ def judge(pdf, page_no):
     res = {"labels": lbls}
     papers = {l["paper"] for l in lbls} | ({tb[1]} if tb else set())
     if not lbls:
+        # no viewport titles: fall back to the title block when it states one scale
+        if tb and "," not in tb[0]:
+            sc = int(re.search(r"1\s*:\s*(\d+)", tb[0]).group(1))
+            if not paper_ok(size_mm, tb[1]):
+                res["verdict"] = (f"PRINTED SCALE NOT USABLE - title block says @{tb[1]} but page is "
+                                  f"{size_mm[0]:.0f}x{size_mm[1]:.0f} mm (reduced or resized print)")
+            else:
+                res["verdict"] = f"PRINTED SCALE - title block states 1:{sc} on a full-size {tb[1]} sheet (no viewport titles)"
+                res["calibrated_scale"] = sc
+            return res
         res["verdict"] = "NO VIEWPORT SCALE LABELS"
         return res
     bad = [p for p in papers if not paper_ok(size_mm, p)]

@@ -1831,7 +1831,7 @@
       "note": ""
     }
   },
-  "handover": "383 of 581 sheets measurable (250 own dims, 65 by viewport, 68 from shared grids). Next: project.md facts + standards library, then checklist review: egress/paths on GA plans, wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx text).",
+  "handover": "477 of 581 sheets measurable (280 own dims, 42 by viewport, 59 grids, 96 printed scale). 21 drawings not measurable (5 C-41xx @A3 query, 4 with no scale, 12 joinery/fitout with few disagreeing dims). Next: project.md facts + standards library, then checklist review.",
   "log": [
     {
       "at": "2026-11-26T03:08:27Z",
@@ -1867,7 +1867,12 @@
       "at": "2026-11-26T23:50:45Z",
       "event": "handover",
       "note": "383 of 581 sheets measurable (250 own dims, 65 by viewport, 68 from shared grids). Next: project.md facts + standards library, then checklist review: egress/paths on GA plans, wet areas (4xxx), stairs/ramps (3xxx/5xxx), door schedule (6xxx text)."
+    },
+    {
+      "at": "2026-11-27T00:48:17Z",
+      "event": "handover",
+      "note": "477 of 581 sheets measurable (280 own dims, 42 by viewport, 59 grids, 96 printed scale). 21 drawings not measurable (5 C-41xx @A3 query, 4 with no scale, 12 joinery/fitout with few disagreeing dims). Next: project.md facts + standards library, then checklist review."
     }
   ],
-  "updated_at": "2026-11-26T23:50:45Z"
+  "updated_at": "2026-11-27T00:48:17Z"
 }
