@@ -73,7 +73,9 @@ def summarise(job):
           f"**{measurable} of {len(res)} sheets can be measured from geometry.**", "",
           "Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines "
           "(any angle) and measured witness line to witness line; horizontal/vertical dimension lines need witness lines "
-          "crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%. "
+          "crossing both ends. A sheet passes when >=3 and >=50% of matched dimensions agree with one scale within +-2%, "
+          "or, where one scale is printed, when most dimensions are within +-12% of it and no other standard scale "
+          "is supported by 3 or more (standard scales are 25%+ apart, so small drafting errors can't fake one). "
           "*By viewport*: each consistent viewport (>=3 dimensions, >=65% agreement inside its area) is calibrated "
           "separately and measuring is valid only inside its listed region (`calibration.jsonl`). "
           "*From grids*: the sheet has no usable dimensions, but >=3 grid spacings (from `grid-table.json`, built from "

@@ -186,6 +186,18 @@ def cmd_check(a):
         results.append(out)
         print(f"sheet {s:>3} {row['drawing']:<18} printed {row['scale']:<12} pairs {len(implied):>3}  -> {out['verdict']}"
               + (f" 1:{out['scale']} ({out['agree']})" if out.get("scale") else ""), flush=True)
+    # write accepted results into calibration.jsonl so the log and printedscale.py see them
+    jl = base / "output" / "calibration.jsonl"
+    rows = [json.loads(l) for l in jl.read_text().splitlines() if l.strip()]
+    got = {x["sheet"]: x for x in results if x["verdict"] == "CALIBRATED FROM GRIDS"}
+    for r in rows:
+        x = got.get(r["sheet"])
+        if x and not (r.get("verdict") or "").startswith("CALIBRATED"):
+            r["previous_verdict"] = r.get("verdict")
+            r["verdict"] = (f"CALIBRATED FROM GRIDS - scale confirmed by {x['agree']} grid spacings "
+                            "from calibrated plans (output/grid-table.json)")
+            r["calibrated_scale"] = x["scale"]; r["grid_agree"] = x["agree"]
+    jl.write_text("".join(json.dumps(r) + "\n" for r in rows))
     p = base / "output" / "grid-calibration.json"
     old = json.loads(p.read_text()) if p.exists() else {}
     old.update({str(x["sheet"]): x for x in results})
