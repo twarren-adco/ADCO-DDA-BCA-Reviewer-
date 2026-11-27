@@ -468,6 +468,28 @@ def witness_length(near, s):
     return L, False
 
 
+def _closed_box(near, w, s, offs, th):
+    """Short sides at both ends of segment s, no longer than the box height:
+    the outline of a tag, not the long witness lines of a dimension."""
+    import math as _m
+    ux, uy = (s["x1"] - s["x0"]) / s["len_pt"], (s["y1"] - s["y0"]) / s["len_pt"]
+    caps = 0
+    for ex, ey in ((s["x0"], s["y0"]), (s["x1"], s["y1"])):
+        found = False
+        for s3 in near(not w["upright"], ex, ey, 4.0, (s["angle"] + 90) % 180):
+            da = abs(((s3["angle"] - s["angle"]) % 180) - 90)
+            if da > 2 or s3["len_pt"] > offs + th:
+                continue
+            for px, py in ((s3["x0"], s3["y0"]), (s3["x1"], s3["y1"])):
+                along = (px - ex) * ux + (py - ey) * uy
+                if abs(along) < 4.0 and _m.hypot(px - ex, py - ey) < offs + th:
+                    found = True
+            if found:
+                break
+        caps += found
+    return caps == 2
+
+
 def find_viewports(matches, tol, min_agree):
     """Sheets often carry several viewports at different scales (plan 1:50,
     elevations 1:20, a key plan 1:500). Group the matched dimensions by the
@@ -501,6 +523,7 @@ def cmd_calibrate(a):
         page_h = max(max(sg["y0"], sg["y1"]) for sg in segs)
         ws = [w for w in ws if w["cy"] < page_h * 0.93]
     near = _index_segments(segs)
+    tag_words = all_words
 
     matches = []
     for w in ws:
@@ -528,6 +551,23 @@ def cmd_calibrate(a):
                 continue
             # dimension text sits roughly mid-span; prefer central + close
             score = perp + abs(t - 0.5) * th * 4
+            if best is None or score < best[0]:
+                # a tag box (e.g. ceiling type "CL-000 / 3080") has a line of the
+                # same length on the far side of the text; a dimension line doesn't
+                side = (w["cx"] - ax) * dy - (w["cy"] - ay) * dx
+                boxed = False
+                if not boxed:
+                    # text centred on the other side of the same line: a two-line tag
+                    for w2 in tag_words:
+                        if w2 is w or DIM_RE.match(w2["text"]) or not re.search(r"[A-Za-z]", w2["text"]):
+                            continue
+                        t3 = ((w2["cx"] - ax) * dx + (w2["cy"] - ay) * dy) / (L * L)
+                        side3 = (w2["cx"] - ax) * dy - (w2["cy"] - ay) * dx
+                        if abs(t3 - 0.5) < 0.15 and side * side3 < 0 and abs(side3) / L < th * 1.6:
+                            boxed = True
+                            break
+                if boxed:
+                    continue
             if best is None or score < best[0]:
                 best = (score, s, perp, t)
         if best:
