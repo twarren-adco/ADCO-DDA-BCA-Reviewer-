@@ -53,11 +53,13 @@ def summarise(job):
     def short(v):
         v = v or ""
         if v.startswith("CALIBRATED FROM GRIDS"): return "From grids"
+        if v.startswith("PRINTED SCALE BY VIEWPORT"): return "Printed (by viewport)"
+        if v.startswith("PRINTED SCALE"): return "Printed scale"
         if v.startswith("CALIBRATED BY VIEWPORT"): return "By viewport"
         if v.startswith("CALIBRATED"): return "Calibrated"
         return {"NO DIMENSIONS": "No dimensions", "NO SCALE STRING": "No scale printed", "UNRELIABLE": "Unreliable",
                 "MULTIPLE SCALES": "Mixed scales", "SCAN/RASTER": "Image"}.get(v.split(" - ")[0], v.split(" - ")[0])
-    cols = ["Calibrated", "By viewport", "From grids", "No dimensions", "No scale printed", "Unreliable", "Mixed scales", "Image"]
+    cols = ["Calibrated", "By viewport", "From grids", "Printed scale", "Printed (by viewport)", "No dimensions", "No scale printed", "Unreliable", "Mixed scales", "Image"]
     names = {"0": "General / site", "1": "GA plans, RCPs, wall types", "2": "Elevations", "3": "Sections",
              "4": "Unit & common-area fitouts, wet areas", "5": "Details", "6": "Schedules", "7": "Joinery / details", "8": "FF&E schedules"}
     tab, tot = {}, {}
@@ -66,7 +68,7 @@ def summarise(job):
         k = n[:1] if n[:1].isdigit() else "?"
         tab.setdefault(k, {}); c = short(r["verdict"])
         tab[k][c] = tab[k].get(c, 0) + 1; tot[c] = tot.get(c, 0) + 1
-    measurable = sum(tot.get(c, 0) for c in ("Calibrated", "By viewport", "From grids"))
+    measurable = sum(tot.get(c, 0) for c in ("Calibrated", "By viewport", "From grids", "Printed scale", "Printed (by viewport)"))
     md = [f"# Calibration log – {job}", "",
           f"**{measurable} of {len(res)} sheets can be measured from geometry.**", "",
           "Method (`tools/calibrate_all.py`, `tools/grids.py`): printed dimensions are paired with their dimension lines "
@@ -75,7 +77,10 @@ def summarise(job):
           "*By viewport*: each consistent viewport (>=3 dimensions, >=65% agreement inside its area) is calibrated "
           "separately and measuring is valid only inside its listed region (`calibration.jsonl`). "
           "*From grids*: the sheet has no usable dimensions, but >=3 grid spacings (from `grid-table.json`, built from "
-          "calibrated plans) agree with one scale within +-1% and with the printed scale.", "",
+          "calibrated plans) agree with one scale within +-1% and with the printed scale. "
+          "*Printed scale*: no dimensions or grids to check against, so the scale printed under each viewport title "
+          "(e.g. 'SCALE 1 : 5 @A1') is used, accepted only because the page is the full paper size the note names "
+          "(`tools/printedscale.py`). Mixed-scale sheets get a region per viewport.", "",
           "| Series | " + " | ".join(cols) + " |", "|---|" + "---|" * len(cols)]
     for k in sorted(tab):
         md.append(f"| {k}xxx {names.get(k, 'Other')} | " + " | ".join(str(tab[k].get(c, 0)) for c in cols) + " |")
@@ -88,7 +93,7 @@ def summarise(job):
         r, x = res[s], idx.get(s, {})
         agree = r.get("grid_agree") or " / ".join(f"1:{int(b['scale'])} {b['agree']}/{b['of']}" for b in (r.get("by_scale") or []))
         result = short(r["verdict"]) + (f" 1:{int(r['calibrated_scale'])}" if r.get("calibrated_scale") else "")
-        if r.get("viewports") and short(r["verdict"]) == "By viewport":
+        if r.get("viewports") and short(r["verdict"]) in ("By viewport", "Printed (by viewport)"):
             result += " (" + ", ".join(f"1:{v['scale']}" for v in r["viewports"]) + ")"
         md.append(f"| {s} | {x.get('drawing','')} | {x.get('title','')[:70]} | {x.get('scale','')} | {result} | {agree} |")
     (base / "calibration-log.md").write_text("\n".join(md) + "\n")

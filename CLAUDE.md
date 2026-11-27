@@ -20,21 +20,26 @@ assessment, access audit or certification. Never describe it as one.
    different edition, stop and tell the user before reviewing.
 3. **The measurement hierarchy, in order:**
    1. a dimension printed on the drawing;
-   2. a measurement from vector geometry on a sheet or viewport whose scale is
-      **confirmed**: by its own printed dimensions (`CALIBRATED`, or
-      `CALIBRATED BY VIEWPORT` inside the listed region only), or by grid
-      spacings carried from calibrated plans (`CALIBRATED FROM GRIDS`);
-   3. a measurement at the **printed scale only** (vector sheet, but nothing to
-      confirm it against). Record it as indicative: it can't support
-      `Compliant` on its own; use `Unable to verify` and give the value;
+   2. a measurement from vector geometry at a scale that is **confirmed**:
+      `CALIBRATED` (the sheet's own dimensions agree), `CALIBRATED BY VIEWPORT`
+      (inside the listed region only), `CALIBRATED FROM GRIDS` (grid spacings
+      carried from calibrated plans), or `PRINTED SCALE` / `PRINTED SCALE BY
+      VIEWPORT` (the scale printed under the viewport title, e.g.
+      "SCALE 1 : 50 @A1", accepted because the page is the full paper size the
+      note names; owner's direction 27/11/26);
+   3. a measurement at a printed scale that **can't** be trusted: the note
+      names a different paper size from the page (e.g. "@A3" on an A1 sheet),
+      or the sheet's own dimensions disagree (`UNRELIABLE`). Record the value
+      as indicative only (`Unable to verify`) and raise a query;
    4. a visual estimate, which can never support `Compliant`. Record it as
       `Unable to verify` with the estimate in "Drawing shows".
-   No scale bar is needed for any of these: the printed ratio ("1 : 100 @ A1")
-   and the PDF's own geometry are used. Record the basis used in the
-   "Measurement basis" column for every dimensional finding.
+   No scale bar is needed. Record the basis used in the "Measurement basis"
+   column for every dimensional finding (e.g. "Calibrated geometry 1:100",
+   "Printed viewport scale 1:50 @A1").
 4. **Calibrate before measuring.** Each sheet/viewport gets calibrated before any
    geometry measurement. For a whole job: `sheetindex.py`, `calibrate_all.py`,
-   then `grids.py learn` and `grids.py check` for sheets with no dimensions. If calibration is `UNRELIABLE`, has multiple scales and
+   then `grids.py learn` and `grids.py check` for sheets with no dimensions,
+   then `printedscale.py --job <job>` for sheets with neither. If calibration is `UNRELIABLE`, has multiple scales and
    no region, or the sheet is a scan, do not measure geometry on it. Log every
    calibration result in `output/calibration-log.md`.
 5. **Clear dimensions, not nominal ones.** Door widths, circulation spaces and
@@ -186,6 +191,7 @@ python3 tools/sheetindex.py <job>                         # one row per sheet: d
 python3 tools/calibrate_all.py <job> [--workers 4]        # scale check on every sheet (resumable), writes calibration-log.md
 python3 tools/grids.py learn <job>                        # grid spacings from calibrated plans -> grid-table.json
 python3 tools/grids.py check <job>                        # calibrate dimension-less sheets from the shared grid
+python3 tools/printedscale.py --job <job>                 # viewport-title scales ("SCALE 1 : 5 @A1") for what's left
 ```
 
 Grid carry-over: the structural grid is the same on every plan, so a grid
